@@ -1,0 +1,178 @@
+{
+ "DINOv2-ViT-B": {
+  "basis": "B2",
+  "from_delivered": [
+   "幂开",
+   "λ0.10",
+   "q1.00",
+   "top2%"
+  ],
+  "from_neutral": [
+   "幂关",
+   "λ0.10",
+   "q1.00",
+   "均值"
+  ],
+  "same": false
+ },
+ "RN50-1M": {
+  "basis": "A1",
+  "from_delivered": [
+   "幂开",
+   "λ0.10",
+   "q1.00",
+   "top2%"
+  ],
+  "from_neutral": [
+   "幂关",
+   "λ0.10",
+   "q1.00",
+   "均值"
+  ],
+  "same": false
+ },
+ "RN50-200K": {
+  "basis": "A1",
+  "from_delivered": [
+   "幂开",
+   "λ0.10",
+   "q1.00",
+   "top2%"
+  ],
+  "from_neutral": [
+   "幂关",
+   "λ0.10",
+   "q1.00",
+   "均值"
+  ],
+  "same": false
+ },
+ "RN50-MOCOv2": {
+  "basis": "A3",
+  "from_delivered": [
+   "幂开",
+   "λ0.10",
+   "q1.00",
+   "top2%"
+  ],
+  "from_neutral": [
+   "幂关",
+   "λ0.10",
+   "q1.00",
+   "均值"
+  ],
+  "same": false
+ },
+ "RN50-SIMCLRv2": {
+  "basis": "A1",
+  "from_delivered": [
+   "幂开",
+   "λ0.10",
+   "q1.00",
+   "top2%"
+  ],
+  "from_neutral": [
+   "幂关",
+   "λ0.10",
+   "q1.00",
+   "均值"
+  ],
+  "same": false
+ },
+ "RN50-SWSL": {
+  "basis": "A3",
+  "from_delivered": [
+   "幂开",
+   "λ0.10",
+   "q1.00",
+   "top2%"
+  ],
+  "from_neutral": [
+   "幂关",
+   "λ0.10",
+   "q1.00",
+   "均值"
+  ],
+  "same": false
+ },
+ "RN50-gastro5M": {
+  "basis": "A1",
+  "from_delivered": [
+   "幂开",
+   "λ0.10",
+   "q1.00",
+   "top2%"
+  ],
+  "from_neutral": [
+   "幂关",
+   "λ0.10",
+   "q1.00",
+   "均值"
+  ],
+  "same": false
+ },
+ "RN50-in1k-dino": {
+  "basis": "A1",
+  "from_delivered": [
+   "幂开",
+   "λ0.10",
+   "q1.00",
+   "top2%"
+  ],
+  "from_neutral": [
+   "幂关",
+   "λ0.10",
+   "q1.00",
+   "均值"
+  ],
+  "same": false
+ },
+ "RN50-in1k-sup": {
+  "basis": "A1",
+  "from_delivered": [
+   "幂开",
+   "λ0.10",
+   "q1.00",
+   "top2%"
+  ],
+  "from_neutral": [
+   "幂关",
+   "λ0.10",
+   "q1.00",
+   "均值"
+  ],
+  "same": false
+ },
+ "ViTS-gastro": {
+  "basis": "B3",
+  "from_delivered": [
+   "幂开",
+   "λ0.10",
+   "q1.00",
+   "top2%"
+  ],
+  "from_neutral": [
+   "幂关",
+   "λ0.10",
+   "q1.00",
+   "均值"
+  ],
+  "same": false
+ },
+ "ViTS-in1k-dino": {
+  "basis": "B6",
+  "from_delivered": [
+   "幂开",
+   "λ0.10",
+   "q1.00",
+   "top2%"
+  ],
+  "from_neutral": [
+   "幂关",
+   "λ0.10",
+   "q1.00",
+   "均值"
+  ],
+  "same": false
+ }
+}

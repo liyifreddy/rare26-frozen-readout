@@ -1,0 +1,17 @@
+Keys whose source is not a file in this repository.
+
+路径3.配置数	VERDICT_SPEC
+部署.平台.耗时秒	Grand Challenge Try-out job 页
+部署.平台.机型	Grand Challenge Try-out job 页
+目标线.去年冠军线	CLAUDE.md
+目标线.临床门槛	CLAUDE.md
+文献.RARE25.UT.cv低	seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）
+文献.RARE25.UT.cv高	seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）
+文献.RARE25.UT.外部auroc	seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）
+文献.RARE25.UT.外部ppv	seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）
+文献.RARE25.IMSY.全集ppv	seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）
+文献.RARE25.IMSY.重采样中位ppv	seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）
+文献.RARE25.IMSY.全集auroc	seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）
+事实.引用1.DOI状态	seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）
+容器.输出值个数	work\submit_v2\test_output\stacked-neoplastic-lesion-likelihoods.json
+主张4.内层组合数	scripts/R11_组合_每骨干自最优.py

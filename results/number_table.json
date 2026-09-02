@@ -1,0 +1,2373 @@
+{
+ "主张1.真跨中心.ΔAUROC.c2c1": {
+  "value": 0.04856686721163661,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c2→c1→d_auroc"
+ },
+ "主张1.真跨中心.ΔAUROC.c1c2": {
+  "value": 0.016331388096296307,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c1→c2→d_auroc"
+ },
+ "主张1.真跨中心.Δspec.c2c1": {
+  "value": 0.2069431920649234,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c2→c1→d_spec"
+ },
+ "主张1.真跨中心.Δspec.c1c2": {
+  "value": 0.06815020862308763,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c1→c2→d_spec"
+ },
+ "主张1.真跨中心.spec基线.c2c1": {
+  "value": 0.6789900811541929,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c2→c1→spec_old",
+  "单位": "水平"
+ },
+ "主张1.真跨中心.spec基线.c1c2": {
+  "value": 0.9221140472878999,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c1→c2→spec_old",
+  "单位": "水平"
+ },
+ "主张1.真跨中心.spec交付.c2c1": {
+  "value": 0.8935978358881875,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c2→c1→spec_new",
+  "单位": "水平"
+ },
+ "主张1.真跨中心.spec交付.c1c2": {
+  "value": 0.9916550764951322,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c1→c2→spec_new",
+  "单位": "水平"
+ },
+ "主张1.真跨中心.ΔPPV.c2c1": {
+  "value": 0.051173742901065536,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c2→c1→d_ppv"
+ },
+ "主张1.真跨中心.ΔPPV.c1c2": {
+  "value": 0.41686646766798785,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c1→c2→d_ppv"
+ },
+ "主张1.真跨中心.PPV基线.c2c1": {
+  "value": 0.02753973757116984,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c2→c1→ppv_b",
+  "单位": "水平"
+ },
+ "主张1.真跨中心.PPV交付.c2c1": {
+  "value": 0.07871348047223538,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c2→c1→ppv_c",
+  "单位": "水平"
+ },
+ "主张1.真跨中心.PPV基线.c1c2": {
+  "value": 0.10451943918014239,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c1→c2→ppv_b",
+  "单位": "水平"
+ },
+ "主张1.真跨中心.PPV交付.c1c2": {
+  "value": 0.5213859068481302,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c1→c2→ppv_c",
+  "单位": "水平"
+ },
+ "主张1.残余误报下降.c2c1": {
+  "value": 0.6685393258426966,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c2→c1→red",
+  "单位": "比例→%"
+ },
+ "主张1.残余误报下降.c1c2": {
+  "value": 0.8928571428571435,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c1→c2→red",
+  "单位": "比例→%"
+ },
+ "主张1.spec旧.c2c1": {
+  "value": 0.6789900811541929,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c2→c1→spec_old"
+ },
+ "主张1.spec新.c2c1": {
+  "value": 0.8935978358881875,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c2→c1→spec_new"
+ },
+ "主张1.spec旧.c1c2": {
+  "value": 0.9221140472878999,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c1→c2→spec_old"
+ },
+ "主张1.spec新.c1c2": {
+  "value": 0.9916550764951322,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c1→c2→spec_new"
+ },
+ "容器.偏斜.A训练拟合容器打分.c2c1": {
+  "value": 0.3345689022883214,
+  "来源文件": "results/t7_skew_cost.json",
+  "来源键": "c2→c1|A 训练拟合→容器打分（现状）→ppv90",
+  "单位": "水平"
+ },
+ "容器.偏斜.B容器拟合容器打分.c2c1": {
+  "value": 0.3345689022883214,
+  "来源文件": "results/t7_skew_cost.json",
+  "来源键": "c2→c1|B 容器拟合→容器打分（一致）→ppv90",
+  "单位": "水平"
+ },
+ "容器.偏斜.A训练拟合容器打分.c1c2": {
+  "value": 0.1459390680164755,
+  "来源文件": "results/t7_skew_cost.json",
+  "来源键": "c1→c2|A 训练拟合→容器打分（现状）→ppv90",
+  "单位": "水平"
+ },
+ "容器.偏斜.B容器拟合容器打分.c1c2": {
+  "value": 0.14700304035422362,
+  "来源文件": "results/t7_skew_cost.json",
+  "来源键": "c1→c2|B 容器拟合→容器打分（一致）→ppv90",
+  "单位": "水平"
+ },
+ "容器.离线复现平均绝对差": {
+  "value": 1.594889909029007e-07,
+  "来源文件": "results/t7_train_serve.json",
+  "来源键": "vs_container→mean_abs",
+  "单位": "科学计数法"
+ },
+ "容器.离线复现最大绝对差": {
+  "value": 4.917383193969727e-07,
+  "来源文件": "results/t7_train_serve.json",
+  "来源键": "vs_container→max_abs",
+  "单位": "科学计数法"
+ },
+ "容器.名次变化.容器路径": {
+  "value": 0,
+  "来源文件": "results/t7_train_serve.json",
+  "来源键": "容器路径 (float+torch, fp32)→rank_changed"
+ },
+ "容器.名次变化.容器预处理fp16": {
+  "value": 2,
+  "来源文件": "results/t7_train_serve.json",
+  "来源键": "容器预处理 + fp16 骨干→rank_changed"
+ },
+ "容器.名次变化.训练路径": {
+  "value": 9,
+  "来源文件": "results/t7_train_serve.json",
+  "来源键": "训练路径 (PIL uint8, fp32)→rank_changed"
+ },
+ "容器.名次变化.训练路径fp16": {
+  "value": 9,
+  "来源文件": "results/t7_train_serve.json",
+  "来源键": "训练路径 + fp16 骨干 ← 拟合 head 时用的→rank_changed"
+ },
+ "路径3.候选③ SWSL|A1.ΔPPV.c2c1": {
+  "value": -0.051726627518426396,
+  "来源文件": "results/p24_swsl_cross.json",
+  "来源键": "候选③ SWSL|A1→c2→c1→**PPV@90R(1%)**[0]"
+ },
+ "路径3.候选③ SWSL|A1.ΔPPV.c1c2": {
+  "value": 0.04519558525596268,
+  "来源文件": "results/p24_swsl_cross.json",
+  "来源键": "候选③ SWSL|A1→c1→c2→**PPV@90R(1%)**[0]"
+ },
+ "路径3.候选③ SWSL|A1.ΔAUROC.c2c1": {
+  "value": -0.041035344203166346,
+  "来源文件": "results/p24_swsl_cross.json",
+  "来源键": "候选③ SWSL|A1→c2→c1→AUROC[0]"
+ },
+ "路径3.候选③ SWSL|A1.ΔAUROC.c1c2": {
+  "value": 0.004516582309335715,
+  "来源文件": "results/p24_swsl_cross.json",
+  "来源键": "候选③ SWSL|A1→c1→c2→AUROC[0]"
+ },
+ "路径3.候选③ SWSL|A1.判决.主指标": {
+  "value": "D 未测出",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选③ SWSL|A1（两方向）"
+ },
+ "路径3.候选③ SWSL|A1.判决.AUROC": {
+  "value": "E 方向冲突",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选③ SWSL|A1（两方向·AUROC）"
+ },
+ "路径3.候选③ SWSL|A1.结局": {
+  "value": "丁 · 主指标测不出，但 **AUROC 上效应随训练中心反转** ⇒ 不稳定性的实质结论",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选③ SWSL|A1（两把钥匙）"
+ },
+ "路径3.候选④ SWSL|A3.ΔPPV.c2c1": {
+  "value": -0.028450788684992054,
+  "来源文件": "results/p24_swsl_cross.json",
+  "来源键": "候选④ SWSL|A3→c2→c1→**PPV@90R(1%)**[0]"
+ },
+ "路径3.候选④ SWSL|A3.ΔPPV.c1c2": {
+  "value": -0.25499539330315857,
+  "来源文件": "results/p24_swsl_cross.json",
+  "来源键": "候选④ SWSL|A3→c1→c2→**PPV@90R(1%)**[0]"
+ },
+ "路径3.候选④ SWSL|A3.ΔAUROC.c2c1": {
+  "value": -0.008581058108767303,
+  "来源文件": "results/p24_swsl_cross.json",
+  "来源键": "候选④ SWSL|A3→c2→c1→AUROC[0]"
+ },
+ "路径3.候选④ SWSL|A3.ΔAUROC.c1c2": {
+  "value": -0.007283885121087352,
+  "来源文件": "results/p24_swsl_cross.json",
+  "来源键": "候选④ SWSL|A3→c1→c2→AUROC[0]"
+ },
+ "路径3.候选④ SWSL|A3.判决.主指标": {
+  "value": "D 未测出",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选④ SWSL|A3（两方向）"
+ },
+ "路径3.候选④ SWSL|A3.判决.AUROC": {
+  "value": "D 未测出",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选④ SWSL|A3（两方向·AUROC）"
+ },
+ "路径3.候选④ SWSL|A3.结局": {
+  "value": "甲 · 两把尺子都测不出 ⇒ 「测不出差别」，**不许写成「所以交付更好」**",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选④ SWSL|A3（两把钥匙）"
+ },
+ "路径3.E7-候选①.ΔPPV.c2c1": {
+  "value": 0.016324081847059302,
+  "来源文件": "results/e7_cross.json",
+  "来源键": "候选①→c2→c1→**PPV@90R(1%)**[0]"
+ },
+ "路径3.E7-候选①.ΔPPV.c1c2": {
+  "value": 0.16402305509749504,
+  "来源文件": "results/e7_cross.json",
+  "来源键": "候选①→c1→c2→**PPV@90R(1%)**[0]"
+ },
+ "路径3.E7-候选①.ΔAUROC.c2c1": {
+  "value": 0.01589084834956911,
+  "来源文件": "results/e7_cross.json",
+  "来源键": "候选①→c2→c1→AUROC[0]"
+ },
+ "路径3.E7-候选①.ΔAUROC.c1c2": {
+  "value": -0.002666934315988634,
+  "来源文件": "results/e7_cross.json",
+  "来源键": "候选①→c1→c2→AUROC[0]"
+ },
+ "路径3.E7-候选①.判决.主指标": {
+  "value": "D 未测出",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选①（两方向）"
+ },
+ "路径3.E7-候选①.判决.AUROC": {
+  "value": "D 未测出",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选①（两方向·AUROC）"
+ },
+ "路径3.E7-候选①.结局": {
+  "value": "甲 · 两把尺子都测不出 ⇒ 「测不出差别」，**不许写成「所以交付更好」**",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选①（两把钥匙）"
+ },
+ "路径3.E7-候选②.ΔPPV.c2c1": {
+  "value": 0.04336841995778805,
+  "来源文件": "results/e7_cross.json",
+  "来源键": "候选②→c2→c1→**PPV@90R(1%)**[0]"
+ },
+ "路径3.E7-候选②.ΔPPV.c1c2": {
+  "value": -0.10067810174736996,
+  "来源文件": "results/e7_cross.json",
+  "来源键": "候选②→c1→c2→**PPV@90R(1%)**[0]"
+ },
+ "路径3.E7-候选②.ΔAUROC.c2c1": {
+  "value": -0.0022838475069846265,
+  "来源文件": "results/e7_cross.json",
+  "来源键": "候选②→c2→c1→AUROC[0]"
+ },
+ "路径3.E7-候选②.ΔAUROC.c1c2": {
+  "value": 0.0058357111107925075,
+  "来源文件": "results/e7_cross.json",
+  "来源键": "候选②→c1→c2→AUROC[0]"
+ },
+ "路径3.E7-候选②.判决.主指标": {
+  "value": "D 未测出",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选②（两方向）"
+ },
+ "路径3.E7-候选②.判决.AUROC": {
+  "value": "D 未测出",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选②（两方向·AUROC）"
+ },
+ "路径3.E7-候选②.结局": {
+  "value": "甲 · 两把尺子都测不出 ⇒ 「测不出差别」，**不许写成「所以交付更好」**",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选②（两把钥匙）"
+ },
+ "路径3.RN50-1M|A1.ΔPPV.c2c1": {
+  "value": -0.007755985414619929,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-1M|A1→c2→c1→PPV[0]"
+ },
+ "路径3.RN50-1M|A1.ΔPPV.c1c2": {
+  "value": -0.16876757948293192,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-1M|A1→c1→c2→PPV[0]"
+ },
+ "路径3.RN50-1M|A1.ΔAUROC.c2c1": {
+  "value": 0.002439060444352381,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-1M|A1→c2→c1→AUROC[0]"
+ },
+ "路径3.RN50-1M|A1.ΔAUROC.c1c2": {
+  "value": 0.0032834836471044015,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-1M|A1→c1→c2→AUROC[0]"
+ },
+ "路径3.RN50-1M|A1.判决.主指标": {
+  "value": "D 未测出",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-1M|A1（两方向）"
+ },
+ "路径3.RN50-1M|A1.判决.AUROC": {
+  "value": "D 未测出",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-1M|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-1M|A1.结局": {
+  "value": "甲 · 两把尺子都测不出 ⇒ 「测不出差别」，**不许写成「所以交付更好」**",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-1M|A1（两把钥匙）"
+ },
+ "路径3.RN50-200K|A1.ΔPPV.c2c1": {
+  "value": -0.047842824762084846,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-200K|A1→c2→c1→PPV[0]"
+ },
+ "路径3.RN50-200K|A1.ΔPPV.c1c2": {
+  "value": -0.16876757948293192,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-200K|A1→c1→c2→PPV[0]"
+ },
+ "路径3.RN50-200K|A1.ΔAUROC.c2c1": {
+  "value": -0.05170808142027228,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-200K|A1→c2→c1→AUROC[0]"
+ },
+ "路径3.RN50-200K|A1.ΔAUROC.c1c2": {
+  "value": 0.0017062644279712824,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-200K|A1→c1→c2→AUROC[0]"
+ },
+ "路径3.RN50-200K|A1.判决.主指标": {
+  "value": "D 未测出",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-200K|A1（两方向）"
+ },
+ "路径3.RN50-200K|A1.判决.AUROC": {
+  "value": "E 方向冲突",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-200K|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-200K|A1.结局": {
+  "value": "丁 · 主指标测不出，但 **AUROC 上效应随训练中心反转** ⇒ 不稳定性的实质结论",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-200K|A1（两把钥匙）"
+ },
+ "路径3.RN50-MOCOv2|A1.ΔPPV.c2c1": {
+  "value": -0.04110634116753301,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-MOCOv2|A1→c2→c1→PPV[0]"
+ },
+ "路径3.RN50-MOCOv2|A1.ΔPPV.c1c2": {
+  "value": -0.4449707280213019,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-MOCOv2|A1→c1→c2→PPV[0]"
+ },
+ "路径3.RN50-MOCOv2|A1.ΔAUROC.c2c1": {
+  "value": -0.05962394122603443,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-MOCOv2|A1→c2→c1→AUROC[0]"
+ },
+ "路径3.RN50-MOCOv2|A1.ΔAUROC.c1c2": {
+  "value": -0.04368897236998692,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-MOCOv2|A1→c1→c2→AUROC[0]"
+ },
+ "路径3.RN50-MOCOv2|A1.判决.主指标": {
+  "value": "D 未测出",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A1（两方向）"
+ },
+ "路径3.RN50-MOCOv2|A1.判决.AUROC": {
+  "value": "A− 成立（劣化）",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-MOCOv2|A1.结局": {
+  "value": "戊′ · 主指标测不出，但 **AUROC 两方向都可辨别地更差** ⇒ 这是可辨别的负结果，**不是「都测不出」**",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A1（两把钥匙）"
+ },
+ "路径3.RN50-MOCOv2|A3.ΔPPV.c2c1": {
+  "value": -0.04407788437828015,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-MOCOv2|A3→c2→c1→PPV[0]"
+ },
+ "路径3.RN50-MOCOv2|A3.ΔPPV.c1c2": {
+  "value": -0.468044267096022,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-MOCOv2|A3→c1→c2→PPV[0]"
+ },
+ "路径3.RN50-MOCOv2|A3.ΔAUROC.c2c1": {
+  "value": -0.04079882925098677,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-MOCOv2|A3→c2→c1→AUROC[0]"
+ },
+ "路径3.RN50-MOCOv2|A3.ΔAUROC.c1c2": {
+  "value": -0.028346930874783127,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-MOCOv2|A3→c1→c2→AUROC[0]"
+ },
+ "路径3.RN50-MOCOv2|A3.判决.主指标": {
+  "value": "D 未测出",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A3（两方向）"
+ },
+ "路径3.RN50-MOCOv2|A3.判决.AUROC": {
+  "value": "A− 成立（劣化）",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A3（两方向·AUROC）"
+ },
+ "路径3.RN50-MOCOv2|A3.结局": {
+  "value": "戊′ · 主指标测不出，但 **AUROC 两方向都可辨别地更差** ⇒ 这是可辨别的负结果，**不是「都测不出」**",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A3（两把钥匙）"
+ },
+ "路径3.RN50-SIMCLRv2|A1.ΔPPV.c2c1": {
+  "value": -0.05075367662878856,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-SIMCLRv2|A1→c2→c1→PPV[0]"
+ },
+ "路径3.RN50-SIMCLRv2|A1.ΔPPV.c1c2": {
+  "value": -0.4936351372167495,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-SIMCLRv2|A1→c1→c2→PPV[0]"
+ },
+ "路径3.RN50-SIMCLRv2|A1.ΔAUROC.c2c1": {
+  "value": -0.09136129137163895,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-SIMCLRv2|A1→c2→c1→AUROC[0]"
+ },
+ "路径3.RN50-SIMCLRv2|A1.ΔAUROC.c1c2": {
+  "value": -0.07620836499720396,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-SIMCLRv2|A1→c1→c2→AUROC[0]"
+ },
+ "路径3.RN50-SIMCLRv2|A1.判决.主指标": {
+  "value": "A− 成立（劣化）",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-SIMCLRv2|A1（两方向）"
+ },
+ "路径3.RN50-SIMCLRv2|A1.判决.AUROC": {
+  "value": "A− 成立（劣化）",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-SIMCLRv2|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-SIMCLRv2|A1.结局": {
+  "value": "戊 · 主指标两方向都可辨别地**更差** ⇒ **该候选被排除**（可辨别的结果，不是「未测出」）",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-SIMCLRv2|A1（两把钥匙）"
+ },
+ "路径3.RN50-in1k-sup|A1.ΔPPV.c2c1": {
+  "value": -0.0660012887679278,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-in1k-sup|A1→c2→c1→PPV[0]"
+ },
+ "路径3.RN50-in1k-sup|A1.ΔPPV.c1c2": {
+  "value": -0.505026115706729,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-in1k-sup|A1→c1→c2→PPV[0]"
+ },
+ "路径3.RN50-in1k-sup|A1.ΔAUROC.c2c1": {
+  "value": -0.2249996304453873,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-in1k-sup|A1→c2→c1→AUROC[0]"
+ },
+ "路径3.RN50-in1k-sup|A1.ΔAUROC.c1c2": {
+  "value": -0.19422737765797282,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-in1k-sup|A1→c1→c2→AUROC[0]"
+ },
+ "路径3.RN50-in1k-sup|A1.判决.主指标": {
+  "value": "A− 成立（劣化）",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-sup|A1（两方向）"
+ },
+ "路径3.RN50-in1k-sup|A1.判决.AUROC": {
+  "value": "A− 成立（劣化）",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-sup|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-in1k-sup|A1.结局": {
+  "value": "戊 · 主指标两方向都可辨别地**更差** ⇒ **该候选被排除**（可辨别的结果，不是「未测出」）",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-sup|A1（两把钥匙）"
+ },
+ "路径3.RN50-in1k-dino|A1.ΔPPV.c2c1": {
+  "value": -0.06040229845522502,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-in1k-dino|A1→c2→c1→PPV[0]"
+ },
+ "路径3.RN50-in1k-dino|A1.ΔPPV.c1c2": {
+  "value": -0.4853804156721424,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-in1k-dino|A1→c1→c2→PPV[0]"
+ },
+ "路径3.RN50-in1k-dino|A1.ΔAUROC.c2c1": {
+  "value": -0.13081494183210396,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-in1k-dino|A1→c2→c1→AUROC[0]"
+ },
+ "路径3.RN50-in1k-dino|A1.ΔAUROC.c1c2": {
+  "value": -0.0704443456690994,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "RN50-in1k-dino|A1→c1→c2→AUROC[0]"
+ },
+ "路径3.RN50-in1k-dino|A1.判决.主指标": {
+  "value": "A− 成立（劣化）",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-dino|A1（两方向）"
+ },
+ "路径3.RN50-in1k-dino|A1.判决.AUROC": {
+  "value": "A− 成立（劣化）",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-dino|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-in1k-dino|A1.结局": {
+  "value": "戊 · 主指标两方向都可辨别地**更差** ⇒ **该候选被排除**（可辨别的结果，不是「未测出」）",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-dino|A1（两把钥匙）"
+ },
+ "路径3.ViTS-in1k-dino|B1.ΔPPV.c2c1": {
+  "value": -0.06398652409068385,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "ViTS-in1k-dino|B1→c2→c1→PPV[0]"
+ },
+ "路径3.ViTS-in1k-dino|B1.ΔPPV.c1c2": {
+  "value": -0.502632260418676,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "ViTS-in1k-dino|B1→c1→c2→PPV[0]"
+ },
+ "路径3.ViTS-in1k-dino|B1.ΔAUROC.c2c1": {
+  "value": -0.22182885186772905,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "ViTS-in1k-dino|B1→c2→c1→AUROC[0]"
+ },
+ "路径3.ViTS-in1k-dino|B1.ΔAUROC.c1c2": {
+  "value": -0.13145405273647526,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "ViTS-in1k-dino|B1→c1→c2→AUROC[0]"
+ },
+ "路径3.ViTS-in1k-dino|B1.判决.主指标": {
+  "value": "A− 成立（劣化）",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B1（两方向）"
+ },
+ "路径3.ViTS-in1k-dino|B1.判决.AUROC": {
+  "value": "A− 成立（劣化）",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B1（两方向·AUROC）"
+ },
+ "路径3.ViTS-in1k-dino|B1.结局": {
+  "value": "戊 · 主指标两方向都可辨别地**更差** ⇒ **该候选被排除**（可辨别的结果，不是「未测出」）",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B1（两把钥匙）"
+ },
+ "路径3.ViTS-in1k-dino|B6.ΔPPV.c2c1": {
+  "value": -0.06377928116839798,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "ViTS-in1k-dino|B6→c2→c1→PPV[0]"
+ },
+ "路径3.ViTS-in1k-dino|B6.ΔPPV.c1c2": {
+  "value": -0.503406057872918,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "ViTS-in1k-dino|B6→c1→c2→PPV[0]"
+ },
+ "路径3.ViTS-in1k-dino|B6.ΔAUROC.c2c1": {
+  "value": -0.1681030022616743,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "ViTS-in1k-dino|B6→c2→c1→AUROC[0]"
+ },
+ "路径3.ViTS-in1k-dino|B6.ΔAUROC.c1c2": {
+  "value": -0.10881378776364647,
+  "来源文件": "results/p25_cross_all.json",
+  "来源键": "ViTS-in1k-dino|B6→c1→c2→AUROC[0]"
+ },
+ "路径3.ViTS-in1k-dino|B6.判决.主指标": {
+  "value": "A− 成立（劣化）",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B6（两方向）"
+ },
+ "路径3.ViTS-in1k-dino|B6.判决.AUROC": {
+  "value": "A− 成立（劣化）",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B6（两方向·AUROC）"
+ },
+ "路径3.ViTS-in1k-dino|B6.结局": {
+  "value": "戊 · 主指标两方向都可辨别地**更差** ⇒ **该候选被排除**（可辨别的结果，不是「未测出」）",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B6（两把钥匙）"
+ },
+ "路径3.至少一把钥匙更差": {
+  "value": 7,
+  "来源文件": "src/verdict.py",
+  "来源键": "13 个配置里满足条件的：RN50-MOCOv2|A1、RN50-MOCOv2|A3、RN50-SIMCLRv2|A1、RN50-in1k-sup|A1、RN50-in1k-dino|A1、ViTS-in1k-dino|B1、ViTS-in1k-dino|B6"
+ },
+ "路径3.两把钥匙都更差": {
+  "value": 5,
+  "来源文件": "src/verdict.py",
+  "来源键": "13 个配置里满足条件的：RN50-SIMCLRv2|A1、RN50-in1k-sup|A1、RN50-in1k-dino|A1、ViTS-in1k-dino|B1、ViTS-in1k-dino|B6"
+ },
+ "路径3.存在方向冲突": {
+  "value": 2,
+  "来源文件": "src/verdict.py",
+  "来源键": "13 个配置里满足条件的：候选③ SWSL|A1、RN50-200K|A1"
+ },
+ "路径3.任一钥匙更好": {
+  "value": 0,
+  "来源文件": "src/verdict.py",
+  "来源键": "13 个配置里满足条件的：无"
+ },
+ "路径3.配置数": {
+  "value": 13,
+  "来源文件": "VERDICT_SPEC",
+  "来源键": "路径③ 真跨中心的配置条目数"
+ },
+ "部署.384.耗时秒": {
+  "value": 15.801270961761475,
+  "来源文件": "results/p28_384.json",
+  "来源键": "耗时秒",
+  "单位": "秒"
+ },
+ "部署.384.限时秒": {
+  "value": 600.0,
+  "来源文件": "results/p28_384.json",
+  "来源键": "限时秒",
+  "单位": "秒"
+ },
+ "部署.384.耗时余量倍": {
+  "value": 37.97162908300093,
+  "来源文件": "results/p28_384.json",
+  "来源键": "耗时余量倍",
+  "单位": "倍数"
+ },
+ "部署.384.分数个数": {
+  "value": 384,
+  "来源文件": "results/p28_384.json",
+  "来源键": "分数个数"
+ },
+ "部署.384.每张秒": {
+  "value": 0.033388398137931125,
+  "来源文件": "results/p28_384.json",
+  "来源键": "每张秒",
+  "单位": "毫秒"
+ },
+ "部署.384.模型加载秒": {
+  "value": 2.9801260767959232,
+  "来源文件": "results/p28_384.json",
+  "来源键": "模型加载秒",
+  "单位": "秒"
+ },
+ "部署.384.配置内存GB": {
+  "value": 16,
+  "来源文件": "results/p28_384.json",
+  "来源键": "配置内存GB"
+ },
+ "部署.384.峰值下界": {
+  "value": "2g",
+  "来源文件": "results/p28_384.json",
+  "来源键": "峰值下界",
+  "单位": "GB"
+ },
+ "部署.384.峰值上界": {
+  "value": "3g",
+  "来源文件": "results/p28_384.json",
+  "来源键": "峰值上界",
+  "单位": "GB"
+ },
+ "部署.384.保序": {
+  "value": "yes",
+  "来源文件": "results/p28_384.json",
+  "来源键": "前三帧逐位一致（与单独跑前 3 帧的输出 repr 相等）"
+ },
+ "平台对账.名次变化": {
+  "value": 0,
+  "来源文件": "results/p29_platform.json",
+  "来源键": "名次变化"
+ },
+ "平台对账.spearman": {
+  "value": 1.0,
+  "来源文件": "results/p29_platform.json",
+  "来源键": "spearman"
+ },
+ "平台对账.最大绝对差": {
+  "value": 1.3113021850585938e-06,
+  "来源文件": "results/p29_platform.json",
+  "来源键": "最大绝对差",
+  "单位": "科学计数法"
+ },
+ "平台对账.最大相对差": {
+  "value": 2.5989372079444313e-06,
+  "来源文件": "results/p29_platform.json",
+  "来源键": "最大相对差",
+  "单位": "科学计数法"
+ },
+ "平台对账.逐位相同": {
+  "value": 83,
+  "来源文件": "results/p29_platform.json",
+  "来源键": "逐位相同"
+ },
+ "平台对账.个数": {
+  "value": 384,
+  "来源文件": "results/p29_platform.json",
+  "来源键": "个数"
+ },
+ "部署.平台.耗时秒": {
+  "value": 26.0,
+  "来源文件": "Grand Challenge Try-out job 页",
+  "来源键": "用户 2026-08-31 读取；384 张一个 case",
+  "单位": "秒"
+ },
+ "部署.平台.机型": {
+  "value": "ml.r7i.large (2 vCPU, 16 GB, no GPU)",
+  "来源文件": "Grand Challenge Try-out job 页",
+  "来源键": "用户 2026-08-31 读取"
+ },
+ "部署.平台.余量倍": {
+  "value": 23.076923076923077,
+  "来源文件": "src/verdict.py",
+  "来源键": "限时 / 平台实测耗时",
+  "单位": "倍数近似"
+ },
+ "主张1.真跨中心.AUROC交付.c2c1": {
+  "value": 0.9605167851705125,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c2→c1→auroc_c",
+  "单位": "水平"
+ },
+ "主张1.真跨中心.AUROC基线.c2c1": {
+  "value": 0.9119499179588759,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c2→c1→auroc_b",
+  "单位": "水平"
+ },
+ "主张1.真跨中心.AUROC交付.c1c2": {
+  "value": 0.988328577778415,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c1→c2→auroc_c",
+  "单位": "水平"
+ },
+ "主张1.真跨中心.AUROC基线.c1c2": {
+  "value": 0.9719971896821187,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "c1→c2→auroc_b",
+  "单位": "水平"
+ },
+ "目标线.去年冠军线": {
+  "value": 0.035,
+  "来源文件": "CLAUDE.md",
+  "来源键": "seed/2604.11171v1.pdf §6.1：Team IMSY 的重采样中位 PPV@90RECALL（CLAUDE.md 转述的就是这一条）",
+  "单位": "水平"
+ },
+ "目标线.临床门槛": {
+  "value": 0.043,
+  "来源文件": "CLAUDE.md",
+  "来源键": "CLAUDE.md：临床门槛，来自 ASGE PIVI 2012（90% 敏感度配 80% 特异度，换算到 1% 患病率）",
+  "单位": "水平"
+ },
+ "目标线.去年冠军线.所需AUROC": {
+  "value": 0.916465956685976,
+  "来源文件": "src/verdict.py",
+  "来源键": "等方差双正态：由 去年冠军线 的 PPV 反解所需 AUROC",
+  "单位": "水平"
+ },
+ "目标线.临床门槛.所需AUROC": {
+  "value": 0.932602324548316,
+  "来源文件": "src/verdict.py",
+  "来源键": "等方差双正态：由 临床门槛 的 PPV 反解所需 AUROC",
+  "单位": "水平"
+ },
+ "外部验证.RARE26.ppv90": {
+  "value": 0.0152,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE26→ppv90",
+  "单位": "水平"
+ },
+ "外部验证.RARE26.ppv90_lo": {
+  "value": 0.0104,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE26→ppv90_lo",
+  "单位": "水平"
+ },
+ "外部验证.RARE26.ppv90_hi": {
+  "value": 0.0306,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE26→ppv90_hi",
+  "单位": "水平"
+ },
+ "外部验证.RARE26.auroc": {
+  "value": 0.77,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE26→auroc",
+  "单位": "水平"
+ },
+ "外部验证.RARE26.auroc_lo": {
+  "value": 0.6354,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE26→auroc_lo",
+  "单位": "水平"
+ },
+ "外部验证.RARE26.auroc_hi": {
+  "value": 0.8968,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE26→auroc_hi",
+  "单位": "水平"
+ },
+ "外部验证.RARE26.auprc": {
+  "value": 0.2622,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE26→auprc",
+  "单位": "水平"
+ },
+ "外部验证.RARE26.auprc_lo": {
+  "value": 0.0297,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE26→auprc_lo",
+  "单位": "水平"
+ },
+ "外部验证.RARE26.auprc_hi": {
+  "value": 0.528,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE26→auprc_hi",
+  "单位": "水平"
+ },
+ "外部验证.RARE25.ppv90": {
+  "value": 0.0151,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE25→ppv90",
+  "单位": "水平"
+ },
+ "外部验证.RARE25.ppv90_lo": {
+  "value": 0.0106,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE25→ppv90_lo",
+  "单位": "水平"
+ },
+ "外部验证.RARE25.ppv90_hi": {
+  "value": 0.0345,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE25→ppv90_hi",
+  "单位": "水平"
+ },
+ "外部验证.RARE25.auroc": {
+  "value": 0.843,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE25→auroc",
+  "单位": "水平"
+ },
+ "外部验证.RARE25.auroc_lo": {
+  "value": 0.7121,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE25→auroc_lo",
+  "单位": "水平"
+ },
+ "外部验证.RARE25.auroc_hi": {
+  "value": 0.9621,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE25→auroc_hi",
+  "单位": "水平"
+ },
+ "外部验证.RARE25.auprc": {
+  "value": 0.4381,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE25→auprc",
+  "单位": "水平"
+ },
+ "外部验证.RARE25.auprc_lo": {
+  "value": 0.1582,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE25→auprc_lo",
+  "单位": "水平"
+ },
+ "外部验证.RARE25.auprc_hi": {
+  "value": 0.7264,
+  "来源文件": "results/p31_platform_leaderboard.json",
+  "来源键": "RARE25→auprc_hi",
+  "单位": "水平"
+ },
+ "外部验证.RARE26.spec90": {
+  "value": 0.41100478468899515,
+  "来源文件": "src/verdict.py",
+  "来源键": "由 RARE26 的 PPV@90R 经 Section 1 恒等式反解",
+  "单位": "水平"
+ },
+ "外部验证.RARE25.spec90": {
+  "value": 0.40704394942805533,
+  "来源文件": "src/verdict.py",
+  "来源键": "由 RARE25 的 PPV@90R 经 Section 1 恒等式反解",
+  "单位": "水平"
+ },
+ "外部验证.随机基线PPV": {
+  "value": 0.01,
+  "来源文件": "src/verdict.py",
+  "来源键": "spec@90 = 0.10 代入 Section 1 恒等式",
+  "单位": "水平"
+ },
+ "归因.锐化.特征位移": {
+  "value": 0.4952286183834076,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "相对特征位移→S_sharpen→0.80（‖Δf‖/‖f‖）",
+  "单位": "比例→%"
+ },
+ "归因.锐化.掉幅.c2c1": {
+  "value": -0.0013451787905216506,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c2→c1→S_sharpen→s=0.80：无扰动 AUROC 减最强档",
+  "单位": "水平"
+ },
+ "归因.锐化.解释比例.现实档.c2c1": {
+  "value": 0.0038019066950028325,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c2→c1→S_sharpen→s=0.20 的掉幅 ÷ 到平台的缺口",
+  "单位": "比例→%"
+ },
+ "归因.锐化.掉幅.c1c2": {
+  "value": -0.0036276042040062073,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c1→c2→S_sharpen→s=0.80：无扰动 AUROC 减最强档",
+  "单位": "水平"
+ },
+ "归因.锐化.解释比例.现实档.c1c2": {
+  "value": -0.01891390822420079,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c1→c2→S_sharpen→s=0.20 的掉幅 ÷ 到平台的缺口",
+  "单位": "比例→%"
+ },
+ "归因.锐化.解释比例.现实档.双方向取小": {
+  "value": -0.01891390822420079,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "两个方向里较小的那个（单方向的大数字不算数）",
+  "单位": "比例→%"
+ },
+ "归因.锐化.解释比例.最强档.双方向取小": {
+  "value": -0.016615342988621117,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "最强档，两个方向里较小的那个",
+  "单位": "比例→%"
+ },
+ "归因.JPEG.特征位移": {
+  "value": 0.8009341359138489,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "相对特征位移→J_jpeg→0.80（‖Δf‖/‖f‖）",
+  "单位": "比例→%"
+ },
+ "归因.JPEG.掉幅.c2c1": {
+  "value": 0.10031190409318691,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c2→c1→J_jpeg→s=0.80：无扰动 AUROC 减最强档",
+  "单位": "水平"
+ },
+ "归因.JPEG.解释比例.现实档.c2c1": {
+  "value": 0.08503856607597494,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c2→c1→J_jpeg→s=0.20 的掉幅 ÷ 到平台的缺口",
+  "单位": "比例→%"
+ },
+ "归因.JPEG.掉幅.c1c2": {
+  "value": 0.021521873162897998,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c1→c2→J_jpeg→s=0.80：无扰动 AUROC 减最强档",
+  "单位": "水平"
+ },
+ "归因.JPEG.解释比例.现实档.c1c2": {
+  "value": 0.02088410699755487,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c1→c2→J_jpeg→s=0.20 的掉幅 ÷ 到平台的缺口",
+  "单位": "比例→%"
+ },
+ "归因.JPEG.解释比例.现实档.双方向取小": {
+  "value": 0.02088410699755487,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "两个方向里较小的那个（单方向的大数字不算数）",
+  "单位": "比例→%"
+ },
+ "归因.JPEG.解释比例.最强档.双方向取小": {
+  "value": 0.09857561196015703,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "最强档，两个方向里较小的那个",
+  "单位": "比例→%"
+ },
+ "归因.颜色.特征位移": {
+  "value": 0.5345811247825623,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "相对特征位移→K_colour→0.80（‖Δf‖/‖f‖）",
+  "单位": "比例→%"
+ },
+ "归因.颜色.掉幅.c2c1": {
+  "value": 0.054790166890863135,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c2→c1→K_colour→s=0.80：无扰动 AUROC 减最强档",
+  "单位": "水平"
+ },
+ "归因.颜色.解释比例.现实档.c2c1": {
+  "value": 0.06789119098218811,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c2→c1→K_colour→s=0.20 的掉幅 ÷ 到平台的缺口",
+  "单位": "比例→%"
+ },
+ "归因.颜色.掉幅.c1c2": {
+  "value": 0.017607501828140415,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c1→c2→K_colour→s=0.80：无扰动 AUROC 减最强档",
+  "单位": "水平"
+ },
+ "归因.颜色.解释比例.现实档.c1c2": {
+  "value": 0.007027042291629873,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c1→c2→K_colour→s=0.20 的掉幅 ÷ 到平台的缺口",
+  "单位": "比例→%"
+ },
+ "归因.颜色.解释比例.现实档.双方向取小": {
+  "value": 0.007027042291629873,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "两个方向里较小的那个（单方向的大数字不算数）",
+  "单位": "比例→%"
+ },
+ "归因.颜色.解释比例.最强档.双方向取小": {
+  "value": 0.08064680312263353,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "最强档，两个方向里较小的那个",
+  "单位": "比例→%"
+ },
+ "归因.缺口.c2c1": {
+  "value": 0.19051678517051251,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c2→c1：本地真跨中心 AUROC 减平台 AUROC",
+  "单位": "水平"
+ },
+ "归因.缺口.c1c2": {
+  "value": 0.21832857777841497,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c1→c2：本地真跨中心 AUROC 减平台 AUROC",
+  "单位": "水平"
+ },
+ "归因.判别能量落在照度子空间": {
+  "value": 0.0020850186701864004,
+  "来源文件": "results/p32_domain_shift.json",
+  "来源键": "两个方向里较大的那个（取大 = 对我们不利的一侧）",
+  "单位": "比例→%"
+ },
+ "文献.RARE25.UT.cv低": {
+  "value": 0.934,
+  "来源文件": "seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）",
+  "来源键": "§5.2 Team UT：ROC-AUC scores ranging from 0.934 to 0.960 across folds",
+  "单位": "水平"
+ },
+ "文献.RARE25.UT.cv高": {
+  "value": 0.96,
+  "来源文件": "seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）",
+  "来源键": "同上，折间上界",
+  "单位": "水平"
+ },
+ "文献.RARE25.UT.外部auroc": {
+  "value": 0.7709,
+  "来源文件": "seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）",
+  "来源键": "§5.2：evaluated on a separate development set, performance dropped to ROC-AUC 0.7709",
+  "单位": "水平"
+ },
+ "文献.RARE25.UT.外部ppv": {
+  "value": 0.0112,
+  "来源文件": "seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）",
+  "来源键": "§5.2：同句，PPV@90%RECALL 0.0112",
+  "单位": "水平"
+ },
+ "文献.RARE25.IMSY.全集ppv": {
+  "value": 0.32,
+  "来源文件": "seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）",
+  "来源键": "§6.1：full test dataset without resampling, PPV@90%RECALL 0.320",
+  "单位": "水平"
+ },
+ "文献.RARE25.IMSY.重采样中位ppv": {
+  "value": 0.035,
+  "来源文件": "seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）",
+  "来源键": "§6.1：highest median PPV@90%RECALL across the prevalence-representative bootstrap samples",
+  "单位": "水平"
+ },
+ "文献.RARE25.IMSY.全集auroc": {
+  "value": 0.92,
+  "来源文件": "seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）",
+  "来源键": "§6.1：AUROC of 0.920 on the full dataset",
+  "单位": "水平"
+ },
+ "事实.引用1.DOI状态": {
+  "value": "cited by PII S0016-5085(25)05797-X; the DOI printed on the provider's landing page does not resolve",
+  "来源文件": "seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）",
+  "来源键": "提供方落地页印的 doi.org/10.1053/j.gastro.2025.07.03 返回 404，出版商记录给的是 PII。⇒ 印 PII，不印一个打不开的 DOI",
+  "单位": "水平"
+ },
+ "主张1.零对照.双方向": {
+  "value": 0.006666666666666667,
+  "来源文件": "results/p22_scale_and_joint.json",
+  "来源键": "joint_null→both（300 次重复实测，不是把单向率相乘）",
+  "单位": "比例→%"
+ },
+ "主张1.零对照.重复次数": {
+  "value": 300,
+  "来源文件": "results/p22_scale_and_joint.json",
+  "来源键": "joint_null→n_rep"
+ },
+ "主张1.零对照.单向.c2c1": {
+  "value": 0.043333333333333335,
+  "来源文件": "results/p22_scale_and_joint.json",
+  "来源键": "joint_null→per→c2→c1",
+  "单位": "比例→%"
+ },
+ "主张1.零对照.单向.c1c2": {
+  "value": 0.06333333333333334,
+  "来源文件": "results/p22_scale_and_joint.json",
+  "来源键": "joint_null→per→c1→c2",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.0.05.主指标相对损失.c2c1": {
+  "value": -0.3488042080051603,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "c2c1|A|0.05→ppv_rel",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.0.05.AUROC相对损失.c2c1": {
+  "value": -0.0035835561014377904,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "c2c1|A|0.05→auroc_rel",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.0.05.主指标相对损失.c1c2": {
+  "value": -0.4599345287503134,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "c1c2|A|0.05→ppv_rel",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.0.05.AUROC相对损失.c1c2": {
+  "value": -0.02462740821519449,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "c1c2|A|0.05→auroc_rel",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.0.1.主指标相对损失.c2c1": {
+  "value": -0.4528944979712056,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "c2c1|A|0.1→ppv_rel",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.0.1.AUROC相对损失.c2c1": {
+  "value": -0.005447583267104927,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "c2c1|A|0.1→auroc_rel",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.0.1.主指标相对损失.c1c2": {
+  "value": -0.688883437641232,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "c1c2|A|0.1→ppv_rel",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.0.1.AUROC相对损失.c1c2": {
+  "value": -0.03790288379983042,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "c1c2|A|0.1→auroc_rel",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.0.2.主指标相对损失.c2c1": {
+  "value": -0.6716088729281451,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "c2c1|A|0.2→ppv_rel",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.0.2.AUROC相对损失.c2c1": {
+  "value": -0.03037352792428294,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "c2c1|A|0.2→auroc_rel",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.0.2.主指标相对损失.c1c2": {
+  "value": -0.8257274644068794,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "c1c2|A|0.2→ppv_rel",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.0.2.AUROC相对损失.c1c2": {
+  "value": -0.07289773415727618,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "c1c2|A|0.2→auroc_rel",
+  "单位": "比例→%"
+ },
+ "汇总.A+格数": {
+  "value": 61,
+  "来源文件": "results/p37_summary.json（由 scripts/P37_报告三表.py 产出）",
+  "来源键": "表 3 全部实验族里双方向都改进的格数合计"
+ },
+ "汇总.A+CNN格数": {
+  "value": 1,
+  "来源文件": "results/p37_summary.json（由 scripts/P37_报告三表.py 产出）",
+  "来源键": "其中落在 CNN 骨干上的格数（其余全在 ViT 上）"
+ },
+ "汇总.A+骨干数": {
+  "value": 4,
+  "来源文件": "results/p37_summary.json（由 scripts/P37_报告三表.py 产出）",
+  "来源键": "表 3 全部实验族里 A+ 落到的不同骨干数（classify_two_dir）"
+ },
+ "汇总.交付骨干A+": {
+  "value": 0,
+  "来源文件": "results/p37_summary.json（由 scripts/P37_报告三表.py 产出）",
+  "来源键": "其中落在交付骨干 RN50-gastro5M 上的格数"
+ },
+ "汇总.A+全部为ViT": {
+  "value": "no",
+  "来源文件": "results/p37_summary.json（由 scripts/P37_报告三表.py 产出）",
+  "来源键": "A+ 落点里是否一个 CNN 都没有"
+ },
+ "E3.A+": {
+  "value": 39,
+  "来源文件": "results/p37_summary.json（由 scripts/P37_报告三表.py 产出）",
+  "来源键": "E3 去重后 A+ 格数（classify_two_dir，与表 3 同源）"
+ },
+ "E3.格数去重": {
+  "value": 474,
+  "来源文件": "results/p37_summary.json（由 scripts/P37_报告三表.py 产出）",
+  "来源键": "E3 去重后格数"
+ },
+ "E3.CNN合计A+": {
+  "value": 1,
+  "来源文件": "results/p37_summary.json（由 scripts/P37_报告三表.py 产出）",
+  "来源键": "E3 的 A+ 里落在 CNN 骨干上的格数"
+ },
+ "汇总.E3冲突": {
+  "value": 86,
+  "来源文件": "results/p37_summary.json（由 scripts/P37_报告三表.py 产出）",
+  "来源键": "E3 里双钥匙冲突的格数（verdict 判 F）"
+ },
+ "汇总.单类A−": {
+  "value": 40,
+  "来源文件": "results/p37_summary.json（由 scripts/P37_报告三表.py 产出）",
+  "来源键": "q1_oneclass_all 里两方向都可辨别更差的格数"
+ },
+ "汇总.单类格数": {
+  "value": 44,
+  "来源文件": "results/p37_summary.json（由 scripts/P37_报告三表.py 产出）",
+  "来源键": "q1_oneclass_all 的总格数"
+ },
+ "修复臂.格数": {
+  "value": 8,
+  "来源文件": "results/p35_four_cells.json",
+  "来源键": "臂 × 方向"
+ },
+ "修复臂.AUROC可辨别格数": {
+  "value": 2,
+  "来源文件": "results/p35_four_cells.json",
+  "来源键": "AUROC 上配对 CI 不含 0 的格数"
+ },
+ "修复臂.主指标可辨别格数": {
+  "value": 0,
+  "来源文件": "results/p35_four_cells.json",
+  "来源键": "主指标 上配对 CI 不含 0 的格数"
+ },
+ "修复臂.TTA扰动下格数": {
+  "value": 6,
+  "来源文件": "results/p36_tta_under_shift.json",
+  "来源键": "TTA vs 无 TTA，3 档 × 2 方向"
+ },
+ "修复臂.TTA扰动下可辨别": {
+  "value": 0,
+  "来源文件": "results/p36_tta_under_shift.json",
+  "来源键": "其中配对 CI 不含 0 的格数"
+ },
+ "修复臂.TTA最好救回比例": {
+  "value": -0.0686234503265681,
+  "来源文件": "results/p36_tta_under_shift.json",
+  "来源键": "6 格里对 TTA 最有利的那一格（仍为负）",
+  "单位": "比例→%"
+ },
+ "方法.可学习参数数": {
+  "value": 4096,
+  "来源文件": "container/resources/head.npz",
+  "来源键": "w.size + mu.size（判别向量 + 均值向量；标定常数不算可学习参数）"
+ },
+ "R9.c2.hit": {
+  "value": 0.78,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→hit",
+  "单位": "比例→%"
+ },
+ "R9.c2.chance": {
+  "value": 0.16653061224489796,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→chance",
+  "单位": "比例→%"
+ },
+ "R9.c2.d": {
+  "value": 0.613469387755102,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→d"
+ },
+ "R9.c2.lo": {
+  "value": 0.5056938775510204,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→lo"
+ },
+ "R9.c2.hi": {
+  "value": 0.7151122448979591,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→hi"
+ },
+ "R9.c2.rho": {
+  "value": 0.6499645606701148,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→rho"
+ },
+ "R9.c2.n": {
+  "value": 50,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→n"
+ },
+ "R9.c2.单调": {
+  "value": "yes",
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→mono（lift 判据）"
+ },
+ "R9.c2.lift.3/5": {
+  "value": 4.6838235294117645,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→by_consensus→3/5→lift",
+  "单位": "倍数"
+ },
+ "R9.c2.随机.3/5": {
+  "value": 0.16653061224489796,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→by_consensus→3/5→chance",
+  "单位": "比例→%"
+ },
+ "R9.c2.命中.3/5": {
+  "value": 0.78,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→by_consensus→3/5→hit",
+  "单位": "比例→%"
+ },
+ "R9.c2.lift.4/5": {
+  "value": 4.7558823529411764,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→by_consensus→4/5→lift",
+  "单位": "倍数"
+ },
+ "R9.c2.随机.4/5": {
+  "value": 0.13877551020408163,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→by_consensus→4/5→chance",
+  "单位": "比例→%"
+ },
+ "R9.c2.命中.4/5": {
+  "value": 0.66,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→by_consensus→4/5→hit",
+  "单位": "比例→%"
+ },
+ "R9.c2.lift.5/5": {
+  "value": 4.900000000000001,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→by_consensus→5/5→lift",
+  "单位": "倍数"
+ },
+ "R9.c2.随机.5/5": {
+  "value": 0.11020408163265304,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→by_consensus→5/5→chance",
+  "单位": "比例→%"
+ },
+ "R9.c2.命中.5/5": {
+  "value": 0.54,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→by_consensus→5/5→hit",
+  "单位": "比例→%"
+ },
+ "R9.c1.hit": {
+  "value": 0.78,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→hit",
+  "单位": "比例→%"
+ },
+ "R9.c1.chance": {
+  "value": 0.16653061224489796,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→chance",
+  "单位": "比例→%"
+ },
+ "R9.c1.d": {
+  "value": 0.613469387755102,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→d"
+ },
+ "R9.c1.lo": {
+  "value": 0.5085714285714286,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→lo"
+ },
+ "R9.c1.hi": {
+  "value": 0.7151020408163266,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→hi"
+ },
+ "R9.c1.rho": {
+  "value": 0.6595132873486537,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→rho"
+ },
+ "R9.c1.n": {
+  "value": 50,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→n"
+ },
+ "R9.c1.单调": {
+  "value": "yes",
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→mono（lift 判据）"
+ },
+ "R9.c1.lift.3/5": {
+  "value": 4.6838235294117645,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→by_consensus→3/5→lift",
+  "单位": "倍数"
+ },
+ "R9.c1.随机.3/5": {
+  "value": 0.16653061224489796,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→by_consensus→3/5→chance",
+  "单位": "比例→%"
+ },
+ "R9.c1.命中.3/5": {
+  "value": 0.78,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→by_consensus→3/5→hit",
+  "单位": "比例→%"
+ },
+ "R9.c1.lift.4/5": {
+  "value": 5.33235294117647,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→by_consensus→4/5→lift",
+  "单位": "倍数"
+ },
+ "R9.c1.随机.4/5": {
+  "value": 0.13877551020408163,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→by_consensus→4/5→chance",
+  "单位": "比例→%"
+ },
+ "R9.c1.命中.4/5": {
+  "value": 0.74,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→by_consensus→4/5→hit",
+  "单位": "比例→%"
+ },
+ "R9.c1.lift.5/5": {
+  "value": 5.4444444444444455,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→by_consensus→5/5→lift",
+  "单位": "倍数"
+ },
+ "R9.c1.随机.5/5": {
+  "value": 0.11020408163265304,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→by_consensus→5/5→chance",
+  "单位": "比例→%"
+ },
+ "R9.c1.命中.5/5": {
+  "value": 0.6,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c1→by_consensus→5/5→hit",
+  "单位": "比例→%"
+ },
+ "R9.专家IoU中位": {
+  "value": 0.7046991766373846,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "专家两两IoU→median",
+  "单位": "水平"
+ },
+ "R9.专家IoU对数": {
+  "value": 500,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "专家两两IoU→n（两两比较的对数）"
+ },
+ "R9.专家IoU.median": {
+  "value": 0.7046991766373846,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "专家两两IoU→median",
+  "单位": "水平"
+ },
+ "R9.专家IoU.n": {
+  "value": 500,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "专家两两IoU→n",
+  "单位": null
+ },
+ "主张1.spec插值差.c2c1": {
+  "value": 0.21460775473399463,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "spec_new − spec_old（榜单口径插值，与 PPV 列同源）",
+  "单位": "水平"
+ },
+ "主张1.spec插值差.c1c2": {
+  "value": 0.06954102920723226,
+  "来源文件": "results/p23_cross_confirm.json",
+  "来源键": "spec_new − spec_old（榜单口径插值，与 PPV 列同源）",
+  "单位": "水平"
+ },
+ "区间.最窄宽度": {
+  "value": 0.01654348296854791,
+  "来源文件": "src/verdict.py",
+  "来源键": "全部 52 个配对区间里最窄：p24_swsl_cross|候选③ SWSL|A1|c1→c2|AUROC"
+ },
+ "区间.计数": {
+  "value": 52,
+  "来源文件": "src/verdict.py",
+  "来源键": "路径③ 全部配对区间数（主指标 + AUROC，两方向）"
+ },
+ "数据.图数": {
+  "value": 3095,
+  "来源文件": "src/fit_head.py (load_index)",
+  "来源键": "len(files)"
+ },
+ "数据.阳性数": {
+  "value": 158,
+  "来源文件": "src/fit_head.py (load_index)",
+  "来源键": "lab.sum()"
+ },
+ "数据.c1.图数": {
+  "value": 2279,
+  "来源文件": "src/fit_head.py (load_index)",
+  "来源键": "(cen==0).sum()"
+ },
+ "数据.c1.阳性数": {
+  "value": 61,
+  "来源文件": "src/fit_head.py (load_index)",
+  "来源键": "lab[cen==0].sum()"
+ },
+ "数据.c2.图数": {
+  "value": 816,
+  "来源文件": "src/fit_head.py (load_index)",
+  "来源键": "(cen==1).sum()"
+ },
+ "数据.c2.阳性数": {
+  "value": 97,
+  "来源文件": "src/fit_head.py (load_index)",
+  "来源键": "lab[cen==1].sum()"
+ },
+ "E3.总格数": {
+  "value": 570,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "现算"
+ },
+ "E3.判决.D 未测出": {
+  "value": 234,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "verdict() 现算"
+ },
+ "E3.判决.C 已排除": {
+  "value": 114,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "verdict() 现算"
+ },
+ "E3.判决.F 双钥匙冲突": {
+  "value": 115,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "verdict() 现算"
+ },
+ "E3.判决.B− 有方向·小于实用意义": {
+  "value": 17,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "verdict() 现算"
+ },
+ "E3.判决.A+ 成立": {
+  "value": 36,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "verdict() 现算"
+ },
+ "E3.判决.B+ 有方向·小于实用意义": {
+  "value": 10,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "verdict() 现算"
+ },
+ "E3.判决.A− 成立": {
+  "value": 14,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "verdict() 现算"
+ },
+ "E3.判决.E 方向冲突": {
+  "value": 30,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "verdict() 现算"
+ },
+ "E3b.总格数": {
+  "value": 288,
+  "来源文件": "results/e3b_cnn_layer.json",
+  "来源键": "现算"
+ },
+ "E3b.判决.F 双钥匙冲突": {
+  "value": 64,
+  "来源文件": "results/e3b_cnn_layer.json",
+  "来源键": "verdict() 现算"
+ },
+ "E3b.判决.C 已排除": {
+  "value": 46,
+  "来源文件": "results/e3b_cnn_layer.json",
+  "来源键": "verdict() 现算"
+ },
+ "E3b.判决.D 未测出": {
+  "value": 164,
+  "来源文件": "results/e3b_cnn_layer.json",
+  "来源键": "verdict() 现算"
+ },
+ "E3b.判决.B− 有方向·小于实用意义": {
+  "value": 7,
+  "来源文件": "results/e3b_cnn_layer.json",
+  "来源键": "verdict() 现算"
+ },
+ "E3b.判决.A− 成立": {
+  "value": 7,
+  "来源文件": "results/e3b_cnn_layer.json",
+  "来源键": "verdict() 现算"
+ },
+ "主张2.视野遮罩.总格数": {
+  "value": 16,
+  "来源文件": "results/c2_fov_mask.json",
+  "来源键": "classify_two_dir 现算（差值字段 d）"
+ },
+ "主张2.视野遮罩.双方向为正": {
+  "value": 0,
+  "来源文件": "results/c2_fov_mask.json",
+  "来源键": "A+ 与 B+ 之和"
+ },
+ "主张2.第四臂D.总格数": {
+  "value": 16,
+  "来源文件": "results/c4_arm_d.json",
+  "来源键": "classify_two_dir 现算（差值字段 d_minus_c）"
+ },
+ "主张2.第四臂D.双方向为正": {
+  "value": 0,
+  "来源文件": "results/c4_arm_d.json",
+  "来源键": "A+ 与 B+ 之和"
+ },
+ "主张2.同骨干异类头融合.总格数": {
+  "value": 99,
+  "来源文件": "results/r6_fusion.json",
+  "来源键": "classify_two_dir 现算（差值字段 d）"
+ },
+ "主张2.同骨干异类头融合.双方向为正": {
+  "value": 0,
+  "来源文件": "results/r6_fusion.json",
+  "来源键": "A+ 与 B+ 之和"
+ },
+ "主张2.多骨干融合.总格数": {
+  "value": 10,
+  "来源文件": "results/r7_bbfusion.json",
+  "来源键": "classify_two_dir 现算（差值字段 d）"
+ },
+ "主张2.多骨干融合.双方向为正": {
+  "value": 0,
+  "来源文件": "results/r7_bbfusion.json",
+  "来源键": "A+ 与 B+ 之和"
+ },
+ "主张2.TTA与颜色.总格数": {
+  "value": 30,
+  "来源文件": "results/r8_tta_color.json",
+  "来源键": "classify_two_dir 现算（差值字段 d）"
+ },
+ "主张2.TTA与颜色.双方向为正": {
+  "value": 0,
+  "来源文件": "results/r8_tta_color.json",
+  "来源键": "A+ 与 B+ 之和"
+ },
+ "主张2.外部协方差.总格数": {
+  "value": 27,
+  "来源文件": "results/r2_extcov.json",
+  "来源键": "classify_two_dir 现算（差值字段 d）"
+ },
+ "主张2.外部协方差.双方向为正": {
+  "value": 0,
+  "来源文件": "results/r2_extcov.json",
+  "来源键": "A+ 与 B+ 之和"
+ },
+ "主张3.E3.A+总数": {
+  "value": 36,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "verdict() 现算"
+ },
+ "主张3.E3.A+落在几个骨干": {
+  "value": 4,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "A+ 的骨干去重计数"
+ },
+ "主张3.E3.A+.DINOv2-ViT-B": {
+  "value": 14,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "该骨干上的 A+ 格数"
+ },
+ "主张3.E3.A+.RN50-in1k-sup": {
+  "value": 1,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "该骨干上的 A+ 格数"
+ },
+ "主张3.E3.A+.ViTS-gastro": {
+  "value": 17,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "该骨干上的 A+ 格数"
+ },
+ "主张3.E3.A+.ViTS-in1k-dino": {
+  "value": 4,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "该骨干上的 A+ 格数"
+ },
+ "主张3.E3.CNN骨干数": {
+  "value": 8,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "RN50 开头的骨干去重"
+ },
+ "主张3.E3.CNN上的A+格数": {
+  "value": 1,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "CNN 骨干上的 A+ 求和"
+ },
+ "主张4.格数": {
+  "value": 22,
+  "来源文件": "results/r15_paired.json",
+  "来源键": "自最优| 前缀计数"
+ },
+ "主张4.可辨别更差": {
+  "value": 9,
+  "来源文件": "results/r15_paired.json",
+  "来源键": "det 且 pt<0"
+ },
+ "主张4.可辨别更好": {
+  "value": 1,
+  "来源文件": "results/r15_paired.json",
+  "来源键": "det 且 pt>0"
+ },
+ "主张5.E5.两起点一致": {
+  "value": 0,
+  "来源文件": "results/e5_neutral.json",
+  "来源键": "same=True 计数"
+ },
+ "主张5.E5.骨干数": {
+  "value": 11,
+  "来源文件": "results/e5_neutral.json",
+  "来源键": "len(dict)"
+ },
+ "E3b.判决.A+ 成立": {
+  "value": 0,
+  "来源文件": "src/verdict.py",
+  "来源键": "该类计数为 0（显式补，非缺失）"
+ },
+ "E3b.判决.B+ 有方向·小于实用意义": {
+  "value": 0,
+  "来源文件": "src/verdict.py",
+  "来源键": "该类计数为 0（显式补，非缺失）"
+ },
+ "E3b.判决.E 方向冲突": {
+  "value": 0,
+  "来源文件": "src/verdict.py",
+  "来源键": "该类计数为 0（显式补，非缺失）"
+ },
+ "容器.输出值个数": {
+  "value": 16,
+  "来源文件": "work\\submit_v2\\test_output\\stacked-neoplastic-lesion-likelihoods.json",
+  "来源键": "len(json)"
+ },
+ "路径3.最宽区间": {
+  "value": 0.8488311491348335,
+  "来源文件": "src/verdict.py",
+  "来源键": "最宽处：e7_cross|候选①|c1→c2"
+ },
+ "E3.去重后格数": {
+  "value": 474,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "剔除与 top2% 逐格相同的「最大」"
+ },
+ "E3.重复格数": {
+  "value": 96,
+  "来源文件": "results/e3_basis_component.json",
+  "来源键": "top2% 与 最大 完全相同的格"
+ },
+ "E3b.去重后格数": {
+  "value": 192,
+  "来源文件": "results/e3b_cnn_layer.json",
+  "来源键": "剔除与 top2% 逐格相同的「最大」"
+ },
+ "E3b.重复格数": {
+  "value": 96,
+  "来源文件": "results/e3b_cnn_layer.json",
+  "来源键": "top2% 与 最大 完全相同的格"
+ },
+ "主张4.内层组合数": {
+  "value": 120,
+  "来源文件": "scripts/R11_组合_每骨干自最优.py",
+  "来源键": "MIL q(4) × 层(2) × λ(5) × 池化(3)，每骨干每方向"
+ },
+ "胜者诅咒.sigma.N120": {
+  "value": 3.094347020869523,
+  "来源文件": "src/verdict.py",
+  "来源键": "sqrt(2*ln(120))",
+  "单位": "一位小数"
+ },
+ "胜者诅咒.sigma.N570": {
+  "value": 3.5624812591306627,
+  "来源文件": "src/verdict.py",
+  "来源键": "sqrt(2*ln(570))",
+  "单位": "一位小数"
+ },
+ "容器.偏斜.最大代价": {
+  "value": 0.0010639723377481314,
+  "来源文件": "results/t7_skew_cost.json",
+  "来源键": "max|A−B|，两方向取大",
+  "单位": "水平"
+ },
+ "门槛.检出限": {
+  "value": 0.0165,
+  "来源文件": "src/verdict.py (THRESHOLD)",
+  "来源键": "DETECT_LIMIT（A5 功效曲线：换组件类候选的双方向 ΔAUROC 检出门槛）",
+  "单位": "水平"
+ },
+ "仓库.URL": {
+  "value": "https://github.com/liyifreddy/rare26-frozen-readout",
+  "来源文件": "this repository",
+  "来源键": "规则七要求 MIT 公开代码；规则六要求论文附训练代码链接"
+ },
+ "许可.RN50_GastroNet5M_DINOv1": {
+  "value": "GastroNet-5M Dataset and Model Weights – Unified Data Use Agreement (Academic & Commercial R&D) v1.0",
+  "来源文件": "README.md (Backbone weights are not distributed here)",
+  "来源键": "用户 2026-08-30 读自 Cortex listing/2 许可页；8 个权重同属一份协议"
+ },
+ "参考文献.1": {
+  "value": "Jong, M. R., Boers, T. G. W., Fockens, K. N., et al. (2025). GastroNet-5M: A Multicenter Dataset for Developing Foundation Models in Gastrointestinal Endoscopy. Gastroenterology. doi:10.1053/j.gastro.2025.07.03",
+  "来源文件": "README.md (Citation)",
+  "来源键": "落地页列出的第 1 篇（DUA §4 强制引用）"
+ },
+ "参考文献.2": {
+  "value": "Boers, T. G. W., Fockens, K. N., van der Putten, J. A., et al. (2024). Foundation models in gastrointestinal endoscopic AI: Impact of architecture, pre-training approach and data efficiency. Medical Image Analysis, 98, 103298. doi:10.1016/j.media.2024.103298",
+  "来源文件": "README.md (Citation)",
+  "来源键": "落地页列出的第 2 篇（DUA §4 强制引用）"
+ },
+ "参考文献.3": {
+  "value": "Jong et al. (2025). Evaluation of an improved computer-aided detection system for Barrett's neoplasia in real-world imaging conditions. Endoscopy. doi:10.1055/a-2642-7584",
+  "来源文件": "README.md (Citation)",
+  "来源键": "落地页列出的第 3 篇（DUA §4 强制引用）"
+ },
+ "参考文献.4": {
+  "value": "Jong et al. (2025). The development and ex vivo evaluation of a computer-aided quality control system for Barrett's esophagus endoscopy. Endoscopy, 57(7), 709-716. doi:10.1055/a-2537-3510",
+  "来源文件": "README.md (Citation)",
+  "来源键": "落地页列出的第 4 篇（DUA §4 强制引用）"
+ },
+ "参考文献.5": {
+  "value": "Jong et al. (2025). Impact of standard enhancement settings of endoscopy systems on performance of endoscopic artificial intelligence systems. Endoscopy, 57(6), 602-610. doi:10.1055/a-2530-1845",
+  "来源文件": "README.md (Citation)",
+  "来源键": "落地页列出的第 5 篇（DUA §4 强制引用）"
+ },
+ "主张6.标签噪声.主指标降幅低": {
+  "value": 0.3047096950543169,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "5% 翻转率下四条曲线（2 方向 × 2 翻转方式）的最小 |主指标降幅|",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.主指标降幅高": {
+  "value": 0.4599345287503134,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "5% 翻转率下四条曲线的最大 |主指标降幅|",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.AUROC降幅低": {
+  "value": 0.002875514774943966,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "5% 翻转率下四条曲线（2 方向 × 2 翻转方式）的最小 |AUROC降幅|",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.AUROC降幅高": {
+  "value": 0.02462740821519449,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "5% 翻转率下四条曲线的最大 |AUROC降幅|",
+  "单位": "比例→%"
+ },
+ "主张6.标签噪声.倍数低": {
+  "value": 18.67571791279869,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "5% 翻转率下四条曲线（2 方向 × 2 翻转方式）的最小 |倍数|",
+  "单位": "倍数近似"
+ },
+ "主张6.标签噪声.倍数高": {
+  "value": 105.96700726750906,
+  "来源文件": "results/p16_labelflip.json",
+  "来源键": "5% 翻转率下四条曲线的最大 |倍数|",
+  "单位": "倍数近似"
+ },
+ "归因.现实档.c2c1": {
+  "value": 0.15673166375316588,
+  "来源文件": "results/p34_ppv_attribution.json",
+  "来源键": "**AUROC 口径**：三条轴在现实强度上的比例之和。三条轴不独立，此值是上界而非分解；主指标口径下同一计算超过 100%",
+  "单位": "比例→%"
+ },
+ "归因.现实档.主指标.c2c1": {
+  "value": 1.295475508661999,
+  "来源文件": "results/p34_ppv_attribution.json",
+  "来源键": "**主指标口径**：三条轴在现实强度上的比例之和。该口径下三份之和**超过 100%**，这本身就是「它们不是一个分解」的直接证据，报出来正是为了这一点，不是当分解用",
+  "单位": "比例→%"
+ },
+ "归因.荒谬档.c2c1": {
+  "value": 0.28758708500054697,
+  "来源文件": "results/p34_ppv_attribution.json",
+  "来源键": "**AUROC 口径**：颜色轴在最强（不现实）强度上解释缺口的比例",
+  "单位": "比例→%"
+ },
+ "归因.现实档.c1c2": {
+  "value": 0.008997241064983955,
+  "来源文件": "results/p34_ppv_attribution.json",
+  "来源键": "**AUROC 口径**：三条轴在现实强度上的比例之和。三条轴不独立，此值是上界而非分解；主指标口径下同一计算超过 100%",
+  "单位": "比例→%"
+ },
+ "归因.现实档.主指标.c1c2": {
+  "value": 1.4608979215145395,
+  "来源文件": "results/p34_ppv_attribution.json",
+  "来源键": "**主指标口径**：三条轴在现实强度上的比例之和。该口径下三份之和**超过 100%**，这本身就是「它们不是一个分解」的直接证据，报出来正是为了这一点，不是当分解用",
+  "单位": "比例→%"
+ },
+ "归因.荒谬档.c1c2": {
+  "value": 0.08064680312263353,
+  "来源文件": "results/p34_ppv_attribution.json",
+  "来源键": "**AUROC 口径**：颜色轴在最强（不现实）强度上解释缺口的比例",
+  "单位": "比例→%"
+ },
+ "归因.判别能量泄漏.c2c1": {
+  "value": 0.0016091442666947842,
+  "来源文件": "results/p32_domain_shift.json",
+  "来源键": "c2→c1→判别能量泄漏（判别方向落在照度子空间里的能量比例）",
+  "单位": "比例→%"
+ },
+ "归因.判别能量泄漏.c1c2": {
+  "value": 0.0020850186701864004,
+  "来源文件": "results/p32_domain_shift.json",
+  "来源键": "c1→c2→判别能量泄漏（判别方向落在照度子空间里的能量比例）",
+  "单位": "比例→%"
+ },
+ "R9.命中率": {
+  "value": 0.78,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→hit（别名，同源）",
+  "单位": "比例→%"
+ },
+ "R9.随机命中率": {
+  "value": 0.16653061224489796,
+  "来源文件": "results/r9_evc_loc.json",
+  "来源键": "头拟合于 c2→chance（别名，同源）",
+  "单位": "比例→%"
+ },
+ "E3b.格数去重": {
+  "value": 192,
+  "来源文件": "results/e3b_cnn_layer.json",
+  "来源键": "剔除与 top2% 逐格相同的「最大」（别名，同源）"
+ },
+ "E3b.A+": {
+  "value": 0,
+  "来源文件": "src/verdict.py",
+  "来源键": "该类计数为 0（显式补，非缺失）（别名，同源）"
+ },
+ "归因.特征位移.锐化": {
+  "value": 0.4952286183834076,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "相对特征位移→S_sharpen→0.80（‖Δf‖/‖f‖）（别名，同源）",
+  "单位": "比例→%"
+ },
+ "归因.现实档.颜色": {
+  "value": 0.007027042291629873,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "两个方向里较小的那个（单方向的大数字不算数）（别名，同源）",
+  "单位": "比例→%"
+ },
+ "归因.现实档.JPEG": {
+  "value": 0.02088410699755487,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "两个方向里较小的那个（单方向的大数字不算数）（别名，同源）",
+  "单位": "比例→%"
+ },
+ "归因.现实档.锐化": {
+  "value": -0.01891390822420079,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "两个方向里较小的那个（单方向的大数字不算数）（别名，同源）",
+  "单位": "比例→%"
+ },
+ "归因.荒谬档.颜色": {
+  "value": 0.08064680312263353,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "最强档，两个方向里较小的那个（别名，同源）",
+  "单位": "比例→%"
+ },
+ "归因.荒谬档.JPEG": {
+  "value": 0.09857561196015703,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "最强档，两个方向里较小的那个（别名，同源）",
+  "单位": "比例→%"
+ },
+ "归因.荒谬档.锐化": {
+  "value": -0.016615342988621117,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "最强档，两个方向里较小的那个（别名，同源）",
+  "单位": "比例→%"
+ },
+ "归因.锐化.ΔAUROC.c2c1": {
+  "value": -0.0013451787905216506,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c2→c1→S_sharpen→s=0.80：无扰动 AUROC 减最强档（别名，同源）",
+  "单位": "水平"
+ },
+ "归因.锐化.ΔAUROC.c1c2": {
+  "value": -0.0036276042040062073,
+  "来源文件": "results/p33_structure.json",
+  "来源键": "c1→c2→S_sharpen→s=0.80：无扰动 AUROC 减最强档（别名，同源）",
+  "单位": "水平"
+ },
+ "归因.判别能量泄漏.最大": {
+  "value": 0.0020850186701864004,
+  "来源文件": "results/p32_domain_shift.json",
+  "来源键": "两个方向里较大的那个（取大 = 对我们不利的一侧）（别名，同源）",
+  "单位": "比例→%"
+ },
+ "路径3.候选③ SWSL|A1.判决.主指标.en": {
+  "value": "D tested, not detected",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选③ SWSL|A1（两方向）"
+ },
+ "路径3.候选③ SWSL|A1.判决.主指标.code": {
+  "value": "D",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选③ SWSL|A1（两方向）"
+ },
+ "路径3.候选③ SWSL|A1.判决.AUROC.en": {
+  "value": "E direction conflict",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选③ SWSL|A1（两方向·AUROC）"
+ },
+ "路径3.候选③ SWSL|A1.判决.AUROC.code": {
+  "value": "E",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选③ SWSL|A1（两方向·AUROC）"
+ },
+ "路径3.候选③ SWSL|A1.结局.en": {
+  "value": "D - main metric not measurable, but **on AUROC the effect reverses with the training centre** => a substantive conclusion about instability",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选③ SWSL|A1（两把钥匙）"
+ },
+ "路径3.候选④ SWSL|A3.判决.主指标.en": {
+  "value": "D tested, not detected",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选④ SWSL|A3（两方向）"
+ },
+ "路径3.候选④ SWSL|A3.判决.主指标.code": {
+  "value": "D",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选④ SWSL|A3（两方向）"
+ },
+ "路径3.候选④ SWSL|A3.判决.AUROC.en": {
+  "value": "D tested, not detected",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选④ SWSL|A3（两方向·AUROC）"
+ },
+ "路径3.候选④ SWSL|A3.判决.AUROC.code": {
+  "value": "D",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选④ SWSL|A3（两方向·AUROC）"
+ },
+ "路径3.候选④ SWSL|A3.结局.en": {
+  "value": "A - neither ruler can measure a difference => **「no difference detected」**; this may **not** be written as 「therefore the delivered one is better」",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选④ SWSL|A3（两把钥匙）"
+ },
+ "路径3.E7-候选①.判决.主指标.en": {
+  "value": "D tested, not detected",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选①（两方向）"
+ },
+ "路径3.E7-候选①.判决.主指标.code": {
+  "value": "D",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选①（两方向）"
+ },
+ "路径3.E7-候选①.判决.AUROC.en": {
+  "value": "D tested, not detected",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选①（两方向·AUROC）"
+ },
+ "路径3.E7-候选①.判决.AUROC.code": {
+  "value": "D",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选①（两方向·AUROC）"
+ },
+ "路径3.E7-候选①.结局.en": {
+  "value": "A - neither ruler can measure a difference => **「no difference detected」**; this may **not** be written as 「therefore the delivered one is better」",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选①（两把钥匙）"
+ },
+ "路径3.E7-候选②.判决.主指标.en": {
+  "value": "D tested, not detected",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选②（两方向）"
+ },
+ "路径3.E7-候选②.判决.主指标.code": {
+  "value": "D",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选②（两方向）"
+ },
+ "路径3.E7-候选②.判决.AUROC.en": {
+  "value": "D tested, not detected",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选②（两方向·AUROC）"
+ },
+ "路径3.E7-候选②.判决.AUROC.code": {
+  "value": "D",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选②（两方向·AUROC）"
+ },
+ "路径3.E7-候选②.结局.en": {
+  "value": "A - neither ruler can measure a difference => **「no difference detected」**; this may **not** be written as 「therefore the delivered one is better」",
+  "来源文件": "src/verdict.py",
+  "来源键": "候选②（两把钥匙）"
+ },
+ "路径3.RN50-1M|A1.判决.主指标.en": {
+  "value": "D tested, not detected",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-1M|A1（两方向）"
+ },
+ "路径3.RN50-1M|A1.判决.主指标.code": {
+  "value": "D",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-1M|A1（两方向）"
+ },
+ "路径3.RN50-1M|A1.判决.AUROC.en": {
+  "value": "D tested, not detected",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-1M|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-1M|A1.判决.AUROC.code": {
+  "value": "D",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-1M|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-1M|A1.结局.en": {
+  "value": "A - neither ruler can measure a difference => **「no difference detected」**; this may **not** be written as 「therefore the delivered one is better」",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-1M|A1（两把钥匙）"
+ },
+ "路径3.RN50-200K|A1.判决.主指标.en": {
+  "value": "D tested, not detected",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-200K|A1（两方向）"
+ },
+ "路径3.RN50-200K|A1.判决.主指标.code": {
+  "value": "D",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-200K|A1（两方向）"
+ },
+ "路径3.RN50-200K|A1.判决.AUROC.en": {
+  "value": "E direction conflict",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-200K|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-200K|A1.判决.AUROC.code": {
+  "value": "E",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-200K|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-200K|A1.结局.en": {
+  "value": "D - main metric not measurable, but **on AUROC the effect reverses with the training centre** => a substantive conclusion about instability",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-200K|A1（两把钥匙）"
+ },
+ "路径3.RN50-MOCOv2|A1.判决.主指标.en": {
+  "value": "D tested, not detected",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A1（两方向）"
+ },
+ "路径3.RN50-MOCOv2|A1.判决.主指标.code": {
+  "value": "D",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A1（两方向）"
+ },
+ "路径3.RN50-MOCOv2|A1.判决.AUROC.en": {
+  "value": "A- established (degradation)",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-MOCOv2|A1.判决.AUROC.code": {
+  "value": "A-",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-MOCOv2|A1.结局.en": {
+  "value": "E' - main metric not measurable, but **AUROC is detectably worse in both directions** => this is a detectable negative result, **not 「no difference」",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A1（两把钥匙）"
+ },
+ "路径3.RN50-MOCOv2|A3.判决.主指标.en": {
+  "value": "D tested, not detected",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A3（两方向）"
+ },
+ "路径3.RN50-MOCOv2|A3.判决.主指标.code": {
+  "value": "D",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A3（两方向）"
+ },
+ "路径3.RN50-MOCOv2|A3.判决.AUROC.en": {
+  "value": "A- established (degradation)",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A3（两方向·AUROC）"
+ },
+ "路径3.RN50-MOCOv2|A3.判决.AUROC.code": {
+  "value": "A-",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A3（两方向·AUROC）"
+ },
+ "路径3.RN50-MOCOv2|A3.结局.en": {
+  "value": "E' - main metric not measurable, but **AUROC is detectably worse in both directions** => this is a detectable negative result, **not 「no difference」",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-MOCOv2|A3（两把钥匙）"
+ },
+ "路径3.RN50-SIMCLRv2|A1.判决.主指标.en": {
+  "value": "A- established (degradation)",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-SIMCLRv2|A1（两方向）"
+ },
+ "路径3.RN50-SIMCLRv2|A1.判决.主指标.code": {
+  "value": "A-",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-SIMCLRv2|A1（两方向）"
+ },
+ "路径3.RN50-SIMCLRv2|A1.判决.AUROC.en": {
+  "value": "A- established (degradation)",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-SIMCLRv2|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-SIMCLRv2|A1.判决.AUROC.code": {
+  "value": "A-",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-SIMCLRv2|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-SIMCLRv2|A1.结局.en": {
+  "value": "E - main metric detectably **worse** in both directions => **candidate excluded** (a detectable result, not 「not measured」)",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-SIMCLRv2|A1（两把钥匙）"
+ },
+ "路径3.RN50-in1k-sup|A1.判决.主指标.en": {
+  "value": "A- established (degradation)",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-sup|A1（两方向）"
+ },
+ "路径3.RN50-in1k-sup|A1.判决.主指标.code": {
+  "value": "A-",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-sup|A1（两方向）"
+ },
+ "路径3.RN50-in1k-sup|A1.判决.AUROC.en": {
+  "value": "A- established (degradation)",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-sup|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-in1k-sup|A1.判决.AUROC.code": {
+  "value": "A-",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-sup|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-in1k-sup|A1.结局.en": {
+  "value": "E - main metric detectably **worse** in both directions => **candidate excluded** (a detectable result, not 「not measured」)",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-sup|A1（两把钥匙）"
+ },
+ "路径3.RN50-in1k-dino|A1.判决.主指标.en": {
+  "value": "A- established (degradation)",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-dino|A1（两方向）"
+ },
+ "路径3.RN50-in1k-dino|A1.判决.主指标.code": {
+  "value": "A-",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-dino|A1（两方向）"
+ },
+ "路径3.RN50-in1k-dino|A1.判决.AUROC.en": {
+  "value": "A- established (degradation)",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-dino|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-in1k-dino|A1.判决.AUROC.code": {
+  "value": "A-",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-dino|A1（两方向·AUROC）"
+ },
+ "路径3.RN50-in1k-dino|A1.结局.en": {
+  "value": "E - main metric detectably **worse** in both directions => **candidate excluded** (a detectable result, not 「not measured」)",
+  "来源文件": "src/verdict.py",
+  "来源键": "RN50-in1k-dino|A1（两把钥匙）"
+ },
+ "路径3.ViTS-in1k-dino|B1.判决.主指标.en": {
+  "value": "A- established (degradation)",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B1（两方向）"
+ },
+ "路径3.ViTS-in1k-dino|B1.判决.主指标.code": {
+  "value": "A-",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B1（两方向）"
+ },
+ "路径3.ViTS-in1k-dino|B1.判决.AUROC.en": {
+  "value": "A- established (degradation)",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B1（两方向·AUROC）"
+ },
+ "路径3.ViTS-in1k-dino|B1.判决.AUROC.code": {
+  "value": "A-",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B1（两方向·AUROC）"
+ },
+ "路径3.ViTS-in1k-dino|B1.结局.en": {
+  "value": "E - main metric detectably **worse** in both directions => **candidate excluded** (a detectable result, not 「not measured」)",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B1（两把钥匙）"
+ },
+ "路径3.ViTS-in1k-dino|B6.判决.主指标.en": {
+  "value": "A- established (degradation)",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B6（两方向）"
+ },
+ "路径3.ViTS-in1k-dino|B6.判决.主指标.code": {
+  "value": "A-",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B6（两方向）"
+ },
+ "路径3.ViTS-in1k-dino|B6.判决.AUROC.en": {
+  "value": "A- established (degradation)",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B6（两方向·AUROC）"
+ },
+ "路径3.ViTS-in1k-dino|B6.判决.AUROC.code": {
+  "value": "A-",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B6（两方向·AUROC）"
+ },
+ "路径3.ViTS-in1k-dino|B6.结局.en": {
+  "value": "E - main metric detectably **worse** in both directions => **candidate excluded** (a detectable result, not 「not measured」)",
+  "来源文件": "src/verdict.py",
+  "来源键": "ViTS-in1k-dino|B6（两把钥匙）"
+ }
+}

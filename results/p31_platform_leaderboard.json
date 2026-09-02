@@ -1,0 +1,29 @@
+{
+ "_来源": "RARE26 Open Development Phase 排行榜，2026-08-31 提交，用户 2026-08-31 读取整行",
+ "_榜单": "https://rare26.grand-challenge.org/evaluation/open-development-phase/leaderboard/",
+ "_条目": "liyi.freddy (Yi Li / YL) · Frozen GastroNet DINO ResNet 50 + Patch wise Shrinkage LDA · 2026-08-31 提交",
+ "_版本说明": "同一用户在榜单上可有多个提交版本，本文件记录的是 2026-08-31 提交的那一版。名次随他人提交而变动，不是这一版的属性，故未记录。",
+ "_口径说明": "榜单列序：PPV@90R / CI下 / CI上 / AUROC / CI下 / CI上 / AUPRC / CI下 / CI上，然后同样九列的 Validation RARE25。榜首那个 0.0 是显示取整，真值见下。",
+ "RARE26": {
+  "ppv90": 0.0152,
+  "ppv90_lo": 0.0104,
+  "ppv90_hi": 0.0306,
+  "auroc": 0.77,
+  "auroc_lo": 0.6354,
+  "auroc_hi": 0.8968,
+  "auprc": 0.2622,
+  "auprc_lo": 0.0297,
+  "auprc_hi": 0.528
+ },
+ "RARE25": {
+  "ppv90": 0.0151,
+  "ppv90_lo": 0.0106,
+  "ppv90_hi": 0.0345,
+  "auroc": 0.843,
+  "auroc_lo": 0.7121,
+  "auroc_hi": 0.9621,
+  "auprc": 0.4381,
+  "auprc_lo": 0.1582,
+  "auprc_hi": 0.7264
+ }
+}

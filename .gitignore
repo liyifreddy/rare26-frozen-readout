@@ -1,0 +1,58 @@
+# ============================================================
+# This repository is public. Anything that reaches git history
+# cannot be scrubbed out of it later. Before adding a path here,
+# ask the one question that matters: can the whole world see it?
+# ============================================================
+
+# --- Never: raw data covered by the data agreements ---
+data/
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.bmp
+*.dcm
+*.mha
+
+# --- Model weights and feature caches: large, and they carry traces of the data ---
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.npy
+*.npz
+*.parquet
+*.feather
+
+# The one exception. `head.npz` is our own fitted head: one discriminant vector, one
+# mean vector and two calibration constants, 4100 numbers. It contains no backbone
+# weights and no image data, and the repository exists to ship it.
+!container/resources/head.npz
+
+# --- Container build products ---
+*.tar
+*.tar.gz
+work/
+
+# --- Internal working documents, not published ---
+outputs/
+cc_tasks/
+cc_reports/
+seed/
+_archive/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+*.egg-info/
+
+# --- Editors and operating systems ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
