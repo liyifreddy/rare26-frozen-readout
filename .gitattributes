@@ -1,0 +1,7 @@
+# Text is stored with LF in the repository and checked out with LF everywhere.
+# Without this the files drift to CRLF on Windows and every one of them shows as
+# modified, which buries the real changes.
+* text=auto eol=lf
+
+*.pdf  binary
+*.npz  binary

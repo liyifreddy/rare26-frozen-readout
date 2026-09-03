@@ -56,3 +56,6 @@ env/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Intermediates from tools/make_pdf.sh
+tools/*.gen.*

@@ -2,7 +2,8 @@
 
 Submission code for the [RARE26 challenge](https://rare26.grand-challenge.org/)
 (MICCAI 2026 EndoVis): detection of early neoplasia in Barrett's esophagus.
-The method report is `REPORT.md`, also included as a PDF.
+The method report is `REPORT.md`, also included as a PDF; `tools/make_pdf.sh`
+regenerates that PDF from it and checks that the two agree.
 
 Released under the MIT license, as required by challenge rule 7. The accompanying
 method report is the one submitted under rule 6.
@@ -41,7 +42,7 @@ depends only on the ordering of scores, so the final squash cannot change it.
 | `container/` | The submitted inference container, and the fitted head it ships. |
 | `docs/` | One document per block of work: the question it asked, how it was measured, the rule written down before the numbers, the result, and the limitations. |
 | `results/` | The result files the documents and the report are computed from, and the map from each number to its source. |
-| `tools/` | The check that the published container source is a comment-only translation of the submitted one. |
+| `tools/` | Regenerating the report PDF from `REPORT.md` and checking the two agree, and checking that the published container source is a comment-only translation of the submitted one. |
 
 The documents, in reading order:
 

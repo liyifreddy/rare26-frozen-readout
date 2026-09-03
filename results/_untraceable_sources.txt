@@ -1,10 +1,13 @@
-Keys whose source is not a file in this repository.
+Keys whose source is not a file in this repository. The paths below are internal
+working files that are not published; the citations are to literature you can look
+up yourself. Where a number is our own arithmetic on a published figure rather than
+the published figure itself, the entry says so.
 
 路径3.配置数	VERDICT_SPEC
 部署.平台.耗时秒	Grand Challenge Try-out job 页
 部署.平台.机型	Grand Challenge Try-out job 页
-目标线.去年冠军线	CLAUDE.md
-目标线.临床门槛	CLAUDE.md
+目标线.去年冠军线	RARE25 summary paper, arXiv 2604.11171v1, §6.1
+目标线.临床门槛	ASGE PIVI 2012, Gastrointest Endosc 76(2):252-254 —— PIVI 给的是敏感度 >=90% 配特异度 >=80%。0.043 是本项目在 1% 患病率下的换算，PIVI 没有报告过这个数。
 文献.RARE25.UT.cv低	seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）
 文献.RARE25.UT.cv高	seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）
 文献.RARE25.UT.外部auroc	seed/2604.11171v1.pdf（RARE25 summary, arXiv 2604.11171v1）
