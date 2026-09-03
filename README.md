@@ -2,6 +2,7 @@
 
 Submission code for the [RARE26 challenge](https://rare26.grand-challenge.org/)
 (MICCAI 2026 EndoVis): detection of early neoplasia in Barrett's esophagus.
+The method report is `REPORT.md`, also included as a PDF.
 
 Released under the MIT license, as required by challenge rule 7. The accompanying
 method report is the one submitted under rule 6.
@@ -34,6 +35,8 @@ depends only on the ordering of scores, so the final squash cannot change it.
 
 | Path | Contents |
 |---|---|
+| `REPORT.md` | The method report submitted under rule 6. |
+| `RARE26_technical_report.pdf` | The same report as a PDF. |
 | `src/` | Grouping, head fitting, the classifier that produces every verdict in the tables, and a local implementation of the leaderboard metric. |
 | `container/` | The submitted inference container, and the fitted head it ships. |
 | `docs/` | One document per block of work: the question it asked, how it was measured, the rule written down before the numbers, the result, and the limitations. |
@@ -49,7 +52,7 @@ The documents, in reading order:
 | `docs/02_backbones.md` | Eleven sets of pretrained weights, seven read-outs, and what none of them established. |
 | `docs/03_assembly.md` | What happens when components are added one at a time under a strict threshold. |
 | `docs/04_external_validation.md` | The challenge platform's numbers against our own. |
-| `docs/05_what_we_got_wrong.md` | The errors found during this project, by kind. |
+| `docs/05_what_we_got_wrong.md` | What went wrong that still matters for reading the numbers or repeating the work. |
 | `docs/06_domain_shift_attribution.md` | How much of the gap simulated acquisition differences can account for, and on which key that question is answerable at all. |
 
 ## Backbone weights are not distributed here

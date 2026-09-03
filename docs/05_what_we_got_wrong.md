@@ -1,168 +1,124 @@
 # What we got wrong
 
-This is the list of errors found during the project, grouped by kind. It carries no total.
-The list grew at every audit — the last one added eleven entries and corrected the count in
-this very document — so any number written here would be wrong by the next pass, and a
-document about accuracy is the worst place to keep a figure that goes stale.
+Not a confession list. This is the set of things that went wrong here and that still
+matter to someone reading the numbers or repeating the work. Anything that was purely an
+internal accident — a script that wrote to the wrong path, a label typed wrong in a working
+file, a bookkeeping slip found the same afternoon — is left out, because knowing about it
+would not change what you do.
 
-None of them was an arithmetic error. Every computed result, recomputed independently from
-the stored files, matched. The errors are in the layer between a number and a sentence
-about it, and in the machinery built to catch errors.
+Three groups: what changes how a number here should be read, what will cost you time if you
+reproduce this, and what the metric itself did to us.
 
-## Kind 1: a gate that cannot fail
+## What changes how a number here should be read
 
-The verification script for the delivered container exited zero and printed plausible
-timings while the container engine was not running. Every command inside it had failed. It
-had been run once in that state and that run was recorded as a pass.
+**The verdict columns are AUROC classifications, and the rule is stricter than an early
+draft of our own documentation said.** The seven-class table in `00_evaluation_protocol.md`
+once stated the A+ condition as "at least one direction at or above the threshold". The
+classifier requires both. The published counts were always produced by the code, so no
+number moved, but the written rule described a weaker bar than the one applied. Under the
+weaker rule the largest grid would read A+ 22 / A− 53 / B± 7 instead of 17 / 51 / 14. The
+rule is now stated as the code implements it, and the code is published as `src/verdict.py`
+so you do not have to take the prose for it.
 
-The repository scanner reported both blocking categories clear after matching zero files.
-Its directory list was hard-coded and did not include the directory it was run against.
+**The domain-shift attribution reverses depending on which key you read it with, and only
+one of the two readings is admissible.** We first computed it on AUROC alone and concluded
+that acquisition differences are not the main driver. Read on the ranking metric, the same
+perturbations account for 129.5% and 146.1% of the gap. Three causes that between them
+exceed the whole gap are not a decomposition of it, which is what disqualifies the second
+reading rather than supporting it. `06_domain_shift_attribution.md` states the conclusion
+and shows both columns; the earlier one-key readings are not in this repository, but if you
+compute either half on its own you will reach a conclusion we had to withdraw.
 
-The placeholder check searched for one of the two markers actually present in the text, so
-a document containing `[TO BE FILLED]` was reported as fully filled.
+**One adoption rule in this project was half empty and we did not notice while writing it.**
+The four candidate corrections in `06_domain_shift_attribution.md` were required to be "not
+detectably worse" on two keys across two directions. In all eight cells the ranking metric
+detects no difference at all, so that half of the rule can never reject anything. It reads
+as a four-cell bar and is a two-cell bar. The verdicts stand — the AUROC half did reject
+two candidates — but the rule is weaker than its description.
 
-A block that registers derived values wrote nothing, because the values it derived from had
-not been registered yet, and exited zero.
+**A verdict was reported as "neither key could measure it" for a day when it was measured.**
+A hand-written chain of conditions ended in a default branch, so a combination nobody had
+enumerated came out with the least informative label. It landed on the strongest result in
+that experiment. The label now comes from the classifier's exhaustive output, and the
+default branch raises instead of returning.
 
-An adoption rule passed on a direction whose measured sequence was constant. There was
-nothing there to separate, and the rule said yes.
+**An earlier version of the classifier had no sign constraint.** It required both directions
+to be detectable and large, but not to agree in sign, and so reported 43 of 55 cells as
+established improvements when all 43 were negative. If you write your own two-direction
+rule, this is the failure mode to guard first.
 
-The check that the fitted head is not excluded from the repository read the output of
-`git check-ignore -v`, which prints a matching line for a negation rule as well. A negation
-rule means "do not ignore", so the check read its own success as failure. When that was
-fixed the check became unfalsifiable instead: once a file is tracked, ignore rules no
-longer apply to it, so nothing that could be added to the ignore file would make the check
-fail. Both halves were found by running the gate's self-test, not by running the gate.
+## What will cost you time if you reproduce this
 
-The shape is the same every time: a check whose failure path is unreachable. It is worse
-than no check, because its output is taken as evidence.
+**The 49 positions of one image are not independent.** Treating them as samples makes the
+ratio of samples to dimensions look like 2.51 falling to 0.057 across a change that in
+effect moves it to 0.35. The head is fitted with the positions as samples for the
+within-class scatter, which is the point of the design, but any sample-size argument built
+on 49n is wrong by roughly a factor of five.
 
-## Kind 2: reporting one key when two were measured
+**Training and serving do not preprocess identically, and the difference is not free.**
+Training resizes through PIL; the container uses `torch.nn.functional.interpolate` with
+`antialias=True` because it has no PIL in the hot path. With the flag the two agree to
+0.258/255 mean and 1/255 maximum. Without it, 1.358/255 and 81/255 — a different feature
+distribution from the one the head was fitted on. If you rewrite the preprocessing, measure
+this before trusting anything downstream.
 
-A candidate improvement of +0.005 was rejected using the leaderboard's marginal interval,
-which is not the interval for a paired difference.
+**A cached feature map is not the delivered pipeline's features.** We treated one as the
+other for a while. The cache had two resize stages where the delivered path has one, and the
+results differ by 25%.
 
-A translated table dropped the column carrying the AUROC verdict. Four configurations that
-are detectably worse on AUROC became "not detected".
+**Do not compare layers under global average pooling.** Averaging dilutes by the number of
+positions, so a shallower layer with a larger map loses for a reason that has nothing to do
+with what it represents. Layer comparisons here are run under the read-out actually used.
 
-The domain-shift attribution was computed on AUROC alone, which is the one instrument that
-hides damage at the operating point. Reading the same data on the ranking metric reversed
-the conclusion, and settling which reading holds took another round.
+**Match the sampling fraction across grids with different map sizes.** A control ran at 1/49
+against 1/196 and the comparison meant nothing.
 
-A four-cell adoption rule required a candidate to be not detectably worse on two keys in
-two directions. In all eight cells the ranking metric detects no difference at all, so that
-half of the rule can never reject anything. "Passes all four cells" was half empty, and the
-rule had been written that way on purpose, by us, without noticing.
+**Do not cut difficulty strata with the baseline's own scores.** It is circular with respect
+to the baseline, which is usually the thing being tested.
 
-Each time the direction was the same: a measured negative result became a non-result.
+**Timing must be measured on the real case size.** Our first deployment argument used the
+16-image sample; a case is a file of 384 frames. Every number in it was correct and none was
+about the quantity under discussion.
 
-## Kind 3: a category that swallows the unenumerated case
+**EVC is not a domain-shift target for this task.** The delivered pipeline scores AUROC
+0.9856 on it, higher than on our own cross-center split. We selected it to exhibit a shift
+and it does not have one. It is a good localization check, which is what it is used for here.
 
-Stratified evaluation reported AUROC 0.0000 where a stratum held only one class. Read
-quickly, that says "no shortcut here".
+**A color perturbation with no spatial term does not test an enhancement setting.** Our first
+one had three global per-pixel degrees of freedom, while the work motivating the experiment
+is about spatial enhancement. The published axes include sharpening and compression for that
+reason.
 
-A hand-written chain of conditions ended in a default branch. A comparison that is
-detectably worse on AUROC in both directions came out labeled "neither key could measure
-it", and was reported that way for a day. It was the strongest result in that experiment.
+**DINO's augmentations do not make the backbone invariant to color in any useful sense.** We
+carried that as known. Measured, sharpening displaces the features by 0.4952 of their norm
+with essentially no change in AUROC. The features move a long way; the discriminant does not
+use those directions.
 
-The verdict classifier, in its first version, required both directions to be detectable and
-large but not to agree in sign. It labeled reliably worse configurations as established:
-43 of 55 cells reported as improvements, all 43 negative.
+**Get the license right before you build anything.** We attributed the weight license to the
+wrong file in a set of eight, and then had the license name wrong as well. The correct one is
+named in the README. The DOI printed on the provider's landing page does not resolve; the
+publisher's record gives PII S0016-5085(25)05797-X.
 
-The second of these happened inside the gate built to prevent the third.
+## What the metric did to us
 
-The fix was to derive the label from the classifier's own exhaustive output rather than
-from a chain, and to remove the default branch so that an unenumerated combination raises.
+Every one of the above is downstream of one property: the ranking metric is a threshold
+statistic read off a single order statistic of the positive scores, and at 1% prevalence its
+value is then set by the far tail of the negatives. That makes it move a great deal in
+response to almost anything, which is why the label-noise cost is one to two orders of
+magnitude larger on it than on AUROC, why the attribution is not identifiable on it, why the
+four-cell rule was half empty, and why almost nothing in this project could be resolved.
 
-## Kind 4: measuring something other than what was named
+We derived that property in the first section of the report and then spent most of the
+available time not acting on it. If we started again, the protocol would be built around it
+from the first week rather than assembled around it afterwards.
 
-This is the hardest kind to catch, because nothing is computed incorrectly.
+## One process note
 
-A ratio of samples to dimensions was reported as falling from 2.51 to 0.057. The 49
-positions of one image are not independent; the effective ratio is 0.35.
-
-Layers were compared under global average pooling, which dilutes by the number of
-positions. A shallower layer had to lose, whatever it contained.
-
-A control's sampling fraction was left unmatched across two grids, 1/49 against 1/196.
-
-Difficulty strata were cut using the baseline's own scores, which is circular with respect
-to the baseline.
-
-A cached feature map was treated as the delivered pipeline's features. The delivered path
-has one stage where the cache had two, and they differ by 25%.
-
-A deployment timing argument was built on a 16-image sample when the time limit applies to
-a file of 384. Every number in it was correct and none was about the quantity under
-discussion.
-
-An external dataset was chosen as a domain-shift target. Measured, the pipeline scores
-AUROC 0.9856 on it, higher than on our own cross-center split, so it could not exhibit the
-effect it was selected to test.
-
-A color-shift hypothesis was tested with a perturbation that has three global per-pixel
-degrees of freedom and no spatial term, while the paper motivating the hypothesis is about
-spatial enhancement settings.
-
-Self-checks cannot catch this kind. They verify that a computation is correct, not that it
-is the right computation. The only defense we found is to write, in the registration for
-each experiment, one sentence naming what is being measured and whether it is the same
-quantity the motivation refers to.
-
-## Kind 5: a fact asserted from memory
-
-A row labeled "re-checked" pointed at a re-check that never happened; the numbers in it
-came from the earlier run.
-
-A label reading `c2→c1` named a transfer that never happened. It was a within-center
-out-of-fold split.
-
-Two absolute cross-center AUROC figures were taken from the first table in a script's
-header, where they are two different backbones' minimum values, not one pipeline's scores.
-
-"DINO's augmentations make the backbone invariant to color" was carried forward as
-something known. Measured, the features move by 0.4952 of their norm.
-
-A license was attributed to the wrong file in a set of eight, and the license name itself
-then turned out to be wrong as well.
-
-A DOI printed on a provider's landing page was carried forward without being resolved. It
-returns 404.
-
-The seven-class table in this repository had its class names generated from the classifier
-and its Condition column typed by hand. The hand-typed part stated the A+ rule as "at least
-one direction at or above the threshold" where the code requires both. The table had been
-described as generated rather than transcribed, and the generated half was the half nobody
-needed to check.
-
-The rule that followed: a fact with a source is a key with a source, exactly like a number.
-License names, rule quotations, deadlines and instance types are not typed into prose. And
-when something is described as generated, say which part of it is generated.
-
-## What the pattern says
-
-Two of these five kinds are errors about the subject matter. The other three are errors in
-the machinery. That distinction turned out to matter more than the count: an error about
-the subject matter gets caught the next time someone looks at the number, while an error in
-the machinery stops the looking from working.
-
-The expensive ones all happened inside a safeguard. The default branch was in the gate
-built to stop the sign error. The misread `git check-ignore` was in the gate built to stop
-a file from being excluded. The hand-typed condition was in the table whose selling point
-was that it was generated. Attention goes to the thing being guarded against, and the guard
-itself gets built quickly.
-
-Three rules came out of this and are in force in the code here:
-
-* Any step whose job is to produce N things must assert that it produced N things.
-* Any gate must be shown to fail before its passing is used as evidence. Every gate in this
-  project is now run twice: once against a deliberately broken input to prove it reports
-  red, then once for real.
-* Any claim that something is generated rather than written must say which part.
-
-## What this list is for
-
-A repository that reports only its successes tells you nothing about how much to trust the
-rest of it. Every result here was produced by a process that made these mistakes and found
-them. That is the relevant context for reading the numbers, and it is not available
-anywhere else.
+Several checks in this project reported success without having examined anything: a
+container verification that exited zero while the container engine was not running, a scanner
+that reported all clear after matching no files, a rule that passed on a direction with
+nothing in it to separate. Every gate in this repository is now run twice — once against a
+deliberately broken input to prove it reports red, then once for real — and two of the six
+were found that way rather than by accident. If you use the checks here, run them that way
+too; a gate that cannot report failure is worse than no gate, because its output is taken as
+evidence.
