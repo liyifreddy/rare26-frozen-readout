@@ -11,6 +11,8 @@ reproduce this, and what the metric itself did to us.
 
 ## What changes how a number here should be read
 
+The letter classes used below (A+, A-, B+, B-, C, D, E) are defined in `00_evaluation_protocol.md` and counted family by family in `07_verdict_counts.md`. The README folds them into four plain groups; `better` there is A+ and B+ together, `worse` is A- and B-, and `could not separate` is C and D.
+
 **The verdict columns are AUROC classifications, and the rule is stricter than an early
 draft of our own documentation said.** The seven-class table in `00_evaluation_protocol.md`
 once stated the A+ condition as "at least one direction at or above the threshold". The
@@ -19,6 +21,16 @@ number moved, but the written rule described a weaker bar than the one applied. 
 weaker rule the largest grid would read A+ 22 / A− 53 / B± 7 instead of 17 / 51 / 14. The
 rule is now stated as the code implements it, and the code is published as `src/verdict.py`
 so you do not have to take the prose for it.
+
+**The largest grid counts 65 comparisons of a configuration against itself.** In `d1_all_backbones.json` the pooling axis includes `top 1 position` and `top 2% of positions (k = 1)`, which on a 7x7 grid are the baseline operator itself. Their paired difference is exactly zero in both directions at every shrinkage value, so 65 of the 616 cells carry six zeros and no information. All 65 fall in class C, which is the class for a comparison the intervals rule out; a configuration compared with itself is not ruled out, it was never a comparison. The published row therefore reads C 397 where the informative count is 332; A+, A-, B+, B-, D and E are untouched, which is why no claim in the report moves. We have not changed the published number, because one rule applied inconsistently across families is worse than one rule applied openly, and the two grids that are deduplicated say so in their own annotation. `07_verdict_counts.md` records the same thing from the counting side.
+
+**The domain-shift page described its adoption rule as one condition when three were
+registered.** All three are in the script header that produced the numbers; the page
+published the second and called it the criterion. The two it dropped were the two that
+could reject, so the published rule was weaker than the one we ran under. No verdict
+changes -- nothing was adopted either way -- but a page whose subject is protocol
+discipline got its own protocol wrong, and that is the kind of error this report exists
+to make findable.
 
 **The domain-shift attribution reverses depending on which key you read it with, and only
 one of the two readings is admissible.** We first computed it on AUROC alone and concluded
@@ -112,13 +124,26 @@ We derived that property in the first section of the report and then spent most 
 available time not acting on it. If we started again, the protocol would be built around it
 from the first week rather than assembled around it afterwards.
 
+## One thing we cannot fix
+
+The method report submitted to the organizers spells one word the British way, `neighbouring`, in the sentence that takes the frozen-encoder setting from a neighboring low-data problem. The rest of this project is American English and the checker now catches that form, but the submitted PDF is the submitted PDF and we are not going to reissue it over a vowel. The copy in this repository is correct.
+
 ## One process note
 
 Several checks in this project reported success without having examined anything: a
 container verification that exited zero while the container engine was not running, a scanner
 that reported all clear after matching no files, a rule that passed on a direction with
 nothing in it to separate. Every gate in this repository is now run twice — once against a
-deliberately broken input to prove it reports red, then once for real — and two of the six
-were found that way rather than by accident. If you use the checks here, run them that way
+deliberately broken input to prove it reports red, then once for real — and two of the
+seven were found that way rather than by accident. If you use the checks here, run them that way
 too; a gate that cannot report failure is worse than no gate, because its output is taken as
 evidence.
+
+The self test was then found broken twice, and neither time by running it. In one gate
+the self test sat behind a branch that could never be taken, so the check that proves
+that gate can report red had itself never run. In another the self test restored the
+file it had deliberately damaged without pinning the line ending, which on Windows
+rewrote every line of the report and left a change in the repository that had nothing to
+do with the report; that is where an unexplained whole-file diff had been coming from.
+Both were found by reading the code rather than by running it. A self test is a check
+like any other, and nothing was checking it.

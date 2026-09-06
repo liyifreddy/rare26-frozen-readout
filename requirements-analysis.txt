@@ -1,0 +1,17 @@
+# Analysis and reproduction dependencies, on top of container/requirements.txt.
+#
+# The container file pins the versions that ran on the challenge platform. It does not
+# list scipy or scikit-learn, because inference does not use them, but the reproduction
+# steps in the README do, and they decide numbers that appear in the tables:
+# src/grouping.py builds the pseudo-patient groups with scipy.sparse.csgraph, and
+# src/fit_head.py selects the shrinkage coefficient with StratifiedGroupKFold and
+# roc_auc_score. Pinning one side and not the other was an inconsistency, not a decision.
+#
+# These are the versions in the environment that produced the files in results/. They are
+# recorded because they are what ran, not because older or newer ones are known to fail.
+# They do have to be new enough for the NumPy 2 that container/requirements.txt pins.
+#
+# Python 3.11. The container is python:3.11-slim; the analysis environment was 3.11.15.
+
+scipy==1.15.3
+scikit-learn==1.7.1

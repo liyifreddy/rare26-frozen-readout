@@ -10,7 +10,7 @@ timings. There is no image, no crop and no per-image identifier anywhere in them
 nothing in them can be turned back into the challenge data. One file is the exception to
 "aggregated": `t7_train_serve.json` carries sixteen model scores for sixteen unnamed
 training frames, because the rank correlation it reports is computed from them and a
-reader should be able to recompute it. Sixteen unlabelled scalars identify nothing. The
+reader should be able to recompute it. Sixteen unlabeled scalars identify nothing. The
 images themselves belong to the challenge organizers and are distributed by them under
 their own terms, not here.
 
@@ -42,6 +42,7 @@ their own terms, not here.
 | File | What it supports |
 |---|---|
 | `p23_cross_confirm.json` | Per-position scoring against global average pooling, true cross-center, both directions. |
+| `p23_res448.json` | The same comparison at 448 input, where the convolutional backbone also has 196 positions, so architecture and grid size stop being confounded. |
 | `r9_evc_loc.json` | External localization check against five expert delineations, and the expert-agreement measurement. |
 | `p22_scale_and_joint.json` | The two-direction joint null control, measured rather than obtained by multiplying single-direction rates. |
 | `e5_neutral.json` | Sequential assembly from two different starting points. |

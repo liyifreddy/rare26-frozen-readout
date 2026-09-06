@@ -59,3 +59,7 @@ Thumbs.db
 
 # Intermediates from tools/make_pdf.sh
 tools/*.gen.*
+
+# The rendered report. The repository publishes the markdown; the PDF is built on
+# demand by tools/make_pdf.sh. Ignored so that `git add -A` cannot put it back.
+RARE26_technical_report.pdf

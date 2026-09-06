@@ -18,17 +18,17 @@ rather than averaging the map first. It is detectably positive in both cross-cen
 directions on all three read-outs and survives five further checks, including an
 external localization test against five independent expert delineations. Almost nothing
 else was. Ten alternative backbones, seven read-outs, the choice of layer, and every
-component combination we tried produced no configuration that is detectably better in
-both directions, and the improvements that do exist all land on backbones other than the
-one we ship. On the challenge validation set the pipeline reaches AUROC
+component combination we tried produced no configuration that is detectably better than
+the delivered one in both directions, and the improvements that do exist all land on
+backbones other than the one we ship. On the challenge validation set the pipeline reaches AUROC
 0.7700 and PPV@90recall 0.0152, against a random
 baseline of 0.0100 and our own cross-center AUROC of
 0.9605 and 0.9883. A team in the
 previous edition of this challenge, using a different architecture, reported the same
 pattern and almost the same number: cross-validation ROC-AUC 0.9340 to
 0.9600 falling to 0.7709 externally. We simulated
-three acquisition differences and found they account for a small fraction of that gap.
-The rest is not in the imaging. Most of what we learned is in the evaluation protocol
+three acquisition differences and found they account for a small fraction of that gap on
+AUROC, which bounds their contribution rather than locating the rest. Most of what we learned is in the evaluation protocol
 rather than in the method, so we describe it in more detail than the results it
 supports, and we list the mistakes it failed to catch.
 
@@ -144,6 +144,16 @@ vector, 4096 numbers in total, about 16 KB on disk. This makes every
 result in section 6 an experiment about the read-out and the scoring layer rather than
 about optimization.
 
+Eleven sets of pretrained weights were extracted once and reused across every experiment.
+Eight come from the provider's listing and were pretrained on gastrointestinal images:
+ResNet-50 [9] with DINOv1 [11] on the full 5M corpus, on a 1M subset, and on a 200K subset;
+ResNet-50 with MoCo v2 [13, 14] and with SimCLR v2 [15, 16]; ResNet-50 initialized from
+billion-scale semi-supervised weights [17] and then pretrained in domain with DINOv1;
+ViT-S [10] with DINOv1; and ViT-B with DINOv2 [12]. Three more are ImageNet-1k baselines
+carried for contrast: a supervised ResNet-50, a DINO ResNet-50, and a DINO ViT-S. Section 6
+reports every experiment across all eleven, and `docs/02_backbones.md` in the repository
+carries the per-backbone results.
+
 Two boundary conditions are worth stating, though neither is the reason for the choice.
 The pretrained weights come with a data use agreement that permits academic research and
 forbids redistribution, so they are declared but not shipped with our code. Compute was a
@@ -163,7 +173,7 @@ Three lines of prior work bear on this report. We use them to place our numbers 
 than to justify the method.
 
 **The previous edition of this challenge.** RARE25 ran the same task with the same metric
-and published a summary. Two facts from it matter here. The organizers note that
+and published a summary [6]. Two facts from it matter here. The organizers note that
 "although several methods achieved strong overall discriminative performance, positive
 predictive values remained low for most approaches, emphasizing the intrinsic difficulty
 of low-prevalence detection". And one team reported cross-validation ROC-AUC between
@@ -174,14 +184,14 @@ the full closed test set, but a median of 0.0350 under
 resampling at the intended class imbalance. We return to these numbers in section 8,
 because our own results land on top of them.
 
-**Label noise and the choice of metric.** Menon et al. prove that under class-conditional
+**Label noise and the choice of metric.** Menon et al. [7] prove that under class-conditional
 label noise the corrupted AUC is a positive affine transform of the clean AUC, so the
 ranking induced by any scorer is unchanged. They also state the limit of that result
 directly: for measures other than balanced error that are optimized by thresholding the
 class probability, one has to know the noise rates or the base rate in order to place the
 threshold. Precision at a fixed recall is such a measure, and they do not analyze it.
-Elkan and Noto give the corresponding correction for precision when positives are
-contaminated in the positive-unlabelled setting. What is missing is not the theory but the
+Elkan and Noto [8] give the corresponding correction for precision when positives are
+contaminated in the positive-unlabeled setting. What is missing is not the theory but the
 magnitude: how much does a fixed amount of label noise cost a fixed-recall precision
 metric relative to what it costs AUC. Section 6 reports that measurement.
 
@@ -251,7 +261,7 @@ written down and dated: which quantities would be reported, what would count as 
 and what would be done if the result was ambiguous. The rules are in the repository with
 their timestamps. Writing them afterwards would have let the numbers choose the rule.
 
-**No argmax, and the control that justifies it.** We never take the best cell of a grid.
+**No argmax, and the control that justifies it.** We never take the best cell of a grid [18, 19].
 The reason is measured rather than assumed. We ran one strictly nested search in which an
 inner loop enumerated 120 configurations per backbone per direction and
 kept the best, and an outer fold that the inner loop never saw reported the result. On the
@@ -290,9 +300,31 @@ distribution it samples from, and ours samples from two retrospective Dutch cent
 
 Not included, and why:
 
-* `c1_pooling_ops.json` (Pooling operator x backbone): no delta field
+The pooling operator sweep is the one family in `results/` that the table above omits. Its
+result file records point estimates without paired intervals, so its cells cannot be
+classified by the two-direction rule. It is published for reference and no adoption
+decision rests on it.
 
 The table above is the whole record. This section says what the rows mean.
+
+**What the grid contained.** The read-out basis is how features are taken off the frozen
+network: for the convolutional backbones, the layer-4 spatial map or its global average;
+for the transformers, the last-layer patch grid, a two-block patch concatenation, the class
+token broadcast into every patch, the class token alone, a four-block class-token
+concatenation, and the DINOv2 pairing of class token with the patch mean. The component
+menu crosses four axes. The first is a signed power transform, sign(x) times |x|^0.5,
+applied per dimension before the head [20]. The second is the shrinkage coefficient of the
+discriminant, swept from 0.02 to 0.90, with the Ledoit-Wolf [21] and oracle-approximating
+[22] estimators as alternatives to a swept value. The third is the scope the head is fitted
+on. The fourth is the pooling rule that turns 49 position scores into one image score: the
+global average, the maximum, the top 2%, 5% and 10% of positions [23, 24], log-sum-exp at
+four temperatures [25], a softmax-weighted average at three temperatures [26], and the
+ratio of squared to linear score sums. Two further families replace the discriminant rather
+than one of its components: modeling the normal class alone, by a support vector data
+description [27], by a class-conditional Gaussian distance [28], and by a k-nearest-neighbor
+density ratio [29]; and fitting the discriminant on a random subspace of the feature
+dimensions [30]. Feature normalization is a fifth axis with four settings: per-dimension
+standardization, L2, per-position standardization, and none.
 
 **One change survived.** Replacing global average pooling with per-position scoring
 followed by top-2% pooling is the only modification that is detectably positive in both
@@ -308,7 +340,7 @@ is near zero on the easy stratum, which is at ceiling, so it improves the images
 the threshold rather than pushing easy cases higher. On an independent Barrett dataset
 where five experts delineated lesions separately, the highest-scoring cell falls inside the
 expert consensus lesion 78.0% of the time against 16.7% for a random
-cell, and the lift grows with the level of expert agreement. Repeating the entire component
+cell [31], and the lift grows with the level of expert agreement. Repeating the entire component
 grid on a different layer gives 192 cells with 0 improvements. A
 two-direction null control puts the joint chance rate at 0.7%, measured
 rather than obtained by multiplying the per-direction rates. And the offline reproduction
@@ -378,7 +410,7 @@ pooling. In full:
 | Container output | One score per frame, in frame order | `p29_platform.json` |
 
 The shrinkage coefficient is selected by repeated grouped cross-validation on partial
-AUROC, and the final head is fitted on all images from both centers. Deployment is a
+AUROC [32], and the final head is fitted on all images from both centers. Deployment is a
 CPU-only container. One case is one file of 384 frames with a
 600.0 second limit; measured end to end from container start, including model
 loading, a case takes 15.8 seconds on a laptop CPU and
@@ -400,7 +432,7 @@ repository does not. Anyone reproducing this work obtains the same file from the
 provider's pretrained-model listing at
 `https://cortex.thetavision.nl/dataset-provider/listing/2/`, accepts the agreement, and
 places it at the path the repository documents. That listing covers eight weight files
-under one agreement; ours is the second, ResNet-50 pretrained with DINOv1 on GastroNet-5M.
+under one agreement; ours is the second, ResNet-50 pretrained with DINOv1 on GastroNet-5M [1].
 No layer of it is fine-tuned.
 
 ---
@@ -475,7 +507,12 @@ spans twelve centers with a prospective component rather than two retrospective
 collections. Neither is something a pre-processing step can repair, and we hold no images
 from the target distribution with which to learn one.
 
-We also tested four modules intended to buy robustness to acquisition differences. Two are
+We also tested four modules intended to buy robustness to acquisition differences:
+Shades-of-Gray color constancy at Minkowski p = 6 [33]; a Retinex-style low-frequency
+division, which removes slow illumination gradients and leaves local contrast intact [34];
+a projection of the features onto the orthogonal complement of the directions our own
+perturbations excite, which is an upper bound rather than a deployable estimate because the
+subspace is learned on the same perturbation family; and color test-time augmentation. Two are
 detectably worse in one direction. The other two are not detectably worse on either key,
 but their point estimates on the ranking metric are negative in both directions, and the
 intervals are wide enough that "not detectably worse" carries very little information here:
@@ -518,6 +555,17 @@ would keep unchanged. Every grid in this project has a dated note stating what w
 as adoption before the grid was run. On more than one occasion the result was tempting and
 the note was the only thing standing between us and a decision the data did not support.
 
+One option that most detection settings offer is not available here. A model that can
+decline to answer turns hard cases into abstentions rather than errors [35, 36]. This
+metric scores every frame: the container returns one number per image, the evaluator finds
+the threshold that reaches 90% recall, and there is no abstain action to take. Even if
+there were, the errors at that threshold are the ones a confidence gate could not separate.
+At 90% recall the positives sitting just below the threshold and the negatives sitting just
+above it occupy the same score band by construction, so a score-based confidence is least
+informative exactly where it would have to act. The label-noise result in section 6 points
+to the usable version of the same idea, and it is on the training side rather than the
+inference side: down-weighting the examples an annotator is likely to have gotten wrong.
+
 ---
 
 ## Declarations
@@ -550,27 +598,141 @@ competing interests.
 
 ## References
 
+<!-- BEGIN references (generated by tools/make_refs.py; do not edit by hand) -->
 1. Jong, M. R., Boers, T. G. W., Fockens, K. N., et al. (2025). GastroNet-5M: a
    multicenter dataset for developing foundation models in gastrointestinal endoscopy.
-   Gastroenterology. PII S0016-5085(25)05797-X.
+   Gastroenterology. PII S0016-5085(25)05797-X
+
 2. Boers, T. G. W., Fockens, K. N., van der Putten, J. A., et al. (2024). Foundation
-   models in gastrointestinal endoscopic AI: impact of architecture, pre-training approach
-   and data efficiency. Medical Image Analysis, 98, 103298.
+   models in gastrointestinal endoscopic AI: impact of architecture, pre-training
+   approach and data efficiency. Medical Image Analysis, 98, 103298.
    doi:10.1016/j.media.2024.103298
+
 3. Jong, M. R., van Eijck van Heslinga, R. A. H., Kusters, C. H. J., et al. (2025).
    Evaluation of an improved computer-aided detection system for Barrett's neoplasia in
    real-world imaging conditions. Endoscopy. doi:10.1055/a-2642-7584
+
 4. Jong, M. R., Jaspers, T. J. M., van Eijck van Heslinga, R. A. H., et al. (2025). The
    development and ex vivo evaluation of a computer-aided quality control system for
    Barrett's esophagus endoscopy. Endoscopy, 57(7), 709-716. doi:10.1055/a-2537-3510
+
 5. Jong, M. R., Kusters, C. H. J., van Bokhorst, Q. N. E., et al. (2025). Impact of
    standard enhancement settings of endoscopy systems on performance of endoscopic
    artificial intelligence systems. Endoscopy, 57(6), 602-610. doi:10.1055/a-2530-1845
+
 6. RARE25 challenge organizers (2026). Development and evaluation of CADe systems in a
-   low-prevalence setting. arXiv:2604.11171.
+   low-prevalence setting. arXiv:2604.11171
+
 7. Menon, A. K., van Rooyen, B., Ong, C. S., Williamson, R. C. (2015). Learning from
-   corrupted binary labels via class-probability estimation. ICML.
-8. Elkan, C., Noto, K. (2008). Learning classifiers from only positive and unlabeled data.
-   KDD.
+   corrupted binary labels via class-probability estimation. International Conference on
+   Machine Learning (ICML), PMLR 37, 125-134.
+
+8. Elkan, C., Noto, K. (2008). Learning classifiers from only positive and unlabeled
+   data. ACM SIGKDD International Conference on Knowledge Discovery and Data Mining
+   (KDD), 213-220.
+
+9. He, K., Zhang, X., Ren, S., Sun, J. (2016). Deep residual learning for image
+   recognition. IEEE Conference on Computer Vision and Pattern Recognition (CVPR),
+   770-778. doi:10.1109/CVPR.2016.90
+
+10. Dosovitskiy, A., Beyer, L., Kolesnikov, A., et al. (2021). An image is worth 16x16
+    words: transformers for image recognition at scale. International Conference on
+    Learning Representations (ICLR). OpenReview YicbFdNTTy. arXiv:2010.11929
+
+11. Caron, M., Touvron, H., Misra, I., Jegou, H., Mairal, J., Bojanowski, P., Joulin, A.
+    (2021). Emerging properties in self-supervised vision transformers. IEEE/CVF
+    International Conference on Computer Vision (ICCV), 9630-9640.
+    doi:10.1109/ICCV48922.2021.00951
+
+12. Oquab, M., Darcet, T., Moutakanni, T., et al. (2024). DINOv2: learning robust visual
+    features without supervision. Transactions on Machine Learning Research, 2024.
+    OpenReview a68SUt6zFt. arXiv:2304.07193
+
+13. Chen, X., Fan, H., Girshick, R., He, K. (2020). Improved baselines with momentum
+    contrastive learning. arXiv:2003.04297
+
+14. He, K., Fan, H., Wu, Y., Xie, S., Girshick, R. (2020). Momentum contrast for
+    unsupervised visual representation learning. IEEE/CVF Conference on Computer Vision
+    and Pattern Recognition (CVPR), 9726-9735. doi:10.1109/CVPR42600.2020.00975
+
+15. Chen, T., Kornblith, S., Norouzi, M., Hinton, G. (2020). A simple framework for
+    contrastive learning of visual representations. International Conference on Machine
+    Learning (ICML), PMLR 119, 1597-1607.
+
+16. Chen, T., Kornblith, S., Swersky, K., Norouzi, M., Hinton, G. E. (2020). Big
+    self-supervised models are strong semi-supervised learners. Advances in Neural
+    Information Processing Systems 33 (NeurIPS), 22243-22255. arXiv:2006.10029
+
+17. Yalniz, I. Z., Jegou, H., Chen, K., Paluri, M., Mahajan, D. (2019). Billion-scale
+    semi-supervised learning for image classification. arXiv:1905.00546
+
+18. Varma, S., Simon, R. (2006). Bias in error estimation when using cross-validation
+    for model selection. BMC Bioinformatics, 7, 91. doi:10.1186/1471-2105-7-91
+
+19. Cawley, G. C., Talbot, N. L. C. (2010). On over-fitting in model selection and
+    subsequent selection bias in performance evaluation. Journal of Machine Learning
+    Research, 11, 2079-2107.
+
+20. Perronnin, F., Sanchez, J., Mensink, T. (2010). Improving the Fisher kernel for
+    large-scale image classification. European Conference on Computer Vision (ECCV),
+    Lecture Notes in Computer Science 6314, 143-156. doi:10.1007/978-3-642-15561-1_11
+
+21. Ledoit, O., Wolf, M. (2004). A well-conditioned estimator for large-dimensional
+    covariance matrices. Journal of Multivariate Analysis, 88(2), 365-411.
+    doi:10.1016/S0047-259X(03)00096-4
+
+22. Chen, Y., Wiesel, A., Eldar, Y. C., Hero, A. O. (2010). Shrinkage algorithms for
+    MMSE covariance estimation. IEEE Transactions on Signal Processing, 58(10),
+    5016-5029. doi:10.1109/TSP.2010.2053029
+
+23. Maron, O., Lozano-Perez, T. (1998). A framework for multiple-instance learning.
+    Advances in Neural Information Processing Systems 10, MIT Press, 570-576.
+
+24. Campanella, G., Hanna, M. G., Geneslaw, L., et al. (2019). Clinical-grade
+    computational pathology using weakly supervised deep learning on whole slide images.
+    Nature Medicine, 25(8), 1301-1309. doi:10.1038/s41591-019-0508-1
+
+25. Pinheiro, P. O., Collobert, R. (2015). From image-level to pixel-level labeling with
+    convolutional networks. IEEE Conference on Computer Vision and Pattern Recognition
+    (CVPR), 1713-1721. doi:10.1109/CVPR.2015.7298780
+
+26. Ilse, M., Tomczak, J., Welling, M. (2018). Attention-based deep multiple instance
+    learning. International Conference on Machine Learning (ICML), PMLR 80, 2127-2136.
+
+27. Tax, D. M. J., Duin, R. P. W. (2004). Support vector data description. Machine
+    Learning, 54(1), 45-66. doi:10.1023/B:MACH.0000008084.60811.49
+
+28. Lee, K., Lee, K., Lee, H., Shin, J. (2018). A simple unified framework for detecting
+    out-of-distribution samples and adversarial attacks. Advances in Neural Information
+    Processing Systems 31 (NeurIPS), 7167-7177. arXiv:1807.03888
+
+29. Breunig, M. M., Kriegel, H.-P., Ng, R. T., Sander, J. (2000). LOF: identifying
+    density-based local outliers. ACM SIGMOD Record, 29(2), 93-104.
+    doi:10.1145/335191.335388
+
+30. Ho, T. K. (1998). The random subspace method for constructing decision forests. IEEE
+    Transactions on Pattern Analysis and Machine Intelligence, 20(8), 832-844.
+    doi:10.1109/34.709601
+
+31. Zhang, J., Lin, Z., Brandt, J., Shen, X., Sclaroff, S. (2016). Top-down neural
+    attention by excitation backprop. European Conference on Computer Vision (ECCV),
+    Lecture Notes in Computer Science 9908, 543-559. doi:10.1007/978-3-319-46493-0_33
+
+32. McClish, D. K. (1989). Analyzing a portion of the ROC curve. Medical Decision
+    Making, 9(3), 190-195. doi:10.1177/0272989X8900900307
+
+33. Finlayson, G. D., Trezzi, E. (2004). Shades of gray and colour constancy. Color and
+    Imaging Conference, 12(1), 37-41. doi:10.2352/CIC.2004.12.1.art00008
+
+34. Land, E. H., McCann, J. J. (1971). Lightness and retinex theory. Journal of the
+    Optical Society of America, 61(1), 1-11. doi:10.1364/JOSA.61.000001
+
+35. Chow, C. K. (1970). On optimum recognition error and reject tradeoff. IEEE
+    Transactions on Information Theory, 16(1), 41-46. doi:10.1109/TIT.1970.1054406
+
+36. Geifman, Y., El-Yaniv, R. (2017). Selective classification for deep neural networks.
+    Advances in Neural Information Processing Systems 30 (NIPS), 4878-4887.
+    arXiv:1705.08500
+<!-- END references -->
 
 References 1 to 5 are required by section 4 of the data use agreement covering the pretrained weights, which asks that the dataset and every publication listed on the provider's page be cited.

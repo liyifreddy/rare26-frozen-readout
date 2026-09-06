@@ -85,11 +85,35 @@ and cannot test the claim directly.
 
 ## The four candidate corrections, in full
 
-Adoption required, for two rulers across two directions, that the candidate be **not
-detectably worse** than the delivered pipeline. That bar is deliberately low: it asks
-only that a change cost nothing measurable, on the reasoning that a free option is worth
-taking when the deployed score sits close to chance. The criterion was fixed before the
-numbers were computed.
+Adoption was pre-registered in the header of the script that produced these numbers,
+`scripts/P32_域位移稳健性.py`, as three conditions, all of which had to hold. The candidate
+had to be detectably better than the delivered pipeline under simulated acquisition shift,
+in both directions and at every perturbation strength; not detectably worse on unperturbed
+cross-center data, in both directions; and its advantage had to widen monotonically with
+perturbation strength rather than peak at one setting. That header is the whole registration
+for these four arms. It cites an earlier pre-registration, but for the discipline of writing
+rules down before running them, not for these particular conditions.
+
+The table below reports the second condition, because it is the one that separates the
+candidates here, and two of the four fail it: the Retinex division and the subspace
+projection are detectably worse on unperturbed data in one direction.
+
+No candidate met the first condition. One cell came close and is worth naming, since anyone
+rerunning this will meet it: Shades-of-Gray is detectably better in one direction at the
+strongest perturbation setting, and in none of the other five cells. Requiring all six is
+the script's own rule, written into the code that evaluates the condition.
+
+The third condition, monotonicity, is met by none of the three arms for which it could be
+computed. It was not assessed for color test-time augmentation, and neither was the first
+condition on the same footing as the rest: both are defined on AUROC, and that run recorded
+the ranking metric instead, where its six cells are all negative and none detectable. Its
+unperturbed AUROC differences, +0.0002 and +0.0004, are not detectable either, so the
+verdict does not turn on which ruler is used, but the comparison is not like-for-like.
+
+An earlier version of this page described the second condition alone as the whole criterion,
+and called that the pre-registered bar. It was not. The verdict is unchanged -- nothing was
+adopted under either reading -- but the description of the protocol was wrong, on a page
+about protocol. It is listed in `05_what_we_got_wrong.md`.
 
 | Candidate | ΔAUROC c2→c1 | ΔAUROC c1→c2 | ΔPPV@90R c2→c1 | ΔPPV@90R c1→c2 |
 |---|---|---|---|---|
@@ -107,14 +131,18 @@ against the delivered pipeline.
 detectably worse on AUROC in one direction and were rejected. Color constancy and
 test-time augmentation pass all four cells.
 
-**Neither was adopted, and the reason matters more than the verdict.** On the ranking
-metric, none of the eight comparisons is detectable. The "not detectably worse" bar
-therefore passes automatically on that ruler, for every candidate, including the two
-that AUROC rejects. It is not evidence that they are safe; it is evidence that the
-metric cannot see differences of this size at this number of positives. The point
-estimates, which remain the best guess available, put the cost of color constancy at
--24% and -49% of the delivered value in the two directions, and of test-time
+**What the second condition can and cannot tell you.** Two candidates clear it and two do
+not, but on the ranking metric none of the eight comparisons is detectable at all. On that
+ruler the "not detectably worse" test passes automatically, for every candidate, including
+the two that AUROC rejects. Passing it is therefore evidence about the metric, not about
+the candidate: at this number of positives the metric cannot see differences of this size.
+The point estimates, which remain the best guess available, put the cost of color constancy
+at -24% and -49% of the delivered value in the two directions, and of test-time
 augmentation at -16% and -32%.
+
+None of that is why nothing was adopted. The first condition is: no candidate was
+detectably better than the delivered pipeline under simulated shift in all six cells, and
+the third, monotonicity, is met by none of the three arms for which it could be computed.
 
 Test-time augmentation was the strongest candidate: it leaves the input untouched and
 averages scores, so unlike a normalization it cannot erase detail, and its AUROC
