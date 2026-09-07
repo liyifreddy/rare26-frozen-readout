@@ -3,12 +3,26 @@
 # Needs: pandoc, xelatex, pdftotext, and the TeX Gyre Pagella font.
 #
 # Run from anywhere; paths below are relative to the repository root, not to tools/.
+#
+# The PDF is written to a temporary name and only becomes RARE26_technical_report.pdf
+# after gate5 passes. An earlier version rendered straight to the final name and checked
+# afterwards, so a failing run left a file that looked freshly built, carried today's
+# timestamp, and had not passed its own check -- more dangerous than an obviously stale
+# one, because the date says it is current. On failure the temporary file is removed and
+# whatever was there before is left untouched: never replace a verified artifact with an
+# unverified one.
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
+FINAL=RARE26_technical_report.pdf
+TMP=tools/report_pdf.gen.pdf                 # tools/*.gen.* is gitignored
+trap 'rm -f "$TMP" tools/report_pdf.gen.txt' EXIT
+
 python3 tools/make_pdf_source.py REPORT.md tools/report_pdf.gen.md
-pandoc tools/report_pdf.gen.md -o RARE26_technical_report.pdf --pdf-engine=xelatex \
+pandoc tools/report_pdf.gen.md -o "$TMP" --pdf-engine=xelatex \
        -V mainfont="TeX Gyre Pagella" -V monofont="DejaVu Sans Mono"
-pdftotext RARE26_technical_report.pdf tools/report_pdf.gen.txt
+pdftotext "$TMP" tools/report_pdf.gen.txt
 python3 tools/gate5.py REPORT.md tools/report_pdf.gen.txt
-echo "PDF matches REPORT.md."
+
+mv "$TMP" "$FINAL"
+echo "PDF matches REPORT.md. Wrote $FINAL."

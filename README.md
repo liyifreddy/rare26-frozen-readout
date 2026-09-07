@@ -92,7 +92,9 @@ depends only on the ordering of scores, so the final squash cannot change it.
 | `results/` | The result files the documents and the report are computed from, and the map from each number to its source. |
 | `tools/` | Regenerating the report PDF from `REPORT.md` and checking the two agree, and checking that the published container source is a comment-only translation of the submitted one. |
 
-The documents, in reading order:
+The documents, in reading order. `06` sits last on purpose: it is supplementary material
+rather than a step in the argument, and the numbered order is not the reading order at that
+one point.
 
 | Document | What it covers |
 |---|---|
@@ -104,7 +106,7 @@ The documents, in reading order:
 | `docs/05_what_we_got_wrong.md` | What went wrong that still matters for reading the numbers or repeating the work. |
 | `docs/07_verdict_counts.md` | Every verdict count, family by family, regenerated from `results/`. |
 | `docs/08_what_was_tested.md` | Every axis and every level that was compared, read off the result files. |
-| `docs/06_domain_shift_attribution.md` | How much of the gap simulated acquisition differences can account for, and on which key that question is answerable at all. |
+| `docs/06_domain_shift_attribution.md` | Supplementary. How much of the gap simulated acquisition differences can account for, and on which key that question is answerable at all. |
 
 ## Backbone weights are not distributed here
 

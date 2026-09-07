@@ -16,6 +16,7 @@ Usage:
     python tools/make_pdf_source.py REPORT.md out.md
 """
 import io
+import re
 import sys
 
 HEADER = r"""---
@@ -65,9 +66,31 @@ def main(src, dst):
 
     title = lines[0].lstrip("# ").strip()
     start = next(i for i, l in enumerate(lines) if l.startswith("## Summary"))
-    body = "\n".join(lines[start:])
 
-    out = (HEADER % {"title": title}) + body
+    # ⚠️ Everything between the title and "## Summary" used to be thrown away, on the
+    #    assumption that it held nothing but the byline the YAML front matter repeats.
+    #    That stopped being true when a provenance paragraph was added there: the PDF
+    #    silently lost the sentence saying the report had been extended after submission,
+    #    and nothing reported it. Keep that region now, minus two things that genuinely
+    #    do not belong in the PDF: the byline, and HTML comments.
+    head = lines[1:start]
+    i = 0
+    while i < len(head) and not head[i].strip():
+        i += 1
+    j = i
+    while j < len(head) and head[j].strip():
+        j += 1
+    byline = "\n".join(head[i:j])
+    # Fail loudly if the byline is not where it is assumed to be, rather than dropping
+    # whatever happens to sit there. Silently discarding prose is the bug above.
+    if "Yi Li" not in byline:
+        raise SystemExit("**the block after the title is not the byline, it is:**\n" + byline)
+    lead = "\n".join(head[j:])
+    lead = re.sub(r"<!--.*?-->", "", lead, flags=re.S)
+    lead = re.sub(r"\n{3,}", "\n\n", lead).strip()
+
+    body = "\n".join(lines[start:])
+    out = (HEADER % {"title": title}) + (lead + "\n\n" if lead else "") + body
 
     # Summary becomes a real abstract, via macros so pandoc keeps parsing the markdown.
     out = out.replace("## Summary\n", "\\babstract\n\n", 1)

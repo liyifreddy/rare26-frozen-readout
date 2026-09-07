@@ -19,7 +19,11 @@ def norm(s,pdf=False):
     else:
         s=re.sub(r"-\n\s*","-",s)               # markdown hard wrap: keep the real hyphen
         s=re.sub(r"-{2,}","-",s)                # LaTeX turns -- and --- into dashes
-    s=re.sub(r"[`*_#]","",s); s=s.translate(BASE)
+    # Bullet glyphs, not just the markdown markers. pandoc renders "* item" with a
+    # bullet character, and that glyph survives on the PDF side only, so a list that is
+    # otherwise identical fails to match. This was most of the misses reported on
+    # 2026-09-07, none of which was a real difference in content.
+    s=re.sub(r"[`*_#•·●▪–]","",s); s=s.translate(BASE)
     s=re.sub(r"\s+"," ",s).strip()
     # Compared with whitespace and hyphens removed. Both differ between the two sides
     # for typesetting reasons alone: LaTeX breaks long URLs at hyphens and pdftotext
@@ -30,8 +34,35 @@ def norm(s,pdf=False):
     return re.sub(r"[\s-]+","",s)
 md=io.open(sys.argv[1],encoding="utf-8").read().replace("\r\n","\n")
 Pn=norm(io.open(sys.argv[2],encoding="utf-8").read(),True)
-paras=[p for p in md.split("\n\n") if p.strip() and not p.strip().startswith(("|","#","```"))
-       and len(p.split())>12]
+# HTML comments are notes to whoever maintains the source. They are not supposed to reach
+# the PDF, so strip them before splitting rather than reporting each one as missing.
+md=re.sub(r"<!--.*?-->","",md,flags=re.S)
+
+def units(block):
+    """One comparison unit per paragraph, and one per list item.
+
+    A bullet list is a single markdown block but renders as separate lines. Holding the
+    whole list as one unit means any single item that reflows fails the entire block with
+    no indication which item it was. Items are compared on their own, with a lower length
+    floor because an item is a phrase rather than a paragraph. That widens what the gate
+    checks; it does not relax what it accepts.
+    """
+    lines=block.split("\n")
+    if not any(re.match(r"\s*[*+-]\s+",l) for l in lines):
+        return [block] if len(block.split())>12 else []
+    out,cur=[],[]
+    for l in lines:
+        if re.match(r"\s*[*+-]\s+",l):
+            if cur: out.append("\n".join(cur))
+            cur=[l]
+        else:
+            cur.append(l)
+    if cur: out.append("\n".join(cur))
+    return [u for u in out if len(u.split())>3]
+
+paras=[u for p in md.split("\n\n") if p.strip()
+       and not p.strip().startswith(("|","#","```"))
+       for u in units(p)]
 miss=[norm(p) for p in paras if norm(p) not in Pn]
 probe="A sentence deliberately absent from the rendered document."
 extra=len([p for p in paras+[probe] if norm(p) not in Pn])
