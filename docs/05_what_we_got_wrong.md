@@ -11,26 +11,56 @@ reproduce this, and what the metric itself did to us.
 
 ## What changes how a number here should be read
 
-The letter classes used below (A+, A-, B+, B-, C, D, E) are defined in `00_evaluation_protocol.md` and counted family by family in `07_verdict_counts.md`. The README folds them into four plain groups; `better` there is A+ and B+ together, `worse` is A- and B-, and `could not separate` is C and D.
+The letter classes used below (A+, A-, B+, B-, C, D, E) are defined in
+`00_evaluation_protocol.md` and counted family by family in `07_verdict_counts.md`. The
+README folds them into four plain groups; `better` there is A+ and B+ together, `worse` is
+A- and B-, and `could not separate` is C and D.
 
 **The verdict columns are AUROC classifications, and the rule is stricter than an early
 draft of our own documentation said.** The seven-class table in `00_evaluation_protocol.md`
 once stated the A+ condition as "at least one direction at or above the threshold". The
 classifier requires both. The published counts were always produced by the code, so no
 number moved, but the written rule described a weaker bar than the one applied. Under the
-weaker rule the largest grid would read A+ 22 / A− 53 / B± 7 instead of 17 / 51 / 14. The
+weaker rule the largest grid would read A+ 22 / A- 53 / B± 7 instead of 17 / 51 / 14. The
 rule is now stated as the code implements it, and the code is published as `src/verdict.py`
 so you do not have to take the prose for it.
 
-**The grouping script in this repository did not reproduce the grouping the results were built on, and nobody had checked.** Pseudo-patient groups decide every split and every resampling unit in the evaluation, so they sit under all of it. `src/grouping.py` drew its features through the deployment resize, original to 512 to 224; the cached features the published grouping was actually built from went straight to 224. Same threshold, same mutual-neighbor rule, same graph code -- we checked that by running both implementations on both feature sets and getting identical partitions each time -- but the two resizes put 34 of the 3095 images, 1.1%, into different groups, because those images sit right at the threshold. Neither resize is the correct one: grouping asks which frames are near-duplicates of each other, which is a different question from what the model sees at inference. The script now uses the resize the published results were built on and reproduces them image for image. Before changing it we re-ran the one conclusion this project actually rests on, per-position scoring against global average pooling, under both groupings: detectably positive in both cross-center directions either way, so it does not depend on the choice. That check held the shrinkage coefficient fixed, and the coefficient had itself been selected under one of the two groupings, so it says the conclusion is insensitive to the grouping, not that the whole pipeline is.
+**The grouping script in this repository did not reproduce the grouping the results were
+built on, and nobody had checked.** Pseudo-patient groups decide every split and every
+resampling unit in the evaluation, so they sit under all of it. `src/grouping.py` drew its
+features through the deployment resize, original to 512 to 224; the cached features the
+published grouping was actually built from went straight to 224. Same threshold, same
+mutual-neighbor rule, same graph code — we checked that by running both implementations
+on both feature sets and getting identical partitions each time — but the two resizes put
+34 of the 3095 images, 1.1%, into different groups, because those images sit right at the
+threshold. Neither resize is the correct one: grouping asks which frames are
+near-duplicates of each other, which is a different question from what the model sees at
+inference. The script now uses the resize the published results were built on and
+reproduces them image for image. Before changing it we re-ran the one conclusion this
+project actually rests on, per-position scoring against global average pooling, under both
+groupings: detectably positive in both cross-center directions either way, so it does not
+depend on the choice. That check held the shrinkage coefficient fixed, and the coefficient
+had itself been selected under one of the two groupings, so it says the conclusion is
+insensitive to the grouping, not that the whole pipeline is.
 
-**The largest grid counts 65 comparisons of a configuration against itself.** In `d1_all_backbones.json` the pooling axis includes `top 1 position` and `top 2% of positions (k = 1)`, which on a 7x7 grid are the baseline operator itself. Their paired difference is exactly zero in both directions at every shrinkage value, so 65 of the 616 cells carry six zeros and no information. All 65 fall in class C, which is the class for a comparison the intervals rule out; a configuration compared with itself is not ruled out, it was never a comparison. The published row therefore reads C 397 where the informative count is 332; A+, A-, B+, B-, D and E are untouched, which is why no claim in the report moves. We have not changed the published number, because one rule applied inconsistently across families is worse than one rule applied openly, and the two grids that are deduplicated say so in their own annotation. `07_verdict_counts.md` records the same thing from the counting side.
+**The largest grid counts 65 comparisons of a configuration against itself.** In
+`d1_all_backbones.json` the pooling axis includes `top 1 position` and `top 2% of
+positions (k = 1)`, which on a 7x7 grid are the baseline operator itself. Their paired
+difference is exactly zero in both directions at every shrinkage value, so 65 of the 616
+cells carry six zeros and no information. All 65 fall in class C, which is the class for a
+comparison the intervals rule out; a configuration compared with itself is not ruled out,
+it was never a comparison. The published row therefore reads C 397 where the informative
+count is 332; A+, A-, B+, B-, D and E are untouched, which is why no claim in the report
+moves. We have not changed the published number, because one rule applied inconsistently
+across families is worse than one rule applied openly, and the two grids that are
+deduplicated say so in their own annotation. `07_verdict_counts.md` records the same thing
+from the counting side.
 
 **The domain-shift page described its adoption rule as one condition when three were
 registered.** All three are in the script header that produced the numbers; the page
 published the second and called it the criterion. The two it dropped were the two that
 could reject, so the published rule was weaker than the one we ran under. No verdict
-changes -- nothing was adopted either way -- but a page whose subject is protocol
+changes — nothing was adopted either way — but a page whose subject is protocol
 discipline got its own protocol wrong, and that is the kind of error this report exists
 to make findable.
 
@@ -63,11 +93,13 @@ rule, this is the failure mode to guard first.
 
 ## What will cost you time if you reproduce this
 
-**The 49 positions of one image are not independent.** Treating them as samples makes the
-ratio of samples to dimensions look like 2.51 falling to 0.057 across a change that in
-effect moves it to 0.35. The head is fitted with the positions as samples for the
-within-class scatter, which is the point of the design, but any sample-size argument built
-on 49n is wrong by roughly a factor of five.
+**The 49 positions of one image are not independent.** Counting each position as a sample
+puts the ratio of samples to dimensions at 2.51, and moving to a wider feature map appears
+to drop it to 0.057. Both figures are inflated by the same factor, because the 49
+positions of one image carry far less information than 49 independent samples: the honest
+ratio at the second setting is nearer 0.35. The head is fitted with the positions as
+samples for the within-class scatter, which is the point of the design, but any
+sample-size argument built on 49n is wrong by roughly a factor of five.
 
 **Training and serving do not preprocess identically, and the difference is not free.**
 Training resizes through PIL; the container uses `torch.nn.functional.interpolate` with
@@ -94,8 +126,8 @@ to the baseline, which is usually the thing being tested.
 16-image sample; a case is a file of 384 frames. Every number in it was correct and none was
 about the quantity under discussion.
 
-**EVC is not a domain-shift target for this task.** The delivered pipeline scores AUROC
-0.9856 on it, higher than on our own cross-center split. We selected it to exhibit a shift
+**EVC, the EndoVis 2015 Barrett dataset, is not a domain-shift target for this task.**
+The delivered pipeline scores AUROC 0.9856 on it, higher than on our own cross-center split. We selected it to exhibit a shift
 and it does not have one. It is a good localization check, which is what it is used for here.
 
 **A color perturbation with no spatial term does not test an enhancement setting.** Our first
@@ -104,7 +136,7 @@ is about spatial enhancement. The published axes include sharpening and compress
 reason.
 
 **DINO's augmentations do not make the backbone invariant to color in any useful sense.** We
-carried that as known. Measured, sharpening displaces the features by 0.4952 of their norm
+carried that as known. Measured, unsharp masking displaces the features by 49.5% of their norm
 with essentially no change in AUROC. The features move a long way; the discriminant does not
 use those directions.
 
@@ -128,7 +160,11 @@ from the first week rather than assembled around it afterwards.
 
 ## One thing we cannot fix
 
-The method report submitted to the organizers spells one word the British way, `neighbouring`, in the sentence that takes the frozen-encoder setting from a neighboring low-data problem. The rest of this project is American English and the checker now catches that form, but the submitted PDF is the submitted PDF and we are not going to reissue it over a vowel. The copy in this repository is correct.
+The method report submitted to the organizers spells one word the British way,
+`neighbouring`, in the sentence that takes the frozen-encoder setting from a neighboring
+low-data problem. The rest of this project is American English and the checker now catches
+that form, but the submitted PDF is the submitted PDF and we are not going to reissue it
+over a vowel. The copy in this repository is correct.
 
 ## One process note
 
@@ -136,12 +172,15 @@ Several checks in this project reported success without having examined anything
 container verification that exited zero while the container engine was not running, a scanner
 that reported all clear after matching no files, a rule that passed on a direction with
 nothing in it to separate. Every gate in this repository is now run twice — once against a
-deliberately broken input to prove it reports red, then once for real — and two of the
-seven were found that way rather than by accident. If you use the checks here, run them that way
+deliberately broken input to prove it reports red, then once for real — and two of them
+were found that way rather than by accident. If you use the checks here, run them that way
 too; a gate that cannot report failure is worse than no gate, because its output is taken as
 evidence.
 
-Registering a rule before running the comparison turned out to do more than stop us rewriting it afterwards. Writing it down means turning it into a condition something can evaluate, and doing that is when we found that the baseline did not sit where we had assumed. A rule kept in the head never has to be that specific.
+Registering a rule before running the comparison turned out to do more than stop us
+rewriting it afterwards. Writing it down means turning it into a condition something can
+evaluate, and doing that is when we found that the baseline did not sit where we had
+assumed. A rule kept in the head never has to be that specific.
 
 The self test was then found broken twice, and neither time by running it. In one gate
 the self test sat behind a branch that could never be taken, so the check that proves

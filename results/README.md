@@ -85,15 +85,15 @@ their own terms, not here.
 
 ## How the verdict columns were computed
 
-The A+ / A− / B± / C / D / E columns in `docs/02_backbones.md` and in the report are
+The A+ / A- / B± / C / D / E columns in `docs/02_backbones.md` and in the report are
 produced from these files by one classifier, on the AUROC difference, with a detection
 threshold of 0.0165. That classifier is published as `src/verdict.py`; running
 `python src/verdict.py --demo` reproduces the `d1_all_backbones` row and exits non-zero if
 it does not. The rule it applies:
 
 * **A+** both directions detectable, both positive, and **both** at or above 0.0165
-* **A−** the same with both negative
-* **B+ / B−** both directions detectable and agreeing in sign, at least one below 0.0165
+* **A-** the same with both negative
+* **B+ / B-** both directions detectable and agreeing in sign, at least one below 0.0165
 * **E** the two directions disagree in sign and at least one is detectable at or above 0.0165
 * **C** both intervals lie wholly inside the threshold band
 * **D** everything else

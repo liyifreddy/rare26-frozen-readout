@@ -5,15 +5,24 @@ Independent researcher, Darmstadt, Germany
 M.Sc. Computer Science, Technical University of Darmstadt, 2026
 Code: https://github.com/liyifreddy/rare26-frozen-readout
 
+<!-- The date and the entry name below are literals, not measured values: they come from
+     the provenance fields of results/p31_platform_leaderboard.json, which record the
+     2026-08-31 submission. The four places named as additions are literals too; if the
+     scope of the additions changes, this paragraph has to change with it. -->
+
 Submitted to the RARE26 open development phase on 2026-08-31, as the entry "Frozen
 GastroNet DINO ResNet 50 + Patch wise Shrinkage LDA": a container carrying the frozen
 backbone and the fitted head in `container/resources/head.npz`. **This document has been
-extended since that date, and the added material is not part of what was submitted.** The
-additions are the paragraph in section 6 on where the two keys disagree about our own adopted
-change; the section "What it does not buy" in `docs/00_evaluation_protocol.md` and the two
-figures it carries; the paragraph and figure added to `docs/06_domain_shift_attribution.md`;
-and the files listed under "Run after the submission" in `results/README.md`. Everything
-else stands as it was submitted.
+extended since that date, and the added material is not part of what was submitted.** Four
+things were added:
+
+* the paragraph in section 6 on where the two keys disagree about our own adopted change
+* the section "What it does not buy" in `docs/00_evaluation_protocol.md`, and the two
+  figures it carries
+* the paragraph and figure added to `docs/06_domain_shift_attribution.md`
+* the files listed under "Run after the submission" in `results/README.md`
+
+Everything else stands as it was submitted.
 
 ## Summary
 
@@ -44,7 +53,7 @@ supports, and we list the mistakes it failed to catch.
 
 ## How to read this report
 
-Every number here is inserted by a script, not typed by hand. The repository holds the
+Every number here is inserted by a script. The repository holds the
 table that maps each one to its source, together with the code that generates it. Most of
 those sources are result files in the repository; the rest are the published classifier,
 the fitting code, or something outside it, and the repository lists that last group by name
@@ -144,7 +153,8 @@ wide the confidence intervals turn out to be.
 ## 3. Why the encoder is frozen
 
 With 158 positive images, fine-tuning a large encoder is not the right use of
-the data. The binding constraint is the quality of the representation, not the capacity to
+the data. The binding constraint is the quality of the representation rather than the
+capacity to
 fit. A network with tens of millions of free parameters and a few hundred positives will
 find the training set long before it finds the disease.
 
@@ -156,16 +166,19 @@ about optimization.
 
 Eleven sets of pretrained weights were extracted once and reused across every experiment.
 Eight come from the provider's listing and were pretrained on gastrointestinal images:
-ResNet-50 [9] with DINOv1 [11] on the full 5M corpus, on a 1M subset, and on a 200K subset;
-ResNet-50 with MoCo v2 [13, 14] and with SimCLR v2 [15, 16]; ResNet-50 initialized from
-billion-scale semi-supervised weights [17] and then pretrained in domain with DINOv1;
-ViT-S [10] with DINOv1; and ViT-B with DINOv2 [12]. Three more are ImageNet-1k baselines
-carried for contrast: a supervised ResNet-50, a DINO ResNet-50, and a DINO ViT-S. Section 6
-reports every experiment across all eleven, and `docs/02_backbones.md` in the repository
-carries the per-backbone results.
 
-Two boundary conditions are worth stating, though neither is the reason for the choice.
-The pretrained weights come with a data use agreement that permits academic research and
+* ResNet-50 [9] with DINOv1 [11], on the full 5M corpus, on a 1M subset, and on a 200K subset
+* ResNet-50 with MoCo v2 [13, 14], and with SimCLR v2 [15, 16]
+* ResNet-50 initialized from billion-scale semi-supervised weights [17], then pretrained in
+  domain with DINOv1
+* ViT-S [10] with DINOv1, and ViT-B with DINOv2 [12]
+
+Three more are ImageNet-1k baselines carried for contrast: a supervised ResNet-50, a DINO
+ResNet-50, and a DINO ViT-S. Section 6 reports every experiment across all eleven, and
+`docs/02_backbones.md` in the repository carries the per-backbone results.
+
+Two boundary conditions shaped what was possible, though neither is the reason for the
+choice. The pretrained weights come with a data use agreement that permits academic research and
 forbids redistribution, so they are declared but not shipped with our code. Compute was a
 single laptop GPU, which rules out repeated pretraining runs but not the experiments we
 actually ran, since the encoder is frozen and features are extracted once.
@@ -247,9 +260,9 @@ directions together, not by eyeballing point estimates:
 | Class | Meaning | Condition |
 |---|---|---|
 | A+ | established (improvement) | Both directions detectable and positive, and both at or above the threshold |
-| A− | established (degradation) | Both directions detectable and negative, and both at or above the threshold |
+| A- | established (degradation) | Both directions detectable and negative, and both at or above the threshold |
 | B+ | directional, below practical threshold | Both directions detectable and positive, at least one below the threshold |
-| B− | directional, below practical threshold | Both directions detectable and negative, at least one below the threshold |
+| B- | directional, below practical threshold | Both directions detectable and negative, at least one below the threshold |
 | C | ruled out | Both intervals lie wholly inside the threshold band |
 | D | tested, not detected | Anything else |
 | E | direction conflict | Directions disagree in sign, at least one detectable and large |
@@ -289,7 +302,7 @@ distribution it samples from, and ours samples from two retrospective Dutch cent
 
 ## 6. What we tried, and what each thing did
 
-| Experiment family | Backbones | Cells | A+ | A− | B± | C | D | E | double-key conflicts | Verdict | Source |
+| Experiment family | Backbones | Cells | A+ | A- | B± | C | D | E | double-key conflicts | Verdict | Source |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Read-out basis x component (E3) | 11 | 474 (96 dup removed) | 39 | 14 | 28 | 101 | 259 | 33 | 86 | 39 improve in both directions, 14 degrade | `e3_basis_component.json` |
 | Layer 3+4 replication (E3b) | 8 | 192 (96 dup removed) | 0 | 7 | 5 | 32 | 148 | 0 | 43 | none improve, 7 degrade | `e3b_cnn_layer.json` |
@@ -318,13 +331,20 @@ decision rests on it.
 The table above is the whole record. This section says what the rows mean.
 
 **What the grid contained.** The read-out basis is how features are taken off the frozen
-network: for the convolutional backbones, the layer-4 spatial map or its global average;
-for the transformers, the last-layer patch grid, a two-block patch concatenation, the class
-token broadcast into every patch, the class token alone, a four-block class-token
-concatenation, and the DINOv2 pairing of class token with the patch mean. The component
-menu crosses four axes. The first is a signed power transform, sign(x) times |x|^0.5,
-applied per dimension before the head [20]. The second is the shrinkage coefficient of the
-discriminant, swept from 0.02 to 0.90, with the Ledoit-Wolf [21] and oracle-approximating
+network. For the convolutional backbones there are two: the layer-4 spatial map, or its
+global average. For the transformers there are six:
+
+* the last-layer patch grid
+* a two-block patch concatenation
+* the class token broadcast into every patch
+* the class token alone
+* a four-block class-token concatenation
+* the DINOv2 pairing of class token with the patch mean
+
+The component menu crosses four axes. The first is a signed power transform, sign(x)
+times |x|^0.5, applied per dimension before the head [20]. The second is the shrinkage
+coefficient of the discriminant, swept from 0.02 to 0.90, with the Ledoit-Wolf [21] and
+oracle-approximating
 [22] estimators as alternatives to a swept value. The third is the scope the head is fitted
 on. The fourth is the pooling rule that turns 49 position scores into one image score: the
 global average, the maximum, the top 2%, 5% and 10% of positions [23, 24], log-sum-exp at
@@ -342,7 +362,7 @@ directions on all three read-outs. Under true cross-center evaluation it moves A
 +0.0486 and +0.0163, specificity at 90%
 recall by +0.2069 and +0.0682, and the ranking
 metric by +0.0512 and +0.4169. Residual false
-positives at 90% sensitivity fall by 66.9% and
+positives at 90% recall fall by 66.9% and
 89.3%.
 
 **The change we adopted sits at the practical threshold on one key and far above it on
@@ -372,7 +392,7 @@ matches the container's own output to within 4.917e-07 per image with
 0 rank changes.
 
 **Component improvements exist, and none of them is on the backbone we ship.** Across
-every family in Table 3, 61 cells improve in both directions. All but
+every family in the table that opens section 6, 61 cells improve in both directions. All but
 1 of them are on a ViT, and the exception is on out-of-domain CNN
 weights. On the delivered backbone the count is 0. Ten alternative
 backbones, seven read-outs and the choice of layer produced no configuration that is
@@ -403,7 +423,7 @@ converge is 0. We report this as a negative result about the
 procedure, not as support for the configuration we happened to start from.
 
 **Label noise costs the ranking metric one to two orders of magnitude more than it costs
-AUC.** We flipped labels on the training set at increasing rates, in two ways: uniformly
+AUROC.** We flipped labels on the training set at increasing rates, in two ways: uniformly
 within each class, which is the setting Menon et al. analyze, and preferentially on the
 hardest positives, which is closer to how annotators actually disagree. Training used the
 flipped labels; evaluation always used the true ones. At a 5% flip rate the ranking metric
@@ -471,7 +491,13 @@ No layer of it is fine-tuned.
 | RARE26 validation | 0.0152 [0.0104, 0.0306] | 0.411 | 0.7700 [0.6354, 0.8968] |
 | Random ranking | 0.0100 | 0.100 | 0.5000 |
 
-Intervals on the two validation rows are the challenge evaluator's own bootstrap. The cross-center rows carry none: what was recorded there is the interval on the paired difference against global average pooling, which is a different quantity. The two validation rows are the 2026-08-31 submission on the Open Development Phase leaderboard, https://rare26.grand-challenge.org/evaluation/open-development-phase/leaderboard/ , recorded as read on that date because the page carries several submissions per entrant and reorders as others submit.
+Intervals on the two validation rows are the challenge evaluator's own bootstrap. The
+cross-center rows carry none: what was recorded there is the interval on the paired
+difference against global average pooling, which is a different quantity. The two
+validation rows are the 2026-08-31 submission on the Open Development Phase leaderboard,
+https://rare26.grand-challenge.org/evaluation/open-development-phase/leaderboard/ ,
+recorded as read on that date because the page carries several submissions per entrant and
+reorders as others submit.
 
 On the challenge validation set the pipeline scores AUROC 0.7700 with a
 95% interval of [0.6354, 0.8968], and
@@ -532,13 +558,18 @@ collections. Neither is something a pre-processing step can repair, and we hold 
 from the target distribution with which to learn one.
 
 We also tested four modules intended to buy robustness to acquisition differences:
-Shades-of-Gray color constancy at Minkowski p = 6 [33]; a Retinex-style low-frequency
-division, which removes slow illumination gradients and leaves local contrast intact [34];
-a projection of the features onto the orthogonal complement of the directions our own
-perturbations excite, which is an upper bound rather than a deployable estimate because the
-subspace is learned on the same perturbation family; and color test-time augmentation. Two are
-detectably worse in one direction. The other two are not detectably worse on either key,
-but their point estimates on the ranking metric are negative in both directions, and the
+
+* Shades-of-Gray color constancy at Minkowski p = 6 [33]
+* a Retinex-style low-frequency division, which removes slow illumination gradients and
+  leaves local contrast intact [34]
+* a projection of the features onto the orthogonal complement of the directions our own
+  perturbations excite. This one is an upper bound rather than a deployable estimate,
+  because the subspace is learned on the same perturbation family it is tested against.
+* color test-time augmentation
+
+Two are detectably worse in one direction. The other two are not detectably worse on
+either key, but their point estimates on the ranking metric are negative in both
+directions, and the
 intervals are wide enough that "not detectably worse" carries very little information here:
 across eight cells, the number in which the ranking metric detects any difference at all is
 0. We did not adopt any of them. Their code and their numbers are
@@ -561,15 +592,31 @@ heart of the metric explains the label-noise result, the size of the confidence 
 and why almost nothing we tried could be distinguished. A protocol built around that fact
 from day one would have set different thresholds and asked for different sample sizes.
 
-**Build gates that can fail.** Six checks in this project reported success without having
-examined anything: a verification script that exited zero when the container engine was not
-running, a repository scanner that reported all clear after matching no files, a placeholder
-check that recognized one of the two markers actually present in the text, a registration
-block that wrote nothing and exited zero, an adoption rule that passed on a direction with
-nothing in it to separate, and a check that read its own success as failure because the
-command it used prints a matching line for negation rules too. The first four were found by
-accident. The last two were found on purpose, once we started running every gate twice: once
-against a deliberately broken input to prove it reports red, then once for real. A gate that
+<!-- "Five" here, and "sixth" in the paragraph after it, count the items listed in this
+     paragraph. They are literals, not measured values, so adding or removing an item
+     means changing the word. Until 2026-09-07 this read "Six", because it counted a
+     check that failed in the opposite direction as if it were one of the same kind.
+     docs/05_what_we_got_wrong.md carries that correction in full. -->
+
+**Build gates that can fail.** Five checks in this project reported success without having
+examined anything:
+
+* a verification script that exited zero when the container engine was not running
+* a repository scanner that reported all clear after matching no files
+* a placeholder check that recognized one of the two markers actually present in the text
+* a registration block that wrote nothing and exited zero
+* an adoption rule that passed on a direction with nothing in it to separate
+
+The first four were found by accident. The fifth was found on purpose, once we started
+running every gate twice: once against a deliberately broken input to prove it reports red,
+then once for real.
+
+A sixth check failed in the opposite direction, and it is worth separating from the other
+five. It read its own success as failure, because the command it used prints a matching
+line for negation rules too. A check that passes without looking costs you a problem you
+never see; a check that fails without cause costs you a working check, because the natural
+response is to weaken or delete it. The second kind is rarer and easier to act on wrongly,
+and running every gate against a broken input catches it as readily as the first kind. A gate that
 cannot report failure is worse than no gate, because it is mistaken for evidence. The errors
 from this project that still matter to a reader are in the repository at
 `docs/05_what_we_got_wrong.md`.
@@ -761,4 +808,15 @@ competing interests.
 
 References 1 to 5 are required by section 4 of the data use agreement covering the pretrained weights, which asks that the dataset and every publication listed on the provider's page be cited.
 
-The list above and `refs.bib` are both generated from `refs.json` by `tools/make_refs.py`, and `tools/gate_citations.py` refuses to let them drift. The counts differ on purpose: `refs.json` holds 41 entries and `refs.bib` holds 36. The 5 that are absent, entries 37 through 41, are absent for one reason only: this report does not cite them, and the list is generated from what this report cites. That is not a claim about the state of the work behind them, which varies. Each carries a `conditional_on` field naming the work that would cite it, and a `source_note` recording where that work currently stands.
+<!-- 41, 36, 5 and "37 through 41" count entries in refs.json and refs.bib. They are
+     literals, not measured values. Checks 2 and 5 in tools/gate_citations.py keep those
+     two files consistent with each other mechanically, but nothing checks the numbers in
+     this paragraph, so adding or removing an entry means editing them by hand. -->
+
+The list above and `refs.bib` are both generated from `refs.json` by `tools/make_refs.py`,
+and `tools/gate_citations.py` refuses to let them drift. The counts differ on purpose:
+`refs.json` holds 41 entries and `refs.bib` holds 36. The 5 that are absent, entries 37
+through 41, are absent for one reason only: this report does not cite them, and the list
+is generated from what this report cites. That is not a claim about the state of the work
+behind them, which varies. Each carries a `conditional_on` field naming the work that
+would cite it, and a `source_note` recording where that work currently stands.

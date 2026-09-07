@@ -48,9 +48,9 @@ two directions taken together.
 | Class | Meaning | Condition |
 |---|---|---|
 | A+ | established (improvement) | Both directions detectable and positive, and both at or above the threshold |
-| A− | established (degradation) | Both directions detectable and negative, and both at or above the threshold |
+| A- | established (degradation) | Both directions detectable and negative, and both at or above the threshold |
 | B+ | directional, below practical threshold | Both directions detectable and positive, at least one below the threshold |
-| B− | directional, below practical threshold | Both directions detectable and negative, at least one below the threshold |
+| B- | directional, below practical threshold | Both directions detectable and negative, at least one below the threshold |
 | C | ruled out | Both intervals lie wholly inside the threshold band |
 | D | tested, not detected | Anything else |
 | E | direction conflict | Directions disagree in sign, at least one detectable and large |
@@ -92,9 +92,14 @@ there is no distribution behind it to draw. The figure below shows the two curve
 measure and marks the challenge's share as a flat line, because drawing a fitted curve
 there would put a model beside two measurements with nothing to tell them apart.
 
+One thing has to be read with the figure. Each direction's scores are standardized against
+that direction's own negatives, so the two tails should coincide, and they do. The 10.6%
+and the 0.8% therefore differ because the thresholds fall at different points on one
+shared shape, not because the negatives of the two centers are distributed differently.
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/negtail_dark.svg">
-  <img src="figures/negtail_light.svg" alt="Survival curves of the negative scores for both cross-center directions on a log axis, each marked at its own operating threshold, with the challenge validation set's implied share drawn as a flat dotted line.">
+  <img src="figures/negtail_light.svg" alt="Survival curves of the negative scores for both cross-center directions on a log axis, nearly coinciding because each is standardized against its own negatives, each marked at its own operating threshold, with the challenge validation set's implied share drawn as a flat dotted line well above both.">
 </picture>
 
 Drawn by `tools/make_figures.py` from `p39_negative_tail.json`, which stores the curves on
@@ -113,13 +118,13 @@ sensitivity falls from 0.9917 to 0.9527. Two further variants, bilinear and bicu
 subdivision of the position grid, have positive AUROC point estimates in that same
 direction and lose about a third of the ranking metric. The ranking metric cannot referee
 any of this: all six of its paired intervals contain zero, and the baseline's own interval
-is 0.1199 to 0.7657. Specificity at 90 percent recall in that direction is set by six false
+is 0.1199 to 0.7657. Specificity at 90% recall in that direction is set by six false
 positives out of 719 negatives, so one image is worth 0.0014 of it. The read-outs are in
 `p38_grid_subdivision.json`.
 
 Read the letters accordingly. `C` means ruled out on the AUROC scale at the registered
 threshold. On the ranking metric the same comparisons establish nothing and rule out
 nothing. Neither key is the safe one: the AUROC scale hides threshold damage, and the
-ranking metric is too noisy to see it. The asymmetry that leaves is worth stating plainly.
-The one finding this report advances as a conclusion clears both keys. The letters that
-rule things out are written on one key alone.
+ranking metric is too noisy to see it. The one finding this report advances as a
+conclusion clears both keys; the letters that rule things out are written on one key
+alone.

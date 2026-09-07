@@ -26,7 +26,7 @@ is detectably better in both directions.
 
 ## Results
 
-The A+ / A− / B± / C / D / E columns classify each cell on **AUROC**. The result files
+The A+ / A- / B± / C / D / E columns classify each cell on **AUROC**. The result files
 for these grids record the difference in the ranking metric as a point estimate without an
 interval, so the ranking metric cannot be used for detectability here; where a separate
 run did provide both, the E3 A+ count under the two-key rule is 36 rather than 39. The
@@ -34,7 +34,7 @@ run did provide both, the E3 A+ count under the two-key rule is 36 rather than 3
 ranking-metric point estimate disagree in sign. A dash means the conflict count was not
 recorded for that family.
 
-| Experiment family | Backbones | Cells | A+ | A− | B± | C | D | E | double-key conflicts | Verdict | Source |
+| Experiment family | Backbones | Cells | A+ | A- | B± | C | D | E | double-key conflicts | Verdict | Source |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | Read-out basis x component (E3) | 11 | 474 (96 dup removed) | 39 | 14 | 28 | 101 | 259 | 33 | 86 | 39 improve in both directions, 14 degrade | `e3_basis_component.json` |
 | Layer 3+4 replication (E3b) | 8 | 192 (96 dup removed) | 0 | 7 | 5 | 32 | 148 | 0 | 43 | none improve, 7 degrade | `e3b_cnn_layer.json` |
@@ -70,15 +70,15 @@ replacement backbone would actually have to win. Thirteen candidates were taken 
 | RN50-SWSL | A3 | -0.0285 | -0.2550 | -0.0086 | -0.0073 | D | D |
 | RN50-1M | A1 | -0.0078 | -0.1688 | +0.0024 | +0.0033 | D | D |
 | RN50-200K | A1 | -0.0478 | -0.1688 | -0.0517 | +0.0017 | D | E |
-| RN50-MOCOv2 | A1 | -0.0411 | -0.4450 | -0.0596 | -0.0437 | D | A− |
-| RN50-MOCOv2 | A3 | -0.0441 | -0.4680 | -0.0408 | -0.0283 | D | A− |
-| RN50-SIMCLRv2 | A1 | -0.0508 | -0.4936 | -0.0914 | -0.0762 | A− | A− |
-| RN50-in1k-sup | A1 | -0.0660 | -0.5050 | -0.2250 | -0.1942 | A− | A− |
-| RN50-in1k-dino | A1 | -0.0604 | -0.4854 | -0.1308 | -0.0704 | A− | A− |
-| ViTS-in1k-dino | B1 | -0.0640 | -0.5026 | -0.2218 | -0.1315 | A− | A− |
-| ViTS-in1k-dino | B6 | -0.0638 | -0.5034 | -0.1681 | -0.1088 | A− | A− |
+| RN50-MOCOv2 | A1 | -0.0411 | -0.4450 | -0.0596 | -0.0437 | D | A- |
+| RN50-MOCOv2 | A3 | -0.0441 | -0.4680 | -0.0408 | -0.0283 | D | A- |
+| RN50-SIMCLRv2 | A1 | -0.0508 | -0.4936 | -0.0914 | -0.0762 | A- | A- |
+| RN50-in1k-sup | A1 | -0.0660 | -0.5050 | -0.2250 | -0.1942 | A- | A- |
+| RN50-in1k-dino | A1 | -0.0604 | -0.4854 | -0.1308 | -0.0704 | A- | A- |
+| ViTS-in1k-dino | B1 | -0.0640 | -0.5026 | -0.2218 | -0.1315 | A- | A- |
+| ViTS-in1k-dino | B6 | -0.0638 | -0.5034 | -0.1681 | -0.1088 | A- | A- |
 
-A− means detectably worse in both directions; E means the effect reverses with the training center; D means tested but not detected. A+ occurs nowhere in this table.
+A- means detectably worse in both directions; E means the effect reverses with the training center; D means tested but not detected. A+ occurs nowhere in this table.
 
 Across every family, 61 cells improve in both directions. All but
 1 are on a ViT, and the exception is on out-of-domain convolutional
@@ -101,4 +101,4 @@ follows the specific weights rather than the architecture family.
 Every result here is conditional on a set of basis choices that were never shown to be
 optimal. That limitation applies symmetrically to all eleven backbones, which is why the
 comparison is still meaningful, but it means "not detectably better" is a statement about
-this configuration space and this sample size, not a general ranking.
+this configuration space and this sample size; read it no wider than that.

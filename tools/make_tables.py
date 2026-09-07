@@ -323,7 +323,7 @@ def write_inventory(rows):
          "`07_verdict_counts.md` says how each comparison came out. This page says what was "
          "compared.", "",
          "## The eleven sets of pretrained weights", "",
-         "These are an axis inside most families, not a family of their own. That is why a "
+         "These are an axis inside most families rather than a family of their own. That is why a "
          "row in the README covering three families can hold several hundred comparisons: "
          "each family crosses these eleven with something else.", "",
          "| Weights | Architecture | Corpus | Pretraining |", "|---|---|---|---|",
@@ -395,6 +395,15 @@ def write_tables(rows):
         f"**{c[g]}**" for g, _ in GROUPS[:3])
         + f" | **{c['could not separate']} ({100*c['could not separate']/n_all:.0f}%)** |")
     inject(ROOT / "README.md", "verdict-table", "\n".join(L))
+    # The sentence under the table quotes the same share the table's last cell shows. It
+    # used to be written by hand and drifted to "four in five" against a table saying 77%.
+    # Anything a reader can check against a generated table has to be generated too.
+    inject(ROOT / "README.md", "could-not-separate",
+           "%d%% of the comparisons (%d of %d) landed in neither direction: the paired "
+           "interval failed to exclude zero in both cross-center directions, so the "
+           "comparison settled nothing."
+           % (round(100 * c["could not separate"] / n_all),
+              c["could not separate"], n_all))
 
     # --- docs/07: all sixteen, grouped, with what each varied ---
     M = []

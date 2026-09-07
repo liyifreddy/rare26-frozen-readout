@@ -1,8 +1,7 @@
 # What accounts for the gap between our evaluation and the challenge's
 
 Supplementary to the RARE26 method report. Everything here is produced by scripts in
-this repository's history; the summary in the report is one sentence pointing at this
-file.
+this repository's history; section 8 of the report summarizes what is attributed here.
 
 ## The gap
 
@@ -25,26 +24,23 @@ One caveat on that check: it closes for RARE26 but not for RARE25, where an AURO
 0.8430 predicts a PPV of 0.0201 against 0.0151 observed. On RARE25 the extra AUROC sits
 entirely in the easy region and the high-sensitivity tail is no better.
 
-Plotting the same model against the same measurement shows what the closure is worth and
-what it is not. Our leaderboard point sits on the curve, but it arrives with a 95%
-interval on each axis, and both are wide: AUROC 0.6354 to 0.8968, the ranking metric
-0.0104 to 0.0306. The clinical target, 90% sensitivity with 80% specificity converted to
-1% prevalence, is 4.35%, and reaching it on this curve takes an AUROC of 0.933. The upper
-end of our interval is 0.8968. The conclusion that we are short of the clinical threshold
-does not depend on where in that interval the truth lies.
+The figure below puts the model and the measurement on the same axes, which shows what
+the closure is worth and what it is not. On the curve, the model returns 0.0151 at the
+measured AUROC of 0.77 against the 0.0152 the leaderboard reports, which is the closure
+above seen as a picture rather than as a table. But the point arrives with a 95% interval on each axis, and both
+are wide: AUROC 0.6354 to 0.8968, the ranking metric 0.0104 to 0.0306. The clinical
+target, 90% sensitivity with 80% specificity converted to 1% prevalence, is 4.35%, and
+reaching it on this curve takes an AUROC of 0.933, which is 0.163 above where we are. The
+upper end of our interval is 0.8968. The conclusion that we are short of the clinical
+threshold does not depend on where in that interval the truth lies.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="figures/auroc_ppv_dark.svg">
   <img src="figures/auroc_ppv_light.svg" alt="The modeled relation between AUROC and PPV at 90% recall on a log axis, with chance, the clinical threshold, and our measured leaderboard point carrying 95% intervals on both axes.">
 </picture>
 
-Three readings from that figure, kept here rather than inside it because text drawn as a
-vector path cannot be selected, searched, or read aloud. At the measured AUROC of 0.77 the
-model returns 0.0151 against the 0.0152 the leaderboard reports, which is the closure
-described above seen on the curve rather than in the table. The gap from our point to the
-AUROC the clinical threshold needs is 0.163. And the upper end of our AUROC interval,
-0.8968, is still below the 0.933 the threshold needs, so the shortfall does not depend on
-where in the interval the truth lies.
+The numbers the figure draws are all in the paragraph above rather than inside the frame,
+because text drawn as a vector path cannot be selected, searched, or read aloud.
 
 The curve is a model and the caption says so; the point is measured on both axes. Drawn by
 `tools/make_figures.py`, which stops rather than draw if the model disagrees with the
@@ -76,6 +72,11 @@ Fraction of the gap reproduced, at plausible perturbation strength:
 | train c1, test c2 | JPEG | 2.1% | **68.6%** |
 | train c2, test c1 | sharpening | 0.4% | 33.8% |
 | train c1, test c2 | sharpening | -1.9% | 14.2% |
+
+One cell is negative: sharpening training on center 1 reproduces -1.9% of the gap on
+AUROC, meaning the perturbation left AUROC very slightly better than the unperturbed
+baseline rather than worse. A share of a gap can go negative for that reason, and the sign
+is the useful part of it: that axis is not moving AUROC at all in that direction.
 
 On AUROC the three axes together account for 15.7% of the gap in one direction and
 0.9% in the other, and even at strengths no processor would produce, color alone reaches
@@ -110,14 +111,24 @@ and cannot test the claim directly.
 
 ## The four candidate corrections, in full
 
-Adoption was pre-registered in the header of the script that produced these numbers,
-`scripts/P32_域位移稳健性.py`, as three conditions, all of which had to hold. The candidate
-had to be detectably better than the delivered pipeline under simulated acquisition shift,
-in both directions and at every perturbation strength; not detectably worse on unperturbed
-cross-center data, in both directions; and its advantage had to widen monotonically with
-perturbation strength rather than peak at one setting. That header is the whole registration
-for these four arms. It cites an earlier pre-registration, but for the discipline of writing
-rules down before running them, not for these particular conditions.
+Adoption was pre-registered as three conditions, all of which had to hold, in the header of
+the script that produced these numbers. That script is part of the private working tree and
+is not in this repository, so the registration is reproduced here in full rather than
+pointed at; these three lines are the whole registration for these four arms.
+
+> Registered before the run, all three required:
+>
+> 1. Under the artificial perturbation, the arm's loss is **detectably** smaller than
+>    arm A's (paired bootstrap, **required in both directions**).
+> 2. Without perturbation, neither cross-center direction is **detectably worse**.
+> 3. The loss narrows **monotonically** with perturbation strength, rather than spiking at
+>    one setting. (Reading only the maximum is a winner's curse across the settings.)
+>
+> If one of the three fails, the arm is not adopted. The script decides this itself and
+> leaves no room for interpretation after the fact.
+
+The header cites an earlier pre-registration, but for the discipline of writing rules down
+before running them, not for these particular conditions.
 
 The table below reports the second condition, because it is the one that separates the
 candidates here, and two of the four fail it: the Retinex division and the subspace
@@ -125,8 +136,8 @@ projection are detectably worse on unperturbed data in one direction.
 
 No candidate met the first condition. One cell came close and is worth naming, since anyone
 rerunning this will meet it: Shades-of-Gray is detectably better in one direction at the
-strongest perturbation setting, and in none of the other five cells. Requiring all six is
-the script's own rule, written into the code that evaluates the condition.
+strongest perturbation setting, and in none of the other five cells. The script itself requires all six, in the code that
+evaluates the condition.
 
 The third condition, monotonicity, is met by none of the three arms for which it could be
 computed. It was not assessed for color test-time augmentation, and neither was the first
@@ -136,11 +147,11 @@ unperturbed AUROC differences, +0.0002 and +0.0004, are not detectable either, s
 verdict does not turn on which ruler is used, but the comparison is not like-for-like.
 
 An earlier version of this page described the second condition alone as the whole criterion,
-and called that the pre-registered bar. It was not. The verdict is unchanged -- nothing was
-adopted under either reading -- but the description of the protocol was wrong, on a page
+and called that the pre-registered bar. It was not. The verdict is unchanged — nothing was
+adopted under either reading — but the description of the protocol was wrong, on a page
 about protocol. It is listed in `05_what_we_got_wrong.md`.
 
-| Candidate | ΔAUROC c2→c1 | ΔAUROC c1→c2 | ΔPPV@90R c2→c1 | ΔPPV@90R c1→c2 |
+| Candidate | ΔAUROC train c2 | ΔAUROC train c1 | ΔPPV@90R train c2 | ΔPPV@90R train c1 |
 |---|---|---|---|---|
 | Shades-of-Gray color constancy | +0.0013 [-0.0062, +0.0107] | +0.0046 [-0.0020, +0.0137] | -0.0189 [-0.0472, +0.0833] | -0.2550 [-0.5320, +0.1851] |
 | Retinex low-frequency division | -0.0258 [-0.0556, -0.0054] * | +0.0025 [-0.0031, +0.0100] | -0.0329 [-0.1105, +0.0073] | -0.3375 [-0.6460, +0.0637] |
