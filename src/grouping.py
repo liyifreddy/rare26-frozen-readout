@@ -52,8 +52,15 @@ def embeddings(files):
     m = m.to(DEV).eval().half()
 
     def dec(f):
-        im = Image.open(f).convert("RGB").resize((512, 512), Image.BILINEAR)
-        a = np.asarray(im.resize((224, 224), Image.BILINEAR), np.float32)
+        # One resize, straight to 224. Not the deployment path, which goes through 512
+        # first, and the difference is not cosmetic: it moves 34 of the 3095 images into
+        # different groups, because they sit right at the mutual-neighbor threshold.
+        # Grouping asks which frames are near-duplicates of each other, which is not the
+        # same question as what the model sees at inference, so neither resize is the
+        # obviously correct one. This is the one the published results were built on, and
+        # reproducing them is what this file is for. See docs/05_what_we_got_wrong.md.
+        a = np.asarray(Image.open(f).convert("RGB").resize((224, 224), Image.BILINEAR),
+                       np.float32)
         return (a / 255.0 - MEAN) / STD
 
     out = []

@@ -8,7 +8,7 @@ The six headings are an editorial grouping, for reading only. The sixteen famili
 |---|---|
 | A+ / A- | detectable in both cross-center directions, same sign, both at or above the practical threshold |
 | B+ / B- | detectable in both directions, same sign, at least one below the threshold |
-| C | both intervals lie wholly inside the threshold band, so the comparison is ruled out rather than unmeasured |
+| C | both intervals lie wholly inside the threshold band, so the comparison is ruled out rather than unmeasured. The band is defined on the AUROC scale, so this rules the comparison out on that scale and says nothing about the ranking metric; see `00_evaluation_protocol.md` |
 | D | tested, nothing detected |
 | E | the two directions disagree in sign |
 

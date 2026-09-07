@@ -5,6 +5,16 @@ Independent researcher, Darmstadt, Germany
 M.Sc. Computer Science, Technical University of Darmstadt, 2026
 Code: https://github.com/liyifreddy/rare26-frozen-readout
 
+Submitted to the RARE26 open development phase on 2026-08-31, as the entry "Frozen
+GastroNet DINO ResNet 50 + Patch wise Shrinkage LDA": a container carrying the frozen
+backbone and the fitted head in `container/resources/head.npz`. **This document has been
+extended since that date, and the added material is not part of what was submitted.** The
+additions are the paragraph in section 6 on where the two keys disagree about our own adopted
+change; the section "What it does not buy" in `docs/00_evaluation_protocol.md` and the two
+figures it carries; the paragraph and figure added to `docs/06_domain_shift_attribution.md`;
+and the files listed under "Run after the submission" in `results/README.md`. Everything
+else stands as it was submitted.
+
 ## Summary
 
 We report a submission to the RARE26 challenge, which asks for detection of early
@@ -334,6 +344,20 @@ recall by +0.2069 and +0.0682, and the ranking
 metric by +0.0512 and +0.4169. Residual false
 positives at 90% sensitivity fall by 66.9% and
 89.3%.
+
+**The change we adopted sits at the practical threshold on one key and far above it on
+the other.** Training on center 1 and testing on center 2 it moves AUROC by +0.0163
+against a practical-significance threshold of 0.0165, one percent short, while moving the
+ranking metric from 0.1045 to 0.5214, a factor of five. In the other direction it clears
+the AUROC threshold by a wide margin, +0.0486, and multiplies the ranking metric by 2.9.
+The threshold is defined on the AUROC scale, so falling short of it is a statement about
+that scale rather than about the size of the effect. Our own classifier therefore reads
+this comparison as B+, directional but below the practical threshold, and on the key the
+threshold is written in that reading is correct. The rule this change was adopted under,
+registered before the comparison was run, asked for a detectable improvement in both
+directions, and it meets that rule in both. This is the disagreement of section 1 arriving
+in our own result rather than in someone else's: the two keys do not merely differ in how
+noisy they are, they differ in what an effect of this size looks like.
 
 We then tried to break it five more ways. The gain concentrates in the hard positives and
 is near zero on the easy stratum, which is at ceiling, so it improves the images that set
@@ -736,3 +760,5 @@ competing interests.
 <!-- END references -->
 
 References 1 to 5 are required by section 4 of the data use agreement covering the pretrained weights, which asks that the dataset and every publication listed on the provider's page be cited.
+
+The list above and `refs.bib` are both generated from `refs.json` by `tools/make_refs.py`, and `tools/gate_citations.py` refuses to let them drift. The counts differ on purpose: `refs.json` holds 41 entries and `refs.bib` holds 36. The 5 that are absent, entries 37 through 41, are absent for one reason only: this report does not cite them, and the list is generated from what this report cites. That is not a claim about the state of the work behind them, which varies. Each carries a `conditional_on` field naming the work that would cite it, and a `source_note` recording where that work currently stands.

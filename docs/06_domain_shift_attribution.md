@@ -25,6 +25,31 @@ One caveat on that check: it closes for RARE26 but not for RARE25, where an AURO
 0.8430 predicts a PPV of 0.0201 against 0.0151 observed. On RARE25 the extra AUROC sits
 entirely in the easy region and the high-sensitivity tail is no better.
 
+Plotting the same model against the same measurement shows what the closure is worth and
+what it is not. Our leaderboard point sits on the curve, but it arrives with a 95%
+interval on each axis, and both are wide: AUROC 0.6354 to 0.8968, the ranking metric
+0.0104 to 0.0306. The clinical target, 90% sensitivity with 80% specificity converted to
+1% prevalence, is 4.35%, and reaching it on this curve takes an AUROC of 0.933. The upper
+end of our interval is 0.8968. The conclusion that we are short of the clinical threshold
+does not depend on where in that interval the truth lies.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="figures/auroc_ppv_dark.svg">
+  <img src="figures/auroc_ppv_light.svg" alt="The modeled relation between AUROC and PPV at 90% recall on a log axis, with chance, the clinical threshold, and our measured leaderboard point carrying 95% intervals on both axes.">
+</picture>
+
+Three readings from that figure, kept here rather than inside it because text drawn as a
+vector path cannot be selected, searched, or read aloud. At the measured AUROC of 0.77 the
+model returns 0.0151 against the 0.0152 the leaderboard reports, which is the closure
+described above seen on the curve rather than in the table. The gap from our point to the
+AUROC the clinical threshold needs is 0.163. And the upper end of our AUROC interval,
+0.8968, is still below the 0.933 the threshold needs, so the shortfall does not depend on
+where in the interval the truth lies.
+
+The curve is a model and the caption says so; the point is measured on both axes. Drawn by
+`tools/make_figures.py`, which stops rather than draw if the model disagrees with the
+table above, and reads the point and its intervals from `p31_platform_leaderboard.json`.
+
 ## Method
 
 We simulated the acquisition differences we can reproduce and applied them to the

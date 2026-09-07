@@ -1095,9 +1095,9 @@
   "note": null,
   "entry_type": "inproceedings",
   "verified_from": "https://dblp.uni-trier.de/rec/conf/cvpr/LazebnikSP06.html",
-  "source_note": "IEEE Xplore blank and dblp.org returned 503; the dblp mirror served the record.",
+  "source_note": "IEEE Xplore blank and dblp.org returned 503; the dblp mirror served the record. 2026-09-07: the condition originally recorded here, that P3 had not been run, no longer holds. P3 was run and its published material is results/p38_grid_subdivision.json and the paragraph on the two keys in docs/00_evaluation_protocol.md. Neither names this source, and the numbered list is generated from the citations in REPORT.md, which does not cite it either. The condition recorded now is the one that actually holds.",
   "caveat": null,
-  "conditional_on": "P3",
+  "conditional_on": "a citation site in REPORT.md",
   "verbatim": null
  },
  {
@@ -1124,9 +1124,38 @@
   "note": null,
   "entry_type": "inproceedings",
   "verified_from": "https://link.springer.com/chapter/10.1007/978-3-319-10578-9_23",
-  "source_note": null,
+  "source_note": "2026-09-07: the condition originally recorded here, that P3 had not been run, no longer holds. P3 was run and its published material is results/p38_grid_subdivision.json and the paragraph on the two keys in docs/00_evaluation_protocol.md. Neither names this source, and the numbered list is generated from the citations in REPORT.md, which does not cite it either. The condition recorded now is the one that actually holds.",
   "caveat": null,
-  "conditional_on": "P3",
+  "conditional_on": "a citation site in REPORT.md",
   "verbatim": null
+ },
+ {
+  "n": 41,
+  "bibtex_key": "asge2016be",
+  "authors": [
+   "ASGE Technology Committee",
+   "Thosani, N.",
+   "Abu Dayyeh, B. K.",
+   "et al."
+  ],
+  "authors_bibtex": null,
+  "year": 2016,
+  "title": "ASGE Technology Committee systematic review and meta-analysis assessing the ASGE Preservation and Incorporation of Valuable Endoscopic Innovations thresholds for adopting real-time imaging-assisted endoscopic targeted biopsy during endoscopic surveillance of Barrett's esophagus",
+  "venue": "Gastrointestinal Endoscopy",
+  "series": null,
+  "publisher": null,
+  "volume": "83",
+  "number": "4",
+  "pages": "684-698",
+  "doi": "10.1016/j.gie.2016.01.007",
+  "arxiv": null,
+  "openreview": null,
+  "note": "We use only the sensitivity and specificity pair, 90% and 80%, to convert the target into a PPV at 1% prevalence: 0.9*0.01 / (0.9*0.01 + 0.2*0.99) = 0.0435. The NPV >= 98% threshold in the same set is not used anywhere in this work.",
+  "entry_type": "article",
+  "verified_from": "https://www.asge.org/docs/default-source/education/Technology_Reviews/doc-imaging_be_pivi_metaanalysis.pdf",
+  "source_note": "The thresholds originate in the 2012 PIVI statement: Sharma P, Savides TJ, Canto MI, et al. Gastrointest Endosc. 2012;76:252-254. That paper was not reached directly (the journal site returned 403 and PubMed served a CAPTCHA); both the thresholds and its citation are taken from the ASGE-hosted 2016 document above, which quotes them. 2026-09-07: the work that uses this threshold is done and published -- it is in docs/06_domain_shift_attribution.md and in the figure there. It is held out of the numbered list only because that list is generated from the citations in REPORT.md, whose prose does not state the clinical threshold. It ships as soon as the report itself cites it.",
+  "caveat": "The DOI of the 2012 PIVI paper is unverified and is deliberately not recorded.",
+  "conditional_on": "a citation site in REPORT.md",
+  "verbatim": "per-patient sensitivity >=90%, NPV >=98%, specificity >=80%"
  }
 ]

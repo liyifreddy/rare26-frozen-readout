@@ -1,0 +1,315 @@
+{
+ "_what_this_is": "Grid subdivision and multi-scale pooling, run after the submission. Eight arms were registered; two were not run because their scores correlate above 0.99 with configurations already tested, and one is an identity self-check. The five arms that were scored are here, with absolute read-outs at the official 1% prevalence beside the paired differences. Supports the two-key paragraph in docs/00_evaluation_protocol.md.",
+ "_prevalence": "0.01 unless the field name says otherwise; ppv90 fields are converted to the official 1% prevalence, never left at sample prevalence (2.7% training on center 2, 11.9% training on center 1).",
+ "_verdicts": "Registered on the AUROC scale with a practical threshold of 0.0165. S4 = D (degraded, established in one direction); S2, S5, S6, S7 = C (ruled out on that scale). No arm was adopted.",
+ "_reconciliation": "The delivered read-out rows reproduce p23_cross_confirm.json to within 1e-12 on both AUROC and specificity@90; the generating script asserts this.",
+ "_no_per_image_data": "Aggregate read-outs only. No image, no crop, no identifier.",
+ "c2→c1": {
+  "delivered read-out, 7x7 grid, top 2%": {
+   "n": 2279,
+   "n_positive": 61,
+   "ppv90_at_1pct": 0.078713,
+   "ppv90_ci_low": 0.035932,
+   "ppv90_ci_high": 0.165413,
+   "specificity_at_90_recall": 0.8935978,
+   "ppv90_at_0p5pct": 0.040772,
+   "ppv90_at_2pct": 0.14721,
+   "auroc": 0.9605168,
+   "pauc_85_95": 0.717749
+  },
+  "bilinear subdivision of the position grid to 25x25": {
+   "n": 2279,
+   "n_positive": 61,
+   "ppv90_at_1pct": 0.085743,
+   "ppv90_ci_low": 0.039836,
+   "ppv90_ci_high": 0.176619,
+   "specificity_at_90_recall": 0.9030658,
+   "ppv90_at_0p5pct": 0.044576,
+   "ppv90_at_2pct": 0.159298,
+   "auroc": 0.9605685,
+   "pauc_85_95": 0.7195967,
+   "paired_delta_ppv90_at_1pct": {
+    "d": 0.007029,
+    "lo": -0.042253,
+    "hi": 0.051824,
+    "detectable": false
+   },
+   "paired_delta_auroc": {
+    "d": 5.17e-05,
+    "lo": -0.0048302,
+    "hi": 0.0054325,
+    "detectable": false
+   }
+  },
+  "equal-weight multi-scale pooling": {
+   "n": 2279,
+   "n_positive": 61,
+   "ppv90_at_1pct": 0.036386,
+   "ppv90_ci_low": 0.021631,
+   "ppv90_ci_high": 0.126684,
+   "specificity_at_90_recall": 0.7592426,
+   "ppv90_at_0p5pct": 0.018439,
+   "ppv90_at_2pct": 0.070882,
+   "auroc": 0.9387352,
+   "pauc_85_95": 0.6275776,
+   "paired_delta_ppv90_at_1pct": {
+    "d": -0.042328,
+    "lo": -0.087566,
+    "hi": 0.016363,
+    "detectable": false
+   },
+   "paired_delta_auroc": {
+    "d": -0.0217815,
+    "lo": -0.0380352,
+    "hi": -0.0081046,
+    "detectable": true
+   }
+  },
+  "weighted multi-scale pooling, weights chosen by grouped cross-validation": {
+   "n": 2279,
+   "n_positive": 61,
+   "ppv90_at_1pct": 0.078713,
+   "ppv90_ci_low": 0.035932,
+   "ppv90_ci_high": 0.165413,
+   "specificity_at_90_recall": 0.8935978,
+   "ppv90_at_0p5pct": 0.040772,
+   "ppv90_at_2pct": 0.14721,
+   "auroc": 0.9605168,
+   "pauc_85_95": 0.717749,
+   "paired_delta_ppv90_at_1pct": {
+    "d": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "detectable": false
+   },
+   "paired_delta_auroc": {
+    "d": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "detectable": false,
+    "note": "cross-validation returned the delivered configuration, so this arm is the delivered read-out and the difference is zero by construction"
+   }
+  },
+  "bicubic subdivision of the position grid to 13x13": {
+   "n": 2279,
+   "n_positive": 61,
+   "ppv90_at_1pct": 0.08685,
+   "ppv90_ci_low": 0.039836,
+   "ppv90_ci_high": 0.142838,
+   "specificity_at_90_recall": 0.9044184,
+   "ppv90_at_0p5pct": 0.045179,
+   "ppv90_at_2pct": 0.161188,
+   "auroc": 0.9615811,
+   "pauc_85_95": 0.7252879,
+   "paired_delta_ppv90_at_1pct": {
+    "d": 0.008137,
+    "lo": -0.046948,
+    "hi": 0.043592,
+    "detectable": false
+   },
+   "paired_delta_auroc": {
+    "d": 0.0010643,
+    "lo": -0.0038346,
+    "hi": 0.0060672,
+    "detectable": false
+   }
+  },
+  "nested fusion with the delivered read-out, weight chosen by grouped cross-validation": {
+   "n": 2279,
+   "n_positive": 61,
+   "ppv90_at_1pct": 0.078713,
+   "ppv90_ci_low": 0.035932,
+   "ppv90_ci_high": 0.165413,
+   "specificity_at_90_recall": 0.8935978,
+   "ppv90_at_0p5pct": 0.040772,
+   "ppv90_at_2pct": 0.14721,
+   "auroc": 0.9605168,
+   "pauc_85_95": 0.717749,
+   "paired_delta_ppv90_at_1pct": {
+    "d": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "detectable": false
+   },
+   "paired_delta_auroc": {
+    "d": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "detectable": false,
+    "note": "cross-validation returned the delivered configuration, so this arm is the delivered read-out and the difference is zero by construction"
+   }
+  },
+  "weighted multi-scale pooling, weights chosen on a superseded objective": {
+   "n": 2279,
+   "n_positive": 61,
+   "ppv90_at_1pct": 0.073815,
+   "ppv90_ci_low": 0.034936,
+   "ppv90_ci_high": 0.15982,
+   "specificity_at_90_recall": 0.8859333,
+   "ppv90_at_0p5pct": 0.038137,
+   "ppv90_at_2pct": 0.13869,
+   "auroc": 0.9597851,
+   "pauc_85_95": 0.7146447,
+   "paired_delta_ppv90_at_1pct": {
+    "d": -0.004899,
+    "lo": -0.008974,
+    "hi": 0.012176,
+    "detectable": false
+   }
+  },
+  "nested fusion, weight chosen on a superseded objective": {
+   "n": 2279,
+   "n_positive": 61,
+   "ppv90_at_1pct": 0.074086,
+   "ppv90_ci_low": 0.034936,
+   "ppv90_ci_high": 0.15982,
+   "specificity_at_90_recall": 0.8863841,
+   "ppv90_at_0p5pct": 0.038282,
+   "ppv90_at_2pct": 0.139164,
+   "auroc": 0.9597925,
+   "pauc_85_95": 0.7146447,
+   "paired_delta_ppv90_at_1pct": {
+    "d": -0.004627,
+    "lo": -0.009483,
+    "hi": 0.012176,
+    "detectable": false
+   }
+  }
+ },
+ "c1→c2": {
+  "delivered read-out, 7x7 grid, top 2%": {
+   "n": 816,
+   "n_positive": 97,
+   "ppv90_at_1pct": 0.521384,
+   "ppv90_ci_low": 0.119851,
+   "ppv90_ci_high": 0.765705,
+   "specificity_at_90_recall": 0.9916551,
+   "ppv90_at_0p5pct": 0.351469,
+   "ppv90_at_2pct": 0.687594,
+   "auroc": 0.9883286,
+   "pauc_85_95": 0.9046069
+  },
+  "bilinear subdivision of the position grid to 25x25": {
+   "n": 816,
+   "n_positive": 97,
+   "ppv90_at_1pct": 0.334568,
+   "ppv90_ci_low": 0.150133,
+   "ppv90_ci_high": 0.685412,
+   "specificity_at_90_recall": 0.9819193,
+   "ppv90_at_0p5pct": 0.200083,
+   "ppv90_at_2pct": 0.503927,
+   "auroc": 0.989447,
+   "pauc_85_95": 0.905754,
+   "paired_delta_ppv90_at_1pct": {
+    "d": -0.186817,
+    "lo": -0.307611,
+    "hi": 0.134072,
+    "detectable": false
+   },
+   "paired_delta_auroc": {
+    "d": 0.0011184,
+    "lo": -0.0006329,
+    "hi": 0.0033739,
+    "detectable": false
+   }
+  },
+  "equal-weight multi-scale pooling": {
+   "n": 816,
+   "n_positive": 97,
+   "ppv90_at_1pct": 0.161245,
+   "ppv90_ci_low": 0.117693,
+   "ppv90_ci_high": 0.397916,
+   "specificity_at_90_recall": 0.9527121,
+   "ppv90_at_0p5pct": 0.08729,
+   "ppv90_at_2pct": 0.27975,
+   "auroc": 0.9834822,
+   "pauc_85_95": 0.8869707,
+   "paired_delta_ppv90_at_1pct": {
+    "d": -0.360142,
+    "lo": -0.611664,
+    "hi": 0.038852,
+    "detectable": false
+   },
+   "paired_delta_auroc": {
+    "d": -0.0048464,
+    "lo": -0.0114033,
+    "hi": 0.0006229,
+    "detectable": false
+   }
+  },
+  "weighted multi-scale pooling, weights chosen by grouped cross-validation": {
+   "n": 816,
+   "n_positive": 97,
+   "ppv90_at_1pct": 0.521384,
+   "ppv90_ci_low": 0.119851,
+   "ppv90_ci_high": 0.765705,
+   "specificity_at_90_recall": 0.9916551,
+   "ppv90_at_0p5pct": 0.351469,
+   "ppv90_at_2pct": 0.687594,
+   "auroc": 0.9883286,
+   "pauc_85_95": 0.9046069,
+   "paired_delta_ppv90_at_1pct": {
+    "d": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "detectable": false
+   },
+   "paired_delta_auroc": {
+    "d": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "detectable": false,
+    "note": "cross-validation returned the delivered configuration, so this arm is the delivered read-out and the difference is zero by construction"
+   }
+  },
+  "bicubic subdivision of the position grid to 13x13": {
+   "n": 816,
+   "n_positive": 97,
+   "ppv90_at_1pct": 0.352617,
+   "ppv90_ci_low": 0.146762,
+   "ppv90_ci_high": 0.765703,
+   "specificity_at_90_recall": 0.9833102,
+   "ppv90_at_0p5pct": 0.213201,
+   "ppv90_at_2pct": 0.523919,
+   "auroc": 0.9885437,
+   "pauc_85_95": 0.9034598,
+   "paired_delta_ppv90_at_1pct": {
+    "d": -0.168768,
+    "lo": -0.306677,
+    "hi": 0.109851,
+    "detectable": false
+   },
+   "paired_delta_auroc": {
+    "d": 0.0002151,
+    "lo": -0.000965,
+    "hi": 0.0016104,
+    "detectable": false
+   }
+  },
+  "nested fusion with the delivered read-out, weight chosen by grouped cross-validation": {
+   "n": 816,
+   "n_positive": 97,
+   "ppv90_at_1pct": 0.521384,
+   "ppv90_ci_low": 0.119851,
+   "ppv90_ci_high": 0.765705,
+   "specificity_at_90_recall": 0.9916551,
+   "ppv90_at_0p5pct": 0.351469,
+   "ppv90_at_2pct": 0.687594,
+   "auroc": 0.9883286,
+   "pauc_85_95": 0.9046069,
+   "paired_delta_ppv90_at_1pct": {
+    "d": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "detectable": false
+   },
+   "paired_delta_auroc": {
+    "d": 0.0,
+    "lo": 0.0,
+    "hi": 0.0,
+    "detectable": false,
+    "note": "cross-validation returned the delivered configuration, so this arm is the delivered read-out and the difference is zero by construction"
+   }
+  }
+ }
+}

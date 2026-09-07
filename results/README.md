@@ -111,6 +111,22 @@ otherwise trip over:
   map is 7x7, so `top2%` and `最大` are the same operator; the 96 duplicate `最大`
   configurations are dropped, which is the 474 in the table.
 
+## Run after the submission
+
+Everything above was produced before the development-phase submission. This section is not
+part of what was submitted, and nothing in the report depends on it.
+
+| File | What it supports |
+|---|---|
+| `p38_grid_subdivision.json` | Subdividing the 7x7 position grid, and pooling several grids together. Five arms scored, none adopted; the paragraph in `00_evaluation_protocol.md` on the two keys disagreeing takes its numbers from here. |
+| `p39_negative_tail.json` | The negative-score tail behind the figure in `00_evaluation_protocol.md`. Each curve is stored as shares on a **fixed grid of 512 points** spanning the pooled observed range, together with each direction's threshold position and the share above it. The grid is fixed so that the file is an aggregate and stays one: a per-image resolution would be per-image scores in another shape. |
+
+Its keys are in English rather than Chinese because it was written after the decision to
+publish, so there is no recorded original to preserve. Its `ppv90` fields are converted to
+the official 1 percent prevalence, and the field names say so; the sample prevalence is
+2.7 percent training on center 2 and 11.9 percent training on center 1, and a PPV left at
+sample prevalence is not comparable to the 0.043 clinical threshold.
+
 ## Reading the keys
 
 These files were written during the work in Chinese and their data is published exactly
