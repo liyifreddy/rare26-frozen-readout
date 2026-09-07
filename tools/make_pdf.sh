@@ -16,7 +16,14 @@ cd "$(dirname "$0")/.."
 
 FINAL=RARE26_technical_report.pdf
 TMP=tools/report_pdf.gen.pdf                 # tools/*.gen.* is gitignored
-trap 'rm -f "$TMP" tools/report_pdf.gen.txt' EXIT
+
+# `|| true` is load-bearing. Under `set -e` a failing command inside an EXIT trap becomes
+# the script's exit status, so if the cleanup cannot remove its own scratch files -- a
+# mounted or read-only working directory is enough -- the script prints "PDF matches
+# REPORT.md." and then exits 1. Saying one thing and returning another is worse than
+# either outcome alone: whoever reads the exit code and whoever reads the output reach
+# opposite conclusions. Tidying up is not allowed to decide whether the check passed.
+trap 'rm -f "$TMP" tools/report_pdf.gen.txt || true' EXIT
 
 python3 tools/make_pdf_source.py REPORT.md tools/report_pdf.gen.md
 pandoc tools/report_pdf.gen.md -o "$TMP" --pdf-engine=xelatex \
