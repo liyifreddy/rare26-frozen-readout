@@ -2,7 +2,7 @@
  "_what_this_is": "The tail of the negative-score distribution, one curve per cross-center direction. Each value is the share of that direction's negatives scoring at or above a grid point, so the curve is a survival function, not a density.",
  "_grid": "Fixed grid of 512 points spanning the pooled observed range of the standardized negative scores. The grid is a property of this file, not of any figure; a figure drawn from it must not resample per image.",
  "_standardization": "Scores are standardized within each direction against that direction's own negatives (subtract their mean, divide by their standard deviation). The two raw score scales are unrelated, so a shared axis needs this step.",
- "_no_per_image_data": "Only aggregate shares are stored. No image, no crop, no identifier, and no individual score.",
+ "_what_the_grid_resolves": "Aggregate shares on a fixed grid, with no image, no crop and no identifier. The grid is fine relative to the data in the sparse tail: of the 220 intervals that contain any of the 719 negatives training on center 1, 68 contain exactly one, so there the curve locates a single score to within one grid step of about 0.016 standard deviations. What that permits is reading the shape of the tail, including where individual scores sit in it, which is the same thing an ROC curve published on this data already carries. What it does not permit is attaching any of those positions to an image: nothing here identifies a frame, no stored order maps to anything outside this file, and no value in it belongs to a named thing.",
  "grid_z": [
   -1.829389,
   -1.813727,

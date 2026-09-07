@@ -212,8 +212,11 @@ and are distributed by them under their own terms. They are not redistributed he
 image and no crop appears in this repository, and `results/` holds aggregated statistics
 with one deliberate exception: `t7_train_serve.json` carries sixteen model scores for
 sixteen unnamed training frames, so that the rank correlation it reports can be
-recomputed. Sixteen unlabeled scalars carry no identity and cannot be traced to an image;
-`results/README.md` gives the reasoning. `src/` expects the images to be present locally,
+recomputed. It is the exception because those sixteen values keep their correspondence to
+each other, which is what the rank correlation needs and which the curves in
+`p39_negative_tail.json` do not have, being shares on a fixed grid from which no value
+belonging to anything can be taken. Sixteen unlabeled scalars carry no identity and cannot
+be traced to an image; `results/README.md` gives the reasoning. `src/` expects the images to be present locally,
 laid out as the challenge distributes them.
 
 **Backbone weights.** Covered by the GastroNet-5M agreement named above, which is free for

@@ -119,7 +119,7 @@ part of what was submitted, and nothing in the report depends on it.
 | File | What it supports |
 |---|---|
 | `p38_grid_subdivision.json` | Subdividing the 7x7 position grid, and pooling several grids together. Five arms scored, none adopted; the paragraph in `00_evaluation_protocol.md` on the two keys disagreeing takes its numbers from here. |
-| `p39_negative_tail.json` | The negative-score tail behind the figure in `00_evaluation_protocol.md`. Each curve is stored as shares on a **fixed grid of 512 points** spanning the pooled observed range, together with each direction's threshold position and the share above it. The grid is fixed so that the file is an aggregate and stays one: a per-image resolution would be per-image scores in another shape. |
+| `p39_negative_tail.json` | The negative-score tail behind the figure in `00_evaluation_protocol.md`. Each curve is stored as shares on a **fixed grid of 512 points** spanning the pooled observed range, together with each direction's threshold position and the share above it. The grid is fixed rather than drawn per image. In the sparse tail it is finer than the data, so it does locate individual scores to within a grid step, the way a published ROC curve does; what it never carries is which score belongs to what. The file's own `_what_the_grid_resolves` field states both halves. |
 
 Its keys are in English rather than Chinese because it was written after the decision to
 publish, so there is no recorded original to preserve. Its `ppv90` fields are converted to
