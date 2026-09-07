@@ -7,10 +7,10 @@ Two constructs need care, and both bit us before they were understood:
   block and stops parsing markdown inside it. Since `%` starts a comment in LaTeX, an
   abstract wrapped that way silently loses every percent sign: "90% recall" renders as
   "90recall". The fix is to emit one-token macros, `\\babstract` and `\\eabstract`, which
-  pandoc passes through without swallowing what lies between them. The same applies to
-  the landscape page around the wide table.
-* The experiment-family table has thirteen columns and does not fit a portrait page, so
-  it gets its own landscape page.
+  pandoc passes through without swallowing what lies between them.
+* Everything between the title and the Summary heading is kept, minus the byline that the
+  front matter repeats and minus HTML comments. Discarding that region wholesale once cost
+  the PDF a paragraph without anything reporting it.
 
 Usage:
     python tools/make_pdf_source.py REPORT.md out.md
@@ -35,14 +35,11 @@ linkcolor: black
 urlcolor: "blue"
 header-includes: |
   \usepackage{booktabs}
-  \usepackage{pdflscape}
-  \newcommand{\blandscape}{\begin{landscape}}
-  \newcommand{\elandscape}{\end{landscape}}
   \usepackage{longtable}
   \usepackage{array}
   \usepackage{ragged2e}
   \usepackage{etoolbox}
-  \AtBeginEnvironment{longtable}{\scriptsize}
+  \AtBeginEnvironment{longtable}{\footnotesize\setlength{\parskip}{0pt}\renewcommand{\arraystretch}{1.04}}
   \setlength{\LTpre}{6pt}\setlength{\LTpost}{10pt}
   \usepackage{titlesec}
   \usepackage{abstract}
@@ -56,9 +53,6 @@ header-includes: |
 ---
 
 """
-
-WIDE_TABLE_HEADER = "| Experiment family |"
-
 
 def main(src, dst):
     text = io.open(src, encoding="utf-8").read().replace("\r\n", "\n")
@@ -97,16 +91,13 @@ def main(src, dst):
     stop = out.index("## How to read this report")
     out = out[:stop] + "\\eabstract\n\n" + out[stop:]
 
-    # The thirteen-column table gets a landscape page, again via macros.
-    lines = out.split("\n")
-    first = next(i for i, l in enumerate(lines) if l.startswith(WIDE_TABLE_HEADER))
-    last = first
-    while last < len(lines) and lines[last].startswith("|"):
-        last += 1
-    lines.insert(last, "\n\\elandscape\n")
-    lines.insert(first, "\n\\blandscape\n")
-
-    io.open(dst, "w", encoding="utf-8").write("\n".join(lines))
+    # The experiment-family table used to need a landscape page: thirteen columns, six of
+    # which carried one to three digits each while the text columns were squeezed into
+    # what was left. Dropping the two columns that restated other columns, and giving the
+    # rest explicit relative widths, brings it inside the 16.2 cm text block of a portrait
+    # A4. The width that frees up is spent on type size, not on margin. No landscape page
+    # remains in this document.
+    io.open(dst, "w", encoding="utf-8").write(out)
     print("wrote %s" % dst)
 
 

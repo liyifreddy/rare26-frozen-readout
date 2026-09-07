@@ -302,24 +302,26 @@ distribution it samples from, and ours samples from two retrospective Dutch cent
 
 ## 6. What we tried, and what each thing did
 
-| Experiment family | Backbones | Cells | A+ | A- | B± | C | D | E | double-key conflicts | Verdict | Source |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Read-out basis x component (E3) | 11 | 474 (96 dup removed) | 39 | 14 | 28 | 101 | 259 | 33 | 86 | 39 improve in both directions, 14 degrade | `e3_basis_component.json` |
-| Layer 3+4 replication (E3b) | 8 | 192 (96 dup removed) | 0 | 7 | 5 | 32 | 148 | 0 | 43 | none improve, 7 degrade | `e3b_cnn_layer.json` |
-| Backbone x module interaction | 4 | 48 | 0 | 0 | 9 | 23 | 16 | 0 | - | none improve | `b1_backbone_module.json` |
-| Field-of-view mask | 4 | 16 | 0 | 0 | 0 | 14 | 2 | 0 | - | none improve | `c2_fov_mask.json` |
-| Fit-scope arm D | 4 | 16 | 0 | 4 | 2 | 0 | 9 | 1 | - | none improve, 4 degrade | `c4_arm_d.json` |
-| Instance selection (MIL) | 11 | 33 | 3 | 0 | 0 | 7 | 22 | 1 | - | 3 improve in both directions | `r5_mil.json` |
-| Layer choice | 11 | 11 | 1 | 0 | 1 | 0 | 9 | 0 | - | 1 improve in both directions | `r4_layer.json` |
-| Same-backbone head fusion | 11 | 99 | 0 | 25 | 31 | 32 | 9 | 2 | - | none improve, 25 degrade | `r6_fusion.json` |
-| Multi-backbone fusion | - | 10 | 0 | 0 | 1 | 3 | 6 | 0 | - | none improve | `r7_bbfusion.json` |
-| TTA and color normalization | 10 | 30 | 0 | 1 | 0 | 15 | 12 | 2 | - | none improve, 1 degrade | `r8_tta_color.json` |
-| External covariance target | - | 27 | 0 | 4 | 9 | 13 | 1 | 0 | - | none improve, 4 degrade | `r2_extcov.json` |
-| One-class vs discriminant | 11 | 44 | 0 | 40 | 0 | 0 | 4 | 0 | - | none improve, 40 degrade | `q1_oneclass_all.json` |
-| Geometric read-outs | 8 | 32 | 0 | 4 | 4 | 8 | 15 | 1 | 1 | none improve, 4 degrade | `q3_geometry_all.json` |
-| Greedy combination search | 11 | 11 | 1 | 3 | 0 | 0 | 2 | 5 | - | 1 improve in both directions, 3 degrade | `r11_combo.json` |
-| Normalization family | 11 | 176 | 0 | 33 | 9 | 89 | 43 | 2 | - | none improve, 33 degrade | `d2_norm_family.json` |
-| All backbones, A-class components | 11 | 616 | 17 | 51 | 14 | 397 | 124 | 13 | - | 17 improve in both directions, 51 degrade | `d1_all_backbones.json` |
+| Experiment family | Backbones | Cells | A+ | A- | B± | C | D | E | Source |
+|:--------------------------------------------|------------:|---------:|-------:|-------:|-------:|-------:|-------:|-------:|:-----------------------------------|
+| Read-out basis x component (E3) | 11 | 474 | 39 | 14 | 28 | 101 | 259 | 33 | `e3_basis_component` |
+| Layer 3+4 replication (E3b) | 8 | 192 | 0 | 7 | 5 | 32 | 148 | 0 | `e3b_cnn_layer` |
+| Backbone x module interaction | 4 | 48 | 0 | 0 | 9 | 23 | 16 | 0 | `b1_backbone_module` |
+| Field-of-view mask | 4 | 16 | 0 | 0 | 0 | 14 | 2 | 0 | `c2_fov_mask` |
+| Fit-scope arm D | 4 | 16 | 0 | 4 | 2 | 0 | 9 | 1 | `c4_arm_d` |
+| Instance selection (MIL) | 11 | 33 | 3 | 0 | 0 | 7 | 22 | 1 | `r5_mil` |
+| Layer choice | 11 | 11 | 1 | 0 | 1 | 0 | 9 | 0 | `r4_layer` |
+| Same-backbone head fusion | 11 | 99 | 0 | 25 | 31 | 32 | 9 | 2 | `r6_fusion` |
+| Multi-backbone fusion | - | 10 | 0 | 0 | 1 | 3 | 6 | 0 | `r7_bbfusion` |
+| TTA and color normalization | 10 | 30 | 0 | 1 | 0 | 15 | 12 | 2 | `r8_tta_color` |
+| External covariance target | - | 27 | 0 | 4 | 9 | 13 | 1 | 0 | `r2_extcov` |
+| One-class vs discriminant | 11 | 44 | 0 | 40 | 0 | 0 | 4 | 0 | `q1_oneclass_all` |
+| Geometric read-outs | 8 | 32 | 0 | 4 | 4 | 8 | 15 | 1 | `q3_geometry_all` |
+| Greedy combination search | 11 | 11 | 1 | 3 | 0 | 0 | 2 | 5 | `r11_combo` |
+| Normalization family | 11 | 176 | 0 | 33 | 9 | 89 | 43 | 2 | `d2_norm_family` |
+| All backbones, A-class components | 11 | 616 | 17 | 51 | 14 | 397 | 124 | 13 | `d1_all_backbones` |
+
+Two grids are counted after removing duplicates: 96 cells in each of E3 and E3b, where `top2%` and `max` are the same operator on a 7x7 grid. Three families carry cells whose two read-outs disagree on the same comparison, counted in the letters above and listed here for completeness: Read-out basis x component (E3) 86, Layer 3+4 replication (E3b) 43, Geometric read-outs 1. A `Verdict` column used to restate A+ and A- in words and has been dropped as redundant. Source files are in `results/`, extension `.json`.
 
 Not included, and why:
 
