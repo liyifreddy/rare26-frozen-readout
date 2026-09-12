@@ -608,9 +608,13 @@ from day one would have set different thresholds and asked for different sample 
 
 <!-- "Five" here, and "sixth" in the paragraph after it, count the items listed in this
      paragraph. They are literals, not measured values, so adding or removing an item
-     means changing the word. Until 2026-09-07 this read "Six", because it counted a
-     check that failed in the opposite direction as if it were one of the same kind.
-     docs/05_what_we_got_wrong.md carries that correction in full. -->
+     means changing the word. Until 2026-09-07 this read "Six": the sixth check was
+     counted as one of the same kind, and it is not. It broke in both directions at
+     once -- it could not report red at all while the file was tracked, and it read a
+     negation rule as a failure -- so it is not a plain false green and gets its own
+     paragraph. That both halves are one incident was established on 2026-09-12 by
+     running the command rather than by rereading the notes.
+     docs/05_what_we_got_wrong.md carries the correction in full. -->
 
 **Build gates that can fail.** Five checks in this project reported success without having
 examined anything:
@@ -625,13 +629,20 @@ The first four were found by accident. The fifth was found on purpose, once we s
 running every gate twice: once against a deliberately broken input to prove it reports red,
 then once for real.
 
-A sixth check failed in the opposite direction, and it is worth separating from the other
-five. It read its own success as failure, because the command it used prints a matching
-line for negation rules too. A check that passes without looking costs you a problem you
-never see; a check that fails without cause costs you a working check, because the natural
-response is to weaken or delete it. The second kind is rarer and easier to act on wrongly,
-and running every gate against a broken input catches it as readily as the first kind. A gate that
-cannot report failure is worse than no gate, because it is mistaken for evidence. The errors
+A sixth check failed in both directions at once, and it is worth separating from the other
+five. It asked whether the packaged head weights were blocked by an ignore rule, and it
+decided by whether `git check-ignore` printed a matching line. That command prints nothing
+for a file already in the index, whatever the ignore rules say, so while the file was
+tracked the check could not report red at all; and it prints a matching line for a negation
+rule, which marks a file that is not ignored, so in that case it read its own success as
+failure. The self test found both, by adding an ignore rule and watching the gate stay
+green. The repair was to ask what the gate was for, whether the file is in the index,
+rather than to patch the command. A check that passes without looking costs you a problem
+you never see; a check that fails without cause costs you a working check, because the
+natural response is to weaken or delete it. Both kinds are caught by running every gate
+against a deliberately broken input, and the second is the rarer of the two and the easier
+to act on wrongly. A gate that cannot report failure is worse than no gate, because it is
+mistaken for evidence. The errors
 from this project that still matter to a reader are in the repository at
 `docs/05_what_we_got_wrong.md`.
 

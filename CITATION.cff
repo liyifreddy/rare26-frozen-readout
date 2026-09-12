@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you refer to this work, please cite it as below."
+title: "A frozen read-out for early Barrett neoplasia: one positive result, a set of null results, and a domain gap that reproduces"
+abstract: >-
+  A submission to the RARE26 challenge on detecting early neoplasia in Barrett's
+  esophagus, ranked by positive predictive value at 90% recall with prevalence fixed at
+  1%. The backbone is frozen and the only learned parameters are one discriminant vector
+  and one mean vector. One change earned adoption: scoring each of the 49 spatial
+  positions separately and taking the top 2% rather than averaging the map first. The
+  repository publishes the fitted head, the evaluation protocol, the result files behind
+  every number, and the errors the protocol failed to catch.
+type: software
+authors:
+  - family-names: Li
+    given-names: Yi
+    orcid: "https://orcid.org/0009-0001-4549-2913"
+    affiliation: "Independent researcher, Darmstadt, Germany"
+license: MIT
+repository-code: "https://github.com/liyifreddy/rare26-frozen-readout"
+version: 1.0.0
+date-released: "2026-09-12"
+keywords:
+  - Barrett's esophagus
+  - endoscopy
+  - medical image analysis
+  - transfer learning
+  - frozen features
+  - evaluation methodology
