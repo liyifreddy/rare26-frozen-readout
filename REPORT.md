@@ -39,7 +39,10 @@ external localization test against five independent expert delineations. Almost 
 else was. Ten alternative backbones, seven read-outs, the choice of layer, and every
 component combination we tried produced no configuration that is detectably better than
 the delivered one in both directions, and the improvements that do exist all land on
-backbones other than the one we ship. On the challenge validation set the pipeline reaches AUROC
+backbones other than the one we ship -- and swapping to one is not supported either: on the
+true cross-center table in `docs/02_backbones.md` the strongest alternative is undetectable
+in both directions, and multi-backbone fusion produced no improvement at all.
+On the challenge validation set the pipeline reaches AUROC
 0.7700 and PPV@90recall 0.0152, against a random
 baseline of 0.0100 and our own cross-center AUROC of
 0.9605 and 0.9883. A team in the
@@ -82,8 +85,9 @@ strictly increasing function of that specificity. The two cannot point in opposi
 directions. They can only differ in how noisy they are.
 
 That is the easy half. The harder half is where the operating point comes from. To reach
-90% recall you place the threshold at the score of the `ceil(0.9 * n_pos)`-th lowest
-positive. That is one order statistic of the positive scores, not an average over
+90% recall you must leave `ceil(0.9 * n_pos)` positives above the threshold, so the
+threshold sits on the `n_pos - ceil(0.9 * n_pos) + 1`-th lowest positive score. That is
+one order statistic of the positive scores, not an average over
 anything. With 158 positives in the training set and fewer in any single
 evaluation fold, that order statistic moves whenever a handful of hard positives move.
 
@@ -323,6 +327,14 @@ distribution it samples from, and ours samples from two retrospective Dutch cent
 
 Two grids are counted after removing duplicates: 96 cells in each of E3 and E3b, where `top2%` and `max` are the same operator on a 7x7 grid. Three families carry cells whose two read-outs disagree on the same comparison, counted in the letters above and listed here for completeness: Read-out basis x component (E3) 86, Layer 3+4 replication (E3b) 43, Geometric read-outs 1. A `Verdict` column used to restate A+ and A- in words and has been dropped as redundant. Source files are in `results/`, extension `.json`.
 
+One reading of a table this size is that the cells which came out detectable are the ones
+chance produced. The two-direction null control measures that rate rather than assuming it:
+the joint chance rate is 0.7%, so across 1835 comparisons about 13 cells would be expected
+to come out detectable in both directions by chance alone. The count actually observed,
+detectable in both directions and agreeing in sign, is 360. That says nothing about any
+particular cell, and it is not offered as support for one. It rules out one explanation of
+the table as a whole: that it is noise.
+
 Not included, and why:
 
 The pooling operator sweep is the one family in `results/` that the table above omits. Its
@@ -449,7 +461,7 @@ pooling. In full:
 | Resize 512 then 224 | Two downscales, both anti-aliased, matching the training path | `t7_train_serve.json`, `audit_2stage.json` |
 | Frozen RN50 layer4 | GastroNet-5M DINOv1 weights, no fine-tuning, 7x7x2048 kept | `d1_all_backbones.json`, `r4_layer.json` |
 | Signed power transform | sign(x) times \|x\|^0.5, applied before the head | `e3_basis_component.json` |
-| Shrinkage discriminant | 49 positions as samples for the within-class scatter, lambda by grouped CV on pAUC(85-95) | `lambda_paired.json`, `lambda_endpoint.json` |
+| Shrinkage discriminant | 49 positions as samples for the total scatter, grand-mean centered and direction-equivalent to the within-class solution; lambda by grouped CV on pAUC(85-95) | `lambda_paired.json`, `lambda_endpoint.json` |
 | Top 2% pooling | Score every position, take the maximum on a 7x7 grid | `p23_cross_confirm.json`, `c1_pooling_ops.json` |
 | Localization check | Highest-scoring cell against five-expert consensus on an external set | `r9_evc_loc.json` |
 | Logistic squash | Monotone, so it cannot change the metric | `scorer.py --demo` self-test 1 |

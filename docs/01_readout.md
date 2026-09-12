@@ -11,7 +11,8 @@ better, and if so is the improvement real or a product of choosing among many op
 
 Both give a single score per image, so they are directly comparable. The head is a
 closed-form shrinkage discriminant fitted with the 49 positions as samples for the
-within-class scatter. The only change under test is what happens after scoring: average the
+total scatter, grand-mean centered. The only change under test is what happens after
+scoring: average the
 map first, or score every position and take the top 2%, which on a 7x7 grid is the maximum.
 
 Evaluation is true cross-center in both directions, with the paired bootstrap described in

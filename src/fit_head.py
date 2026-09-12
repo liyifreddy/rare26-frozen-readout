@@ -11,8 +11,9 @@ Configuration:
     backbone   RN50 pretrained with DINOv1 on GastroNet-5M, frozen
     features   layer4 spatial map, 7x7x2048, with NO global average pooling
     transform  signed power transform, x -> sign(x) * |x|^0.5
-    fit        the 49 positions are treated as samples for the within-class scatter;
-               closed-form shrinkage GDA, shrinking toward (tr S / d) * I
+    fit        the 49 positions are treated as samples for the total scatter, centered on
+               the grand mean; closed-form shrinkage GDA, shrinking toward (tr S / d) * I.
+               Total rather than within-class is deliberate and costs nothing: see fit().
     lambda     chosen by 8 repeated grouped cross-validation runs on pAUC(85-95)
     pooling    score every position, then take the top 2% (the maximum on a 7x7 grid)
 
@@ -78,6 +79,11 @@ def preprocess(im):
     The platform supplies images already squashed to square, so the first resize is
     usually the identity there; it is applied here so that training and inference
     follow the same path.
+
+    One more asymmetry, measured separately in `t7_skew_cost.json`: the head is fitted on
+    backbone features computed in fp16, while the container computes them in fp32. The
+    cost is below the detection threshold in both cross-center directions (|dAUROC| <=
+    0.0009, neither detectable).
     """
     im = im.convert("RGB").resize((512, 512), Image.BILINEAR)
     a = np.asarray(im.resize((224, 224), Image.BILINEAR), dtype=np.float32)
@@ -112,7 +118,19 @@ def _tukey(P):
 
 
 def fit(P, idx, label, lam):
-    """Closed-form shrinkage Gaussian discriminant over the 49 positions."""
+    """Closed-form shrinkage Gaussian discriminant over the 49 positions.
+
+    S here is the TOTAL scatter, centered on the grand mean, not the within-class
+    scatter. The two differ by a rank-one term along d: S_T = S_W + c * d dT with
+    c > 0. By Sherman-Morrison, ((1-lam) S_T + lam tau I)^-1 d is the within-class
+    solution divided by a positive scalar, so the direction is identical and nothing
+    downstream -- top-2% pooling, the logistic squash, every metric in this repository
+    -- can see the difference. The one real consequence is that tau = tr(S)/C is
+    slightly larger from S_T than it would be from S_W, which shifts the effective
+    lambda; lambda was selected by cross-validation under this same code, so the two
+    are consistent. Changing this to a true within-class scatter would move tau and
+    invalidate every published number, which is why it stays as it is.
+    """
     A = _tukey(P[idx]).reshape(-1, C)
     mu = A.mean(0, keepdims=True)
     A = A - mu

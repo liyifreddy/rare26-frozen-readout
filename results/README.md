@@ -60,11 +60,11 @@ their own terms, not here.
 
 | File | What it supports |
 |---|---|
-| `lambda_paired.json` | Selection of the shrinkage coefficient, paired across folds. |
+| `lambda_paired.json` | Selection of the shrinkage coefficient, paired across folds. ⚠️ Its `c2->c1` and `c1->c2` keys name the training center of an arm, not an evaluation split: the scores are out-of-fold **within that training center**, so the specificity denominator is that center's own negatives. Do not read them the way `p23_cross_confirm.json` reads, where the evaluation is the other center. |
 | `lambda_endpoint.json` | The same selection read at the endpoints. |
 | `audit_2stage.json` | The two-stage resize, 512 then 224, against a single downscale. |
 | `t7_train_serve.json` | Training and serving preprocessing compared frame by frame. |
-| `t7_skew_cost.json` | What the train-and-serve difference costs when it is not corrected. |
+| `t7_skew_cost.json` | What the train-and-serve difference costs when it is not corrected. ⚠️ Same key convention as `lambda_paired.json`: the direction names the training center and the evaluation is out-of-fold inside it, not across centers. |
 
 ## Deployment and the held-out data
 

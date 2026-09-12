@@ -55,3 +55,26 @@ We hold no images from the target distribution, so nothing here can be turned in
 Every interval reported elsewhere in this repository is an in-domain interval and none of
 them bounds performance on these sets. See `06_domain_shift_attribution.md` for what we could
 and could not attribute the gap to.
+
+## One thing we did not try, and the premise it waits on
+
+The platform delivers a case as a stack of 384 frames, and `container/inference.py` scores
+every frame on its own. Nothing in the pipeline looks at a frame's neighbors. If those 384
+frames are consecutive frames of one examination, that is a lever left unused: a true
+positive's neighbors are usually positive too, while a single-frame false positive's
+neighbors usually are not, so smoothing a frame's score against its neighbors should cost
+little and gain something.
+
+We did not try it, and the reason is a premise we cannot check. The smoothing only makes
+sense if a stack is one examination. If a stack mixes patients, then any operation that is
+relative to the stack breaks comparability between stacks, and the ranking metric sets one
+threshold across the whole validation set, so the result would be worse rather than better.
+Which of the two a stack is has not been established: the interface documents the shape but
+not the provenance, and the question is with the organizers.
+
+So this is not an idea that was overlooked. It is one that cannot be evaluated until the
+premise is answered, and running it before then would be choosing a direction by assumption.
+If the answer comes and stacks are single examinations, the test is cheap: the groups in
+`src/grouping.py` are already near-duplicate clusters and can stand in for a stack on the
+training data, scored cross-center in both directions and judged by the same rule as every
+other comparison in this repository.

@@ -73,7 +73,7 @@ frozen RN50 (GastroNet-5M, DINOv1)
   -> signed power transform, sign(x) * |x|^0.5
   -> subtract training mean
   -> closed-form shrinkage GDA; the 49 positions are the samples for the
-     within-class scatter, shrinking toward (tr S / d) * I
+     total scatter, grand-mean centered, shrinking toward (tr S / d) * I
   -> score every position, take the top 2% (the maximum on a 7x7 grid)
   -> logistic squash
 ```

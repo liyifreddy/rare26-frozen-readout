@@ -93,13 +93,26 @@ rule, this is the failure mode to guard first.
 
 ## What will cost you time if you reproduce this
 
+**Section 1 named the wrong order statistic, and did so for the life of this report.** It said
+that to reach 90% recall the threshold sits on the `ceil(0.9 * n_pos)`-th lowest positive. It sits
+on the `n_pos - ceil(0.9 * n_pos) + 1`-th: the 7th lowest at 61 positives, the 10th at 97.
+`ceil(0.9 * n_pos)` is the number of positives that must stay above the threshold, which is a count,
+not a rank, and the sentence put the count in the rank's place. No number here moves: the scorer
+reads the metric off an interpolated precision-recall curve and never indexes the sorted positives
+at all. That is also why nothing caught it. Every gate in this repository compares one computed
+quantity against another, and this was a sentence with no computed quantity behind it. Our own
+working notes used the correct form throughout; the error appeared when the mechanism was written
+out in English, and survived because the expression it names is a real quantity in the
+neighboring sentence. Corrected 2026-09-08. The submitted method report does not contain it -- that document
+names the order statistic without indexing it.
+
 **The 49 positions of one image are not independent.** Counting each position as a sample
 puts the ratio of samples to dimensions at 2.51, and moving to a wider feature map appears
 to drop it to 0.057. Both figures are inflated by the same factor, because the 49
 positions of one image carry far less information than 49 independent samples: the honest
 ratio at the second setting is nearer 0.35. The head is fitted with the positions as
-samples for the within-class scatter, which is the point of the design, but any
-sample-size argument built on 49n is wrong by roughly a factor of five.
+samples for the total scatter, grand-mean centered, which is the point of the design, but
+any sample-size argument built on 49n is wrong by roughly a factor of five.
 
 **Training and serving do not preprocess identically, and the difference is not free.**
 Training resizes through PIL; the container uses `torch.nn.functional.interpolate` with
@@ -108,9 +121,19 @@ Training resizes through PIL; the container uses `torch.nn.functional.interpolat
 distribution from the one the head was fitted on. If you rewrite the preprocessing, measure
 this before trusting anything downstream.
 
+**The documentation described the head's covariance as something the code does not
+compute.** Five places said within-class scatter; the code forms the total scatter, centered
+on the grand mean. The two differ by a rank-one term along the class-mean difference, so the
+solved direction is identical up to a positive scalar and no published number moves -- but a
+reader who knows discriminant analysis, reading the code against the prose, would conclude we
+had made an error. No gate here could have caught it: every one of them checks whether a
+number is right, and none checks whether a word is.
+
 **A cached feature map is not the delivered pipeline's features.** We treated one as the
-other for a while. The cache had two resize stages where the delivered path has one, and the
-results differ by 25%.
+other for a while. The delivered path has two resize stages, original to 512 to 224, where
+the cache went straight to 224, and the results differ by 25%. This page had that backwards
+for a hundred lines while stating it correctly in the grouping entry above: two sentences on
+one page, contradicting each other, and nothing computed was watching either of them.
 
 **Do not compare layers under global average pooling.** Averaging dilutes by the number of
 positions, so a shallower layer with a larger map loses for a reason that has nothing to do
@@ -158,6 +181,18 @@ We derived that property in the first section of the report and then spent most 
 available time not acting on it. If we started again, the protocol would be built around it
 from the first week rather than assembled around it afterwards.
 
+**The specific thing not done was a power calculation, and the cost was a budget spent on
+grid size.** Freezing the backbone is what made 1835 comparisons affordable, and that is a
+real advantage, but it solves cost and not power. Power here is set by three things: the
+number of positives, which is 158 and fixed; the size of the effect, which the data decides;
+and whether the comparison is paired, which it is. **Running more cells raises none of them.**
+It raises only the number of cells that come out detectable by chance. The practical
+threshold, 0.0165, was in hand before the grid was run, and for most of what the grid
+contained the expected effect was smaller than that -- which was knowable in advance, not
+only in hindsight. The correct move was to run fewer comparisons, four families with one
+question each, rather than to run the grid at finer resolution. This is a protocol defect
+rather than a regret: it changed where the available time went.
+
 ## One thing we cannot fix
 
 The method report submitted to the organizers spells one word the British way,
@@ -172,8 +207,9 @@ Several checks in this project reported success without having examined anything
 container verification that exited zero while the container engine was not running, a scanner
 that reported all clear after matching no files, a rule that passed on a direction with
 nothing in it to separate. Every gate in this repository is now run twice — once against a
-deliberately broken input to prove it reports red, then once for real — and two of them
-were found that way rather than by accident. If you use the checks here, run them that way
+deliberately broken input to prove it reports red, then once for real. The third one above,
+the rule that passed on a direction with nothing in it to separate, was found that way rather
+than by accident. If you use the checks here, run them that way
 too; a gate that cannot report failure is worse than no gate, because its output is taken as
 evidence.
 
